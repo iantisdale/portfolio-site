@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Domain and Email Authentication Setup | Ian Tisdale</title>
+  <meta name="description" content="Personal domain, email authentication, and professional identity setup project by Ian Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Ian Tisdale</a>
+      <div class="nav-links">
+        <a href="/#projects">Projects</a>
+        <a href="/#case-study">Case Study</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">DNS • Email Security • Authentication • Professional Identity</div>
+
+      <h1>Personal Domain, Email Authentication, and Professional Identity Setup</h1>
+
+	<div class="detail-box">
+  	<strong>Multiple Domains</strong>
+  	<p>Two domains were configured and managed, requiring consistent DNS, email routing, and authentication policies across both.</p>
+	</div>
+
+      <div class="tag-row">
+        <span class="tag">DNS Records</span>
+        <span class="tag">Google Workspace</span>
+        <span class="tag">SPF</span>
+        <span class="tag">DKIM</span>
+        <span class="tag">DMARC</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Custom Domain</strong>
+            <p>A personal domain was registered and used as the foundation for email and web presence.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Google Workspace</strong>
+            <p>Google Workspace was configured to handle email services, requiring proper DNS validation and record configuration.</p>
+          </div>
+          <div class="detail-box">
+            <strong>DNS Provider</strong>
+            <p>DNS records were managed to support email routing, verification, and authentication policies.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Email Authentication Standards</strong>
+            <p>SPF, DKIM, and DMARC were implemented to ensure email integrity and improve trust with receiving mail systems.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          Managing a single domain is straightforward, but scaling to multiple domains introduces consistency challenges. Without proper configuration, authentication can break across domains, emails may fail delivery, and policies can drift over time. I needed a setup that ensured both domains followed the same secure and reliable standards.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>Email authentication is required for modern deliverability and trust.</li>
+          <li>Unprotected domains can be spoofed, damaging reputation and security.</li>
+          <li>Proper DNS configuration is critical for both functionality and security.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I approached this project by treating email as a security and reliability system rather than just a communication tool. I configured DNS records step by step to verify domain ownership, route mail correctly, and enforce authentication policies that align with modern email standards.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+  	  <li>Configured DNS for two separate domains with consistent structure and record management.</li>
+  	  <li>Set up Google Workspace to support multi-domain email routing.</li>
+  	  <li>Configured MX records for both domains to ensure proper mail delivery.</li>
+  	  <li>Implemented SPF (Sender Policy Framework) on both domains to define authorized senders.</li>
+  	  <li>Enabled DKIM (DomainKeys Identified Mail) for each domain to sign outgoing email.</li>
+  	  <li>Configured DMARC (Domain-based Message Authentication, Reporting, and Conformance) policies for monitoring and 	  enforcement.</li>
+  	  <li>Validated DNS propagation and ensured both domains behaved consistently.</li>
+	</ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Verified successful email delivery without spam filtering issues.</li>
+          <li>Confirmed SPF, DKIM, and DMARC alignment using test messages and headers.</li>
+          <li>Ensured domain ownership and DNS records were correctly recognized by Google Workspace.</li>
+          <li>Tested sending and receiving from multiple providers to validate trust.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The final result was a consistent, multi-domain email setup with proper authentication across both domains. Emails are trusted, delivery is reliable, and both domains are protected against spoofing while maintaining a professional and scalable identity.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that scaling from one domain to multiple domains requires consistency, not just replication. Small differences in DNS or authentication settings can create hard-to-diagnose issues. Treating domain configuration as a repeatable system instead of a one-time setup leads to a more reliable and professional result.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Move DMARC from monitoring to stricter enforcement policies over time.</li>
+          <li>Review reports to detect unauthorized send attempts.</li>
+          <li>Document DNS configurations as a reusable template.</li>
+          <li>Expand email security awareness into other systems and services.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on iantisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+</html>
