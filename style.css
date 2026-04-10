@@ -289,9 +289,9 @@ section {
 }
 
 .skill-pill {
-  background: rgba(34, 197, 94, 0.08);
-  border-color: rgba(34, 197, 94, 0.16);
-  color: #bbf7d0;
+  background: rgba(148, 163, 184, 0.08);
+  border-color: rgba(148, 163, 184, 0.14);
+  color: var(--muted);
 }
 
 .details {
