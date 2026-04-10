@@ -88,10 +88,41 @@
           <li>Deployed a Raspberry Pi as a dedicated management and troubleshooting node.</li>
           <li>Placed the Pi on the management VLAN to allow access to infrastructure systems.</li>
           <li>Configured Tailscale for secure remote access and fallback connectivity.</li>
-          <li>Enabled SSH for direct administrative access to internal systems.</li>
+          <li>Designed a structured SSH access model with key-based authentication and role-based identities.</li>
           <li>Used the Pi as a central point to initiate connections to other nodes instead of exposing those nodes directly.</li>
         </ul>
       </section>
+
+<section>
+  <h2>SSH Access Strategy and Resilient Management Paths</h2>
+
+  <p>
+    I designed a cross-platform SSH access workflow that prioritizes direct LAN access when systems are locally reachable and automatically falls back to Tailscale when they are not. This allowed me to maintain consistent access to infrastructure regardless of network conditions while avoiding reliance on a single access path.
+  </p>
+
+  <ul>
+    <li>Created SSH host aliases for all infrastructure systems to standardize access across environments.</li>
+    <li>Used <strong>Match exec</strong> rules to test local reachability and prefer LAN IP addresses when available.</li>
+    <li>Automatically fell back to Tailscale IPs when direct LAN access was unavailable.</li>
+    <li>Used separate SSH keys based on node role instead of reusing a single key across all systems.</li>
+    <li>Maintained separate SSH configurations for PowerShell and WSL due to differences in command execution and environment behavior.</li>
+    <li>Added a dedicated <strong>pi-recovery</strong> entry to ensure access even when overlay networking was unavailable.</li>
+  </ul>
+
+  <p>
+    This approach made remote management more resilient and predictable. Instead of manually switching between access methods, the system adapts automatically based on reachability, allowing me to focus on troubleshooting rather than connection setup.
+  </p>
+</section>
+
+
+<pre><code>
+Match host node100 exec "ping -c 1 -W 1 192.168.20.100 >/dev/null 2>&1"
+    HostName 192.168.20.100
+
+Match host node100
+    HostName 100.73.82.66
+</code></pre>
+
 
       <section>
         <h2>Networking and Diagnostic Tools</h2>
