@@ -28,7 +28,61 @@
         This case study came from a practical operations problem: infrastructure systems should not depend entirely on the same internal DNS path they may need in order to recover.
       </p>
 
-      <!-- reuse your problem / approach / outcome / timeline content here -->
+          <section id="case-study">
+      <div class="section-head">
+        <div>
+          <h2>Featured Case Study</h2>
+          <p>A stronger portfolio does not just say what tools were used. It explains the problem, the design reasoning, and the operational lesson learned.</p>
+        </div>
+      </div>
+
+      <article class="panel details">
+        <h3>Case Study: Split DNS Architecture and Dependency Reduction</h3>
+        <p class="muted">
+          This project came from a practical operations problem: infrastructure systems should not be fully dependent on an internal DNS path that may itself be unavailable during an outage, reboot, or recovery event.
+        </p>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <strong>Problem</strong>
+            <p>Some infrastructure devices and core services were positioned to depend too heavily on internal DNS. That creates a bootstrap problem: when DNS is degraded, the systems needed to recover the environment may also lose resolution.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Approach</strong>
+            <p>Separated DNS responsibilities by device role. Infrastructure nodes were planned to use either public DNS only or AdGuard Home with a public secondary resolver, while client devices would receive AdGuard Home only through Dynamic Host Configuration Protocol (DHCP).</p>
+          </div>
+          <div class="detail-box">
+            <strong>Technical Decisions</strong>
+            <ul>
+              <li>Keep infrastructure recovery paths independent.</li>
+              <li>Avoid circular dependencies between DNS and core management services.</li>
+              <li>Use AdGuard Home as the primary filtered resolver for clients.</li>
+              <li>Reserve public fallback for infrastructure only.</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <strong>Outcome</strong>
+            <p>The environment moved toward a more resilient split-DNS model that better supports recovery, troubleshooting, and clearer role separation between infrastructure and client systems.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>1. Identify the operational risk</strong>
+            <p>Core systems should not fail to recover because they depend on the same name resolution plane that is currently broken.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>2. Separate infrastructure from clients</strong>
+            <p>Infrastructure devices get independent resolution options. Clients get consistent filtered DNS through the internal resolver layer.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>3. Reduce ambiguity</strong>
+            <p>Clarifying which devices should and should not have public fallback helps prevent accidental policy drift and future troubleshooting confusion.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
 
       <a class="back-link" href="/">← Back to Home</a>
     </article>
