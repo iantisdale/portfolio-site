@@ -112,16 +112,15 @@
   <p>
     This approach made remote management more resilient and predictable. Instead of manually switching between access methods, the system adapts automatically based on reachability, allowing me to focus on troubleshooting rather than connection setup.
   </p>
-</section>
 
-<code>
+<pre><code>
 Match host node100 exec "ping -c 1 -W 1 192.168.20.100 >/dev/null 2>&1"
     HostName 192.168.20.100
 
 Match host node100
     HostName 100.73.82.66
-</code>
-
+</code></pre>
+</section>
 
       <section>
         <h2>Networking and Diagnostic Tools</h2>
