@@ -106,6 +106,13 @@
       </section>
 
       <section>
+        <h2>Outcome</h2>
+        <p>
+          The final design gave each part of the homelab a clearer trust boundary and made inter-VLAN access intentional instead of automatic. It also gave me a better troubleshooting model because I could separate switching problems, routing problems, and Access Control List (ACL) policy problems during testing.
+        </p>
+      </section>
+
+      <section>
         <h2>What I Learned</h2>
         <ul>
           <li>VLANs separate broadcast domains, but routed traffic still needs policy control.</li>
@@ -113,6 +120,13 @@
           <li>Trust boundaries should be designed intentionally, not added later as an afterthought.</li>
           <li>Segmentation only works when the intended behavior is tested and verified.</li>
         </ul>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <p>
+          The next step would be turning the policy model into a cleaner source-of-truth document with an explicit flow matrix for every VLAN. That would make future rule changes easier to reason about and reduce the chance of accidental over-permissive access as the environment grows.
+        </p>
       </section>
 
       <a class="back-link" href="/#projects">← Back to Projects</a>
