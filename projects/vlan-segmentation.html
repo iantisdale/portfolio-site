@@ -22,9 +22,9 @@
 
   <main class="container project-hero">
     <article class="panel project-shell">
-      <div class="eyebrow">Network Segmentation • VLANs • Access Control Lists</div>
+      <div class="eyebrow">Network Segmentation • VLANs • ACLs • Host Firewalls</div>
 
-      <h1>VLAN Segmentation and Access Control Design</h1>
+      <h1>Network Segmentation and Layered Access Control Design</h1>
 
       <p>
         I designed a segmented homelab network to separate systems by trust level and function, then controlled inter-VLAN communication with router-based policy instead of broad default access.
@@ -82,16 +82,23 @@
         <h2>Implementation</h2>
         <ul>
           <li>Created VLANs based on role and trust boundaries.</li>
-          <li>Used access and trunk ports where appropriate to carry the correct VLANs.</li>
-          <li>Relied on Layer 3 routing for communication between VLANs.</li>
-          <li>Used Access Control Lists (ACLs) to define allowed and denied traffic paths.</li>
+          <li>Used access and trunk ports to correctly segment Layer 2 traffic.</li>
+          <li>Relied on Layer 3 routing to control communication between VLANs.</li>
+          <li>Implemented router-based Access Control Lists (ACLs) to define allowed and denied traffic paths.</li>
+          <li>Applied host-level firewalls to enforce additional security controls at the system level:
+            <ul>
+              <li>Used Proxmox host firewall rules to protect the hypervisor and management interfaces.</li>
+              <li>Configured UFW (Uncomplicated Firewall) on Linux nodes to restrict inbound and outbound traffic.</li>
+              <li>Used iptables on TrueNAS to control service-level access and network exposure.</li>
+            </ul>
+          </li>
         </ul>
       </section>
 
       <section>
         <h2>Key Lesson</h2>
         <p>
-          One of the biggest lessons from this project was learning that VLAN separation at Layer 2 does not automatically equal security at Layer 3. Once traffic reaches the router, policy determines what can cross between networks. That made ACL order, validation, and trust-boundary design just as important as the VLAN setup itself.
+          One of the biggest lessons from this project was that VLAN segmentation alone is not enough to provide real security. While VLANs separate broadcast domains at Layer 2, traffic is still routed at Layer 3 where policy must be enforced. Adding host-based firewalls created a layered security model, ensuring that even if network-level controls were misconfigured, individual systems still enforced their own access restrictions.
         </p>
       </section>
 
@@ -108,7 +115,7 @@
       <section>
         <h2>Outcome</h2>
         <p>
-          The final design gave each part of the homelab a clearer trust boundary and made inter-VLAN access intentional instead of automatic. It also gave me a better troubleshooting model because I could separate switching problems, routing problems, and Access Control List (ACL) policy problems during testing.
+          The final design gave each part of the homelab a clearer trust boundary and made inter-VLAN access intentional instead of automatic. It also gave me a better troubleshooting model because I could separate switching problems, routing problems, and Access Control List (ACL) policy problems during testing. The design also evolved from simple segmentation into a layered security model combining VLANs, routing policy, and host-based firewalls.
         </p>
       </section>
 
@@ -119,6 +126,7 @@
           <li>Access Control List (ACL) order matters because rule evaluation is top-down.</li>
           <li>Trust boundaries should be designed intentionally, not added later as an afterthought.</li>
           <li>Segmentation only works when the intended behavior is tested and verified.</li>
+          <li>Effective security comes from layered controls, not a single mechanism.</li>
         </ul>
       </section>
 
