@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ian Tisdale | Network & Cybersecurity Portfolio</title>
+  <meta name="description" content="Portfolio of Ian Tisdale, showcasing networking, cybersecurity, and homelab projects." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #101a2f;
+      --card: rgba(16, 26, 47, 0.86);
+      --card-strong: rgba(14, 22, 39, 0.96);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e7eefb;
+      --muted: #9fb0cd;
+      --accent: #60a5fa;
+      --accent-2: #22c55e;
+      --warning: #f59e0b;
+      --shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 22%),
+        linear-gradient(180deg, #09101d 0%, #0b1220 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(8, 13, 24, 0.74);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 2.25rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.24);
+      background: rgba(96, 165, 250, 0.08);
+      color: #bfdbfe;
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { line-height: 1.15; margin: 0; }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #3b82f6);
+      color: white;
+    }
+
+    .btn-secondary {
+      border-color: rgba(148, 163, 184, 0.25);
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--text);
+    }
+
+    .hero-side {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+      background: linear-gradient(180deg, rgba(17,26,46,0.92), rgba(10,16,30,0.98));
+    }
+
+    .status-card {
+      padding: 1.1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .status-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .status-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(148,163,184,0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 1.2rem 0 2rem;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.9;
+    }
+
+    .project-type {
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: #bfdbfe;
+      background: rgba(96, 165, 250, 0.08);
+      border: 1px solid rgba(96, 165, 250, 0.18);
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.38rem 0.62rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .details {
+      padding: 1.5rem;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .detail-box {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .detail-box strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 0.95rem;
+      color: #dbe7fb;
+    }
+
+    .detail-box p, .detail-box ul {
+      margin: 0;
+      color: var(--muted);
+      padding-left: 1rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1rem 1rem 1rem 1.1rem;
+      border-left: 3px solid rgba(96,165,250,0.55);
+      background: rgba(255,255,255,0.03);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .timeline-item strong { display: block; margin-bottom: 0.35rem; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .skill-pill {
+      padding: 0.45rem 0.72rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.16);
+      color: #bbf7d0;
+      font-size: 0.84rem;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .muted { color: var(--muted); }
+    .accent { color: #bfdbfe; }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .card-grid,
+      .detail-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 3.5rem; }
+      .hero-copy, .hero-side, .details { padding: 1.2rem; }
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      .mini-grid { grid-template-columns: 1fr 1fr; }
+      h2 { font-size: 1.55rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Ian Tisdale</a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#case-study">Case Study</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <section class="panel hero-copy">
+        <div class="eyebrow">Networking • Cybersecurity • Homelab Infrastructure</div>
+        <h1>Building real networking and infrastructure skills through hands-on lab work.</h1>
+        <p>
+          I am an aspiring network and cybersecurity professional focused on learning by building, breaking, troubleshooting, and documenting real systems. My portfolio highlights lab projects involving VLAN design, DNS architecture, reverse proxying, observability, and layered access control.
+        </p>
+        <p>
+          Instead of listing tools without context, I show the problem, the approach, the technical decisions, and what changed after the fix.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#case-study">Read Case Study</a>
+          <a class="btn btn-secondary" href="mailto:ian@iantisdale.com">Email Me</a>
+        </div>
+      </section>
+
+      <aside class="panel hero-side">
+        <div class="status-card">
+          <h3>Current Focus</h3>
+          <p>Networking fundamentals, security-minded infrastructure design, and translating homelab work into portfolio-ready case studies.</p>
+        </div>
+        <div class="mini-grid">
+          <div class="metric">
+            <strong>4+</strong>
+            <span>core portfolio projects</span>
+          </div>
+          <div class="metric">
+            <strong>3</strong>
+            <span>major infrastructure themes</span>
+          </div>
+          <div class="metric">
+            <strong>1</strong>
+            <span>personal domain + email</span>
+          </div>
+          <div class="metric">
+            <strong>Live</strong>
+            <span>site hosted on Cloudflare Pages</span>
+          </div>
+        </div>
+        <div class="status-card">
+          <h3>What I want to be hired for</h3>
+          <p>Entry-level networking, infrastructure, or security-adjacent roles where troubleshooting, documentation, and careful systems thinking matter.</p>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="projects">
+      <div class="section-head">
+        <div>
+          <h2>Portfolio Projects</h2>
+          <p>These projects turn lab work into employer-readable case studies. Each one centers on a real problem, what I changed, and what I learned.</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="panel project-card">
+          <span class="project-type">Network Segmentation</span>
+          <h3>VLAN Segmentation and Access Control Design</h3>
+          <p>Designed a segmented homelab network with management, services, clients, IoT, and lab VLANs, then applied narrow Layer 3 access rules instead of broad trust between networks.</p>
+          <div class="tag-row">
+            <span class="tag">VLANs</span>
+            <span class="tag">ACLs</span>
+            <span class="tag">Router Policy</span>
+            <span class="tag">Troubleshooting</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <span class="project-type">DNS and Service Design</span>
+          <h3>Split DNS with AdGuard and Bootstrap Resilience</h3>
+          <p>Reworked DNS responsibilities so infrastructure devices were not fully dependent on the same internal DNS stack they needed in order to recover or boot correctly.</p>
+          <div class="tag-row">
+            <span class="tag">AdGuard Home</span>
+            <span class="tag">DNS</span>
+            <span class="tag">Resilience</span>
+            <span class="tag">Dependency Mapping</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <span class="project-type">Web and Edge Access</span>
+          <h3>Cloudflare, Reverse Proxy, and Public Service Exposure</h3>
+          <p>Published selected services behind Cloudflare and reverse proxying while separating public access from internal management paths and validating the correct upstream targets.</p>
+          <div class="tag-row">
+            <span class="tag">Cloudflare</span>
+            <span class="tag">Nginx Proxy Manager</span>
+            <span class="tag">TLS</span>
+            <span class="tag">Public Exposure</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <span class="project-type">Observability</span>
+          <h3>Metrics Node Hardening and Visibility Improvements</h3>
+          <p>Audited a monitoring node with multiple exposed services, documented the risks, and worked toward restricting dashboards and exporters to safer management-only paths.</p>
+          <div class="tag-row">
+            <span class="tag">Grafana</span>
+            <span class="tag">VictoriaMetrics</span>
+            <span class="tag">Homepage</span>
+            <span class="tag">Host Hardening</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <span class="project-type">Remote Access</span>
+          <h3>Raspberry Pi Management Jump Box</h3>
+          <p>Built a dedicated management node to provide redundant remote access, internal troubleshooting capability, and a safer path for administration when primary tooling is unavailable.</p>
+          <div class="tag-row">
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">Tailscale</span>
+            <span class="tag">SSH</span>
+            <span class="tag">Diagnostics</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <span class="project-type">Professional Buildout</span>
+          <h3>Personal Domain, Email Authentication, and Portfolio Delivery</h3>
+          <p>Registered a personal domain, configured Google Workspace, and implemented SPF, DomainKeys Identified Mail (DKIM), and Domain-based Message Authentication, Reporting, and Conformance (DMARC) for a professional web presence.</p>
+          <div class="tag-row">
+            <span class="tag">DNS Records</span>
+            <span class="tag">Google Workspace</span>
+            <span class="tag">SPF</span>
+            <span class="tag">DKIM</span>
+            <span class="tag">DMARC</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="case-study">
+      <div class="section-head">
+        <div>
+          <h2>Featured Case Study</h2>
+          <p>A stronger portfolio does not just say what tools were used. It explains the problem, the design reasoning, and the operational lesson learned.</p>
+        </div>
+      </div>
+
+      <article class="panel details">
+        <h3>Case Study: Split DNS Architecture and Dependency Reduction</h3>
+        <p class="muted">
+          This project came from a practical operations problem: infrastructure systems should not be fully dependent on an internal DNS path that may itself be unavailable during an outage, reboot, or recovery event.
+        </p>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <strong>Problem</strong>
+            <p>Some infrastructure devices and core services were positioned to depend too heavily on internal DNS. That creates a bootstrap problem: when DNS is degraded, the systems needed to recover the environment may also lose resolution.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Approach</strong>
+            <p>Separated DNS responsibilities by device role. Infrastructure nodes were planned to use either public DNS only or AdGuard Home with a public secondary resolver, while client devices would receive AdGuard Home only through Dynamic Host Configuration Protocol (DHCP).</p>
+          </div>
+          <div class="detail-box">
+            <strong>Technical Decisions</strong>
+            <ul>
+              <li>Keep infrastructure recovery paths independent.</li>
+              <li>Avoid circular dependencies between DNS and core management services.</li>
+              <li>Use AdGuard Home as the primary filtered resolver for clients.</li>
+              <li>Reserve public fallback for infrastructure only.</li>
+            </ul>
+          </div>
+          <div class="detail-box">
+            <strong>Outcome</strong>
+            <p>The environment moved toward a more resilient split-DNS model that better supports recovery, troubleshooting, and clearer role separation between infrastructure and client systems.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>1. Identify the operational risk</strong>
+            <p>Core systems should not fail to recover because they depend on the same name resolution plane that is currently broken.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>2. Separate infrastructure from clients</strong>
+            <p>Infrastructure devices get independent resolution options. Clients get consistent filtered DNS through the internal resolver layer.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>3. Reduce ambiguity</strong>
+            <p>Clarifying which devices should and should not have public fallback helps prevent accidental policy drift and future troubleshooting confusion.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2>About Me</h2>
+          <p>I learn best by building real systems, documenting decisions, and understanding why something failed instead of memorizing only the fix.</p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <article class="panel details">
+          <h3>How I work</h3>
+          <p class="muted">My strongest work happens where networking, troubleshooting, and methodical thinking overlap. I enjoy taking a messy or fragile setup and making it easier to reason about, safer to operate, and better documented.</p>
+          <div class="skill-list">
+            <span class="skill-pill">VLAN Design</span>
+            <span class="skill-pill">Access Control Lists</span>
+            <span class="skill-pill">DNS</span>
+            <span class="skill-pill">Reverse Proxying</span>
+            <span class="skill-pill">Observability</span>
+            <span class="skill-pill">Linux</span>
+            <span class="skill-pill">Proxmox</span>
+            <span class="skill-pill">Cloudflare</span>
+          </div>
+        </article>
+
+        <article class="panel details">
+          <h3>What I want this portfolio to show</h3>
+          <p class="muted">I am not trying to look like I already know everything. I want to show that I can think through real technical problems, learn quickly, document clearly, and improve systems with intention.</p>
+          <p class="muted">This site will continue to grow with deeper project write-ups, diagrams, before-and-after architecture notes, and more polished case studies from ongoing homelab work.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Use these links to connect with me and view more of my work as the portfolio expands.</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="panel details">
+          <h3>Email</h3>
+          <p class="muted"><a class="accent" href="mailto:ian@iantisdale.com">ian@iantisdale.com</a></p>
+        </article>
+        <article class="panel details">
+          <h3>GitHub</h3>
+          <p class="muted">https://github.com/iantisdale</p>
+        </article>
+        <article class="panel details">
+          <h3>LinkedIn</h3>
+          <p class="muted">https://www.linkedin.com/in/charles-tisdale-665548119/</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    Built on iantisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+</html>
