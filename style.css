@@ -128,6 +128,9 @@ p {
 
 .hero-copy {
   padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hero-copy p {
