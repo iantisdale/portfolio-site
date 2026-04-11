@@ -354,6 +354,25 @@ section {
   max-width: 900px;
 }
 
+/* Modal image */
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 95%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
 .back-link {
   display: inline-block;
   margin-top: 2rem;
