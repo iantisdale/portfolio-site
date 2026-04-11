@@ -81,86 +81,79 @@
         <p>
           The scenario used in this project is a client on VLAN 30 accessing an internal service on VLAN 20 by hostname through Nginx Proxy Manager. That makes the path useful because it includes DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
         </p>
+
+        <figure class="zoomable diagram">
+          <img
+            src="/images/packet-flow.png"
+            alt="Packet flow diagram showing a VLAN 30 client resolving a hostname through AdGuard Home, traversing the switch and router with ACL evaluation, reaching Nginx Proxy Manager, and being forwarded to a VLAN 20 backend service."
+            class="zoomable-image"
+            data-full="/images/packet-flow.png"
+          />
+        </figure>
+        <p class="diagram-caption">
+          Packet flow from a VLAN 30 client to a VLAN 20 backend service through DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
+        </p>
       </section>
 
-	<section>
-  <h2>Scenario</h2>
-  <p>
-    The scenario used in this project is a client on VLAN 30 accessing an internal service on VLAN 20 by hostname through Nginx Proxy Manager. That makes the path useful because it includes DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
-  </p>
+      <section>
+        <h2>Step-by-Step Packet Flow</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>1. The client resolves the service name</strong>
+            <p>The client first uses DNS to resolve the hostname into an IP address. In my environment, AdGuard Home uses a DNS rewrite so the requested hostname resolves to the IP address of Nginx Proxy Manager (NPM). At this stage, DNS only returns the IP address. It does not forward the actual application traffic.</p>
+          </div>
 
-  <figure class="zoomable diagram">
-    <img
-      src="/images/packet-flow.png"
-      alt="Packet flow diagram showing a VLAN 30 client resolving a hostname through AdGuard Home, traversing the switch and router with ACL evaluation, reaching Nginx Proxy Manager, and being forwarded to a VLAN 20 backend service."
-      class="zoomable-image"
-      data-full="/images/packet-flow.png"
-    />
-  </figure>
-  <p class="diagram-caption">
-    Packet flow from a VLAN 30 client to a VLAN 20 backend service through DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
-  </p>
-</section>
+          <div class="timeline-item">
+            <strong>2. The client checks whether the destination is local</strong>
+            <p>The client compares its own subnet to the destination IP. Because Nginx Proxy Manager is on a different VLAN and subnet, the client determines that the traffic must be sent to its default gateway.</p>
+          </div>
 
-        <section>
-  <h2>Step-by-Step Packet Flow</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <strong>1. The client resolves the service name</strong>
-      <p>The client first uses DNS to resolve the hostname into an IP address. In my environment, AdGuard Home uses a DNS rewrite so the requested hostname resolves to the IP address of Nginx Proxy Manager (NPM). At this stage, DNS only returns the IP address. It does not forward the actual application traffic.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>3. The client uses Address Resolution Protocol (ARP) for the default gateway</strong>
+            <p>If the client does not already know the Media Access Control (MAC) address of the default gateway, it uses Address Resolution Protocol (ARP) to learn it. The client does not ARP for Nginx Proxy Manager directly because that destination is remote.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>2. The client checks whether the destination is local</strong>
-      <p>The client compares its own subnet to the destination IP. Because Nginx Proxy Manager is on a different VLAN and subnet, the client determines that the traffic must be sent to its default gateway.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>4. The client builds the frame and sends it to the switch</strong>
+            <p>The client creates a Layer 3 packet with the destination IP of Nginx Proxy Manager and a Layer 2 frame addressed to the default gateway MAC. The client sends an untagged frame into its access port, and the switch associates it with the correct VLAN.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>3. The client uses Address Resolution Protocol (ARP) for the default gateway</strong>
-      <p>If the client does not already know the Media Access Control (MAC) address of the default gateway, it uses Address Resolution Protocol (ARP) to learn it. The client does not ARP for Nginx Proxy Manager directly because that destination is remote.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>5. The switch forwards the traffic toward the router</strong>
+            <p>As traffic moves across a trunk, the switch adds the appropriate Institute of Electrical and Electronics Engineers (IEEE) 802.1Q VLAN tag so the router knows which VLAN the frame came from.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>4. The client builds the frame and sends it to the switch</strong>
-      <p>The client creates a Layer 3 packet with the destination IP of Nginx Proxy Manager and a Layer 2 frame addressed to the default gateway MAC. The client sends an untagged frame into its access port, and the switch associates it with the correct VLAN.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>6. The router processes the packet at Layer 3</strong>
+            <p>The router removes the incoming Layer 2 framing, examines the destination IP address, determines that the packet should be forwarded toward VLAN 20, and evaluates any Access Control List (ACL) policy applied to that traffic path.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>5. The switch forwards the traffic toward the router</strong>
-      <p>As traffic moves across a trunk, the switch adds the appropriate Institute of Electrical and Electronics Engineers (IEEE) 802.1Q VLAN tag so the router knows which VLAN the frame came from.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>7. The Access Control List (ACL) is evaluated</strong>
+            <p>The router checks the packet against the configured policy in top-down order. In my network, VLAN 30 is allowed to reach Nginx Proxy Manager on ports 80 and 443, while other unauthorized traffic from VLAN 30 to VLAN 20 is denied. If the traffic matches an allow rule, it continues. If it matches a deny rule, the flow stops at this point.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>6. The router processes the packet at Layer 3</strong>
-      <p>The router removes the incoming Layer 2 framing, examines the destination IP address, determines that the packet should be forwarded toward VLAN 20, and evaluates any Access Control List (ACL) policy applied to that traffic path.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>8. The router rebuilds the Layer 2 frame for the destination VLAN</strong>
+            <p>After making the forwarding decision, the router creates a new Layer 2 frame for VLAN 20. The source and destination MAC addresses are different from the original frame, but the Layer 3 destination IP remains the same.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>7. The Access Control List (ACL) is evaluated</strong>
-      <p>The router checks the packet against the configured policy in top-down order. In my network, VLAN 30 is allowed to reach Nginx Proxy Manager on ports 80 and 443, while other unauthorized traffic from VLAN 30 to VLAN 20 is denied. If the traffic matches an allow rule, it continues. If it matches a deny rule, the flow stops at this point.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>9. Nginx Proxy Manager receives the request</strong>
+            <p>Nginx Proxy Manager receives the HTTP or HTTPS request because the hostname resolved to its IP address. Nginx Proxy Manager then uses the requested hostname to determine which backend service should receive the traffic.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>8. The router rebuilds the Layer 2 frame for the destination VLAN</strong>
-      <p>After making the forwarding decision, the router creates a new Layer 2 frame for VLAN 20. The source and destination MAC addresses are different from the original frame, but the Layer 3 destination IP remains the same.</p>
-    </div>
+          <div class="timeline-item">
+            <strong>10. Nginx Proxy Manager forwards the request to the backend service</strong>
+            <p>After matching the hostname to the correct proxy host configuration, Nginx Proxy Manager forwards the request to the intended internal application. At this point, the full path succeeded because DNS, switching, routing, ACL policy, and reverse proxying all worked together correctly.</p>
+          </div>
 
-    <div class="timeline-item">
-      <strong>9. Nginx Proxy Manager receives the request</strong>
-      <p>Nginx Proxy Manager receives the HTTP or HTTPS request because the hostname resolved to its IP address. Nginx Proxy Manager then uses the requested hostname to determine which backend service should receive the traffic.</p>
-    </div>
-
-    <div class="timeline-item">
-      <strong>10. Nginx Proxy Manager forwards the request to the backend service</strong>
-      <p>After matching the hostname to the correct proxy host configuration, Nginx Proxy Manager forwards the request to the intended internal application. At this point, the full path succeeded because DNS, switching, routing, ACL policy, and reverse proxying all worked together correctly.</p>
-    </div>
-
-    <div class="timeline-item">
-      <strong>11. Return traffic follows the reverse path</strong>
-      <p>The backend service returns the response to Nginx Proxy Manager, which then sends the response back to the client. If the response crosses VLAN boundaries, the router again evaluates policy, rebuilds Layer 2 framing for the destination VLAN, and forwards the traffic back toward the client.</p>
-    </div>
-  </div>
-</section>
+          <div class="timeline-item">
+            <strong>11. Return traffic follows the reverse path</strong>
+            <p>The backend service returns the response to Nginx Proxy Manager, which then sends the response back to the client. If the response crosses VLAN boundaries, the router again evaluates policy, rebuilds Layer 2 framing for the destination VLAN, and forwards the traffic back toward the client.</p>
+          </div>
+        </div>
+      </section>
 
       <section>
         <h2>Key Technical Points</h2>
@@ -215,65 +208,64 @@
     Built on iantisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
   </footer>
 
-<div id="imageModal" class="image-modal" aria-hidden="true">
-  <button class="image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
-  <img class="image-modal-content" id="imageModalContent" alt="">
-</div>
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button class="image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="image-modal-content" id="imageModalContent" alt="">
+  </div>
 
-<script>
-  (function () {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("imageModalContent");
-    const closeBtn = modal.querySelector(".image-modal-close");
-    const zoomableImages = document.querySelectorAll(".zoomable-image");
+  <script>
+    (function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imageModalContent");
+      const closeBtn = modal.querySelector(".image-modal-close");
+      const zoomableImages = document.querySelectorAll(".zoomable-image");
 
-    if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
+      if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
 
-    function openModal(img) {
-      modalImg.src = img.dataset.full || img.src;
-      modalImg.alt = img.alt || "";
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
+      function openModal(img) {
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
 
-    function closeModal() {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-      modalImg.alt = "";
-      document.body.style.overflow = "";
-    }
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        modalImg.alt = "";
+        document.body.style.overflow = "";
+      }
 
-    zoomableImages.forEach((img) => {
-      img.addEventListener("click", () => openModal(img));
-      img.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openModal(img);
+      zoomableImages.forEach((img) => {
+        img.addEventListener("click", () => openModal(img));
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(img);
+          }
+        });
+
+        if (!img.hasAttribute("tabindex")) {
+          img.setAttribute("tabindex", "0");
         }
       });
 
-      if (!img.hasAttribute("tabindex")) {
-        img.setAttribute("tabindex", "0");
-      }
-    });
+      closeBtn.addEventListener("click", closeModal);
 
-    closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("is-open")) {
-        closeModal();
-      }
-    });
-  })();
-</script>
-
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
