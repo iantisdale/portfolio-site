@@ -259,9 +259,12 @@
         }
       });
 
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        modalImg.classList.toggle("is-zoomed");
+      });
 
-
-      // closeBtn.addEventListener("click", closeModal);
+      closeBtn.addEventListener("click", closeModal);
 
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
