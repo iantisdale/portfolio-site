@@ -225,12 +225,15 @@
       if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
 
       function openModal(img) {
-        modalImg.src = img.dataset.full || img.src;
-        modalImg.alt = img.alt || "";
-        modalImg.classList.remove("is-zoomed");
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
+  	modalImg.src = img.dataset.full || img.src;
+  	modalImg.alt = img.alt || "";
+
+  	// OPEN ALREADY ZOOMED
+  	modalImg.classList.add("is-zoomed");
+
+  	modal.classList.add("is-open");
+  	modal.setAttribute("aria-hidden", "false");
+  	document.body.style.overflow = "hidden";
       }
 
       function closeModal() {
