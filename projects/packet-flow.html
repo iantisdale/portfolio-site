@@ -86,9 +86,9 @@
           <div class="diagram">
             <img
               src="/images/packet-flow.png"
-  		data-full="/images/data-full.svg"
- 		alt="Packet Flow Diagram"
- 		class="zoomable-image"
+              data-full="/images/data-full.svg"
+              alt="Packet Flow Diagram"
+              class="zoomable-image"
             />
           </div>
           <figcaption class="diagram-caption">
@@ -215,161 +215,180 @@
     <img class="image-modal-content" id="imageModalContent" alt="">
   </div>
 
-<script>
-  (function () {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("imageModalContent");
-    const closeBtn = modal.querySelector(".image-modal-close");
-    const zoomableImages = document.querySelectorAll(".zoomable-image");
+  <script>
+    (function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imageModalContent");
+      const closeBtn = modal.querySelector(".image-modal-close");
+      const zoomableImages = document.querySelectorAll(".zoomable-image");
 
-    if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
+      if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
 
-    let scale = 1.8;
-    let translateX = 0;
-    let translateY = 0;
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let pinchStartDistance = 0;
-    let pinchStartScale = scale;
+      let scale = 1.8;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let movedDuringDrag = false;
+      let startX = 0;
+      let startY = 0;
+      let pinchStartDistance = 0;
+      let pinchStartScale = scale;
 
-    function clampScale(value) {
-      return Math.min(Math.max(value, 1), 3);
-    }
+      function clampScale(value) {
+        return Math.min(Math.max(value, 1), 3);
+      }
 
-    function applyTransform() {
-      modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-    }
+      function applyTransform() {
+        modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
 
-    function resetTransform(openZoomed = true) {
-      scale = openZoomed ? 1.8 : 1;
-      translateX = 0;
-      translateY = 0;
-      modalImg.classList.toggle("is-zoomed", openZoomed);
-      modalImg.classList.remove("is-dragging");
-      applyTransform();
-    }
+      function resetTransform(openZoomed = true) {
+        scale = openZoomed ? 1.8 : 1;
+        translateX = 0;
+        translateY = 0;
+        movedDuringDrag = false;
+        modalImg.classList.remove("is-dragging");
+        applyTransform();
+      }
 
-    function openModal(img) {
-      modalImg.src = img.dataset.full || img.src;
-      modalImg.alt = img.alt || "";
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      resetTransform(true);
-    }
+      function openModal(img) {
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        resetTransform(true);
+      }
 
-    function closeModal() {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-      modalImg.alt = "";
-      modalImg.classList.remove("is-zoomed", "is-dragging");
-      modalImg.style.transform = "";
-      document.body.style.overflow = "";
-      isDragging = false;
-    }
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        modalImg.alt = "";
+        modalImg.classList.remove("is-dragging");
+        modalImg.style.transform = "";
+        document.body.style.overflow = "";
+        isDragging = false;
+        movedDuringDrag = false;
+      }
 
-    function getDistance(touches) {
-      const dx = touches[0].clientX - touches[1].clientX;
-      const dy = touches[0].clientY - touches[1].clientY;
-      return Math.hypot(dx, dy);
-    }
+      function getDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.hypot(dx, dy);
+      }
 
-    zoomableImages.forEach((img) => {
-      img.addEventListener("click", () => openModal(img));
-      img.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openModal(img);
+      zoomableImages.forEach((img) => {
+        img.addEventListener("click", () => openModal(img));
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(img);
+          }
+        });
+
+        if (!img.hasAttribute("tabindex")) {
+          img.setAttribute("tabindex", "0");
         }
       });
 
-      if (!img.hasAttribute("tabindex")) {
-        img.setAttribute("tabindex", "0");
-      }
-    });
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (movedDuringDrag) {
+          movedDuringDrag = false;
+          return;
+        }
 
-    modalImg.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (isDragging) return;
+        if (scale > 1) {
+          resetTransform(false);
+        } else {
+          resetTransform(true);
+        }
+      });
 
-      if (scale > 1) {
-        resetTransform(false);
-      } else {
-        resetTransform(true);
-      }
-    });
-
-    modalImg.addEventListener("mousedown", (e) => {
-      if (scale <= 1) return;
-      e.preventDefault();
-      isDragging = true;
-      startX = e.clientX - translateX;
-      startY = e.clientY - translateY;
-      modalImg.classList.add("is-dragging");
-    });
-
-    window.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      translateX = e.clientX - startX;
-      translateY = e.clientY - startY;
-      applyTransform();
-    });
-
-    window.addEventListener("mouseup", () => {
-      isDragging = false;
-      modalImg.classList.remove("is-dragging");
-    });
-
-    modalImg.addEventListener("touchstart", (e) => {
-      if (e.touches.length === 1 && scale > 1) {
+      modalImg.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+        e.preventDefault();
         isDragging = true;
-        startX = e.touches[0].clientX - translateX;
-        startY = e.touches[0].clientY - translateY;
+        movedDuringDrag = false;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
         modalImg.classList.add("is-dragging");
-      } else if (e.touches.length === 2) {
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const newX = e.clientX - startX;
+        const newY = e.clientY - startY;
+
+        if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+          movedDuringDrag = true;
+        }
+
+        translateX = newX;
+        translateY = newY;
+        applyTransform();
+      });
+
+      window.addEventListener("mouseup", () => {
         isDragging = false;
-        pinchStartDistance = getDistance(e.touches);
-        pinchStartScale = scale;
-      }
-    }, { passive: false });
+        modalImg.classList.remove("is-dragging");
+      });
 
-    modalImg.addEventListener("touchmove", (e) => {
-      if (e.touches.length === 1 && isDragging && scale > 1) {
-        e.preventDefault();
-        translateX = e.touches[0].clientX - startX;
-        translateY = e.touches[0].clientY - startY;
-        applyTransform();
-      } else if (e.touches.length === 2) {
-        e.preventDefault();
-        const newDistance = getDistance(e.touches);
-        scale = clampScale((newDistance / pinchStartDistance) * pinchStartScale);
-        modalImg.classList.toggle("is-zoomed", scale > 1);
-        applyTransform();
-      }
-    }, { passive: false });
+      modalImg.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1 && scale > 1) {
+          isDragging = true;
+          movedDuringDrag = false;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+          modalImg.classList.add("is-dragging");
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          pinchStartDistance = getDistance(e.touches);
+          pinchStartScale = scale;
+        }
+      }, { passive: false });
 
-    modalImg.addEventListener("touchend", () => {
-      isDragging = false;
-      modalImg.classList.remove("is-dragging");
-    });
+      modalImg.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          e.preventDefault();
+          const newX = e.touches[0].clientX - startX;
+          const newY = e.touches[0].clientY - startY;
 
-    closeBtn.addEventListener("click", closeModal);
+          if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+            movedDuringDrag = true;
+          }
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
+          translateX = newX;
+          translateY = newY;
+          applyTransform();
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+          const newDistance = getDistance(e.touches);
+          scale = clampScale((newDistance / pinchStartDistance) * pinchStartScale);
+          applyTransform();
+        }
+      }, { passive: false });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("is-open")) {
-        closeModal();
-      }
-    });
-  })();
-</script>
+      modalImg.addEventListener("touchend", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
 
-  </body>
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
 </html>
