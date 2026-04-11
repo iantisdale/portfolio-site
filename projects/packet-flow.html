@@ -79,64 +79,70 @@
       <section>
         <h2>Scenario</h2>
         <p>
-          The scenario used in this project is a client on VLAN 30 accessing an internal service on VLAN 20 by hostname. That makes the path useful because it includes both name resolution and inter-VLAN communication.
+          The scenario used in this project is a client on VLAN 30 accessing an internal service on VLAN 20 by hostname through Nginx Proxy Manager. That makes the path useful because it includes DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
         </p>
       </section>
 
       <section>
-        <h2>Step-by-Step Packet Flow</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <strong>1. The client resolves the service name</strong>
-            <p>The client first uses DNS to resolve the hostname into an IP address. Without this step, the client would not know where to send the application traffic.</p>
-          </div>
+        <section>
+  <h2>Step-by-Step Packet Flow</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>1. The client resolves the service name</strong>
+      <p>The client first uses DNS to resolve the hostname into an IP address. In my environment, AdGuard Home uses a DNS rewrite so the requested hostname resolves to the IP address of Nginx Proxy Manager (NPM). At this stage, DNS only returns the IP address. It does not forward the actual application traffic.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>2. The client checks whether the destination is local</strong>
-            <p>The client compares its own subnet to the destination IP. Because the service is on a different VLAN and subnet, the client determines that the traffic must be sent to its default gateway.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>2. The client checks whether the destination is local</strong>
+      <p>The client compares its own subnet to the destination IP. Because Nginx Proxy Manager is on a different VLAN and subnet, the client determines that the traffic must be sent to its default gateway.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>3. The client uses Address Resolution Protocol (ARP) for the default gateway</strong>
-            <p>If the client does not already know the Media Access Control (MAC) address of the default gateway, it uses Address Resolution Protocol (ARP) to learn it. The client does not ARP for the remote service because the service is not local.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>3. The client uses Address Resolution Protocol (ARP) for the default gateway</strong>
+      <p>If the client does not already know the Media Access Control (MAC) address of the default gateway, it uses Address Resolution Protocol (ARP) to learn it. The client does not ARP for Nginx Proxy Manager directly because that destination is remote.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>4. The client builds the frame and sends it to the switch</strong>
-            <p>The client creates a Layer 3 packet with the destination IP of the service and a Layer 2 frame addressed to the default gateway MAC. The client sends an untagged frame into its access port, and the switch associates it with the correct VLAN.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>4. The client builds the frame and sends it to the switch</strong>
+      <p>The client creates a Layer 3 packet with the destination IP of Nginx Proxy Manager and a Layer 2 frame addressed to the default gateway MAC. The client sends an untagged frame into its access port, and the switch associates it with the correct VLAN.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>5. The switch forwards the traffic toward the router</strong>
-            <p>As traffic moves across a trunk, the switch adds the appropriate Institute of Electrical and Electronics Engineers (IEEE) 802.1Q VLAN tag so the router knows which VLAN the frame came from.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>5. The switch forwards the traffic toward the router</strong>
+      <p>As traffic moves across a trunk, the switch adds the appropriate Institute of Electrical and Electronics Engineers (IEEE) 802.1Q VLAN tag so the router knows which VLAN the frame came from.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>6. The router processes the packet at Layer 3</strong>
-            <p>The router removes the incoming Layer 2 framing, examines the destination IP address, determines that the packet should be forwarded toward VLAN 20, and evaluates any Access Control List (ACL) policy applied to that traffic path.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>6. The router processes the packet at Layer 3</strong>
+      <p>The router removes the incoming Layer 2 framing, examines the destination IP address, determines that the packet should be forwarded toward VLAN 20, and evaluates any Access Control List (ACL) policy applied to that traffic path.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>7. The Access Control List (ACL) is evaluated</strong>
-            <p>The router checks the packet against the configured policy in top-down order. If the traffic matches an allow rule, it continues. If it matches a deny rule, the flow stops at this point.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>7. The Access Control List (ACL) is evaluated</strong>
+      <p>The router checks the packet against the configured policy in top-down order. In my network, VLAN 30 is allowed to reach Nginx Proxy Manager on ports 80 and 443, while other unauthorized traffic from VLAN 30 to VLAN 20 is denied. If the traffic matches an allow rule, it continues. If it matches a deny rule, the flow stops at this point.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>8. The router rebuilds the Layer 2 frame for the destination VLAN</strong>
-            <p>After making the forwarding decision, the router creates a new Layer 2 frame for VLAN 20. The source and destination MAC addresses are different from the original frame, but the Layer 3 destination IP remains the same.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>8. The router rebuilds the Layer 2 frame for the destination VLAN</strong>
+      <p>After making the forwarding decision, the router creates a new Layer 2 frame for VLAN 20. The source and destination MAC addresses are different from the original frame, but the Layer 3 destination IP remains the same.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>9. The service receives the request</strong>
-            <p>The service on VLAN 20 receives the traffic and processes the application request. At this point, the network path succeeded because DNS, switching, routing, and policy all worked together correctly.</p>
-          </div>
+    <div class="timeline-item">
+      <strong>9. Nginx Proxy Manager receives the request</strong>
+      <p>Nginx Proxy Manager receives the HTTP or HTTPS request because the hostname resolved to its IP address. Nginx Proxy Manager then uses the requested hostname to determine which backend service should receive the traffic.</p>
+    </div>
 
-          <div class="timeline-item">
-            <strong>10. Return traffic follows the reverse path</strong>
-            <p>The service sends the response back to its default gateway if the client is on a different subnet. The router again evaluates policy, rebuilds Layer 2 framing for the destination VLAN, and forwards the response back toward the client.</p>
-          </div>
-        </div>
-      </section>
+    <div class="timeline-item">
+      <strong>10. Nginx Proxy Manager forwards the request to the backend service</strong>
+      <p>After matching the hostname to the correct proxy host configuration, Nginx Proxy Manager forwards the request to the intended internal application. At this point, the full path succeeded because DNS, switching, routing, ACL policy, and reverse proxying all worked together correctly.</p>
+    </div>
+
+    <div class="timeline-item">
+      <strong>11. Return traffic follows the reverse path</strong>
+      <p>The backend service returns the response to Nginx Proxy Manager, which then sends the response back to the client. If the response crosses VLAN boundaries, the router again evaluates policy, rebuilds Layer 2 framing for the destination VLAN, and forwards the traffic back toward the client.</p>
+    </div>
+  </div>
+</section>
 
       <section>
         <h2>Key Technical Points</h2>
@@ -145,7 +151,7 @@
           <li>The Layer 2 frame changes at each routed hop, but the destination IP address remains the same end to end.</li>
           <li>VLAN separation at Layer 2 does not prevent Layer 3 communication unless routing policy also controls it.</li>
           <li>Access Control Lists (ACLs) matter because the router is the decision point between segmented networks.</li>
-          <li>Domain Name System (DNS) problems can look like connectivity problems even when routing is correct.</li>
+          <li>Domain Name System (DNS) problems can look like connectivity problems, and reverse proxy misconfiguration can look like routing or service failure even when the packet path is working correctly.</li>
         </ul>
       </section>
 
