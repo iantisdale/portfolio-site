@@ -339,40 +339,25 @@ section {
   max-width: 100%;
 }
 
-/* ===== DIAGRAM COMPONENT ===== */
+.project-shell pre {
+  margin-top: 0.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
 
-.diagram-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+/* Reusable diagram / image component */
+.zoomable {
+  margin: 1.5rem 0;
 }
 
 .diagram {
-  max-width: 100%;
-  border-radius: 10px;
-  cursor: zoom-in;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
 }
 
-/* Zoomed state */
-.diagram.zoomed {
-  transform: scale(2); /* adjust zoom level here */
-  cursor: zoom-out;
-  z-index: 1000;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-}
-
-/* Optional: dim background when zoomed */
-body.diagram-active::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 999;
-}
-
-.diagram img,
 .zoomable-image {
   display: block;
   width: 100%;
@@ -383,7 +368,6 @@ body.diagram-active::before {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.diagram img:hover,
 .zoomable-image:hover {
   transform: scale(1.01);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
@@ -396,7 +380,7 @@ body.diagram-active::before {
   margin-top: 0.75rem;
 }
 
-/* Reusable image modal */
+/* Reusable image viewer */
 .image-modal {
   display: none;
   position: fixed;
@@ -419,6 +403,14 @@ body.diagram-active::before {
   height: auto;
   border-radius: 12px;
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+.image-modal-content.is-zoomed {
+  transform: scale(1.8);
+  cursor: zoom-out;
 }
 
 .image-modal-close {
@@ -436,14 +428,6 @@ body.diagram-active::before {
 .image-modal-close:hover,
 .image-modal-close:focus-visible {
   opacity: 0.8;
-}
-
-.project-shell pre {
-  margin-top: 0.5rem;
-  background: rgba(15, 23, 42, 0.6);
-  padding: 1rem;
-  border-radius: 10px;
-  overflow-x: auto;
 }
 
 .back-link {
@@ -498,6 +482,10 @@ body.diagram-active::before {
     top: 0.5rem;
     right: 0.75rem;
     font-size: 2rem;
+  }
+
+  .image-modal-content.is-zoomed {
+    transform: scale(1.25);
   }
 }
 

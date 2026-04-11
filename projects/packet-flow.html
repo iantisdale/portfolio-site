@@ -82,13 +82,19 @@
           The scenario used in this project is a client on VLAN 30 accessing an internal service on VLAN 20 by hostname through Nginx Proxy Manager. That makes the path useful because it includes DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
         </p>
 
-        <figure class="zoomable diagram">
-          <div class="diagram-container">
-  <img src="/images/packet-flow.png" alt="Packet Flow Diagram" class="diagram">
-</div>
-        <p class="diagram-caption">
-          Packet flow from a VLAN 30 client to a VLAN 20 backend service through DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
-        </p>
+        <figure class="zoomable">
+          <div class="diagram">
+            <img
+              src="/images/packet-flow.png"
+              alt="Packet flow diagram showing a VLAN 30 client resolving a hostname through AdGuard Home, traversing the switch and router with ACL evaluation, reaching Nginx Proxy Manager, and being forwarded to a VLAN 20 backend service."
+              class="zoomable-image"
+              data-full="/images/packet-flow.png"
+            />
+          </div>
+          <figcaption class="diagram-caption">
+            Packet flow from a VLAN 30 client to a VLAN 20 backend service through DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
+          </figcaption>
+        </figure>
       </section>
 
       <section>
@@ -189,10 +195,10 @@
       <section>
         <h2>What I'd Improve Next</h2>
         <ul>
-          <li>Add a simple network diagram showing the exact client-to-service traffic path.</li>
+          <li>Add a failure-path version showing what changes when an ACL blocks the request.</li>
           <li>Expand the project with a second example that includes internet-bound traffic and Network Address Translation (NAT).</li>
           <li>Include packet capture examples to show what the path looks like during real troubleshooting.</li>
-          <li>Build a companion case study showing how an Access Control List (ACL) mistake changes the outcome.</li>
+          <li>Add a second diagram showing how the reverse path differs once Nginx Proxy Manager creates a new session to the backend.</li>
         </ul>
       </section>
 
@@ -221,6 +227,7 @@
       function openModal(img) {
         modalImg.src = img.dataset.full || img.src;
         modalImg.alt = img.alt || "";
+        modalImg.classList.remove("is-zoomed");
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
@@ -229,6 +236,7 @@
       function closeModal() {
         modal.classList.remove("is-open");
         modal.setAttribute("aria-hidden", "true");
+        modalImg.classList.remove("is-zoomed");
         modalImg.src = "";
         modalImg.alt = "";
         document.body.style.overflow = "";
@@ -248,6 +256,11 @@
         }
       });
 
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        modalImg.classList.toggle("is-zoomed");
+      });
+
       closeBtn.addEventListener("click", closeModal);
 
       modal.addEventListener("click", (e) => {
@@ -261,25 +274,6 @@
           closeModal();
         }
       });
-
-document.querySelectorAll('.diagram').forEach(img => {
-  img.addEventListener('click', () => {
-    const isZoomed = img.classList.contains('zoomed');
-
-    // reset all others (if multiple diagrams)
-    document.querySelectorAll('.diagram.zoomed').forEach(el => {
-      el.classList.remove('zoomed');
-    });
-
-    if (!isZoomed) {
-      img.classList.add('zoomed');
-      document.body.classList.add('diagram-active');
-    } else {
-      img.classList.remove('zoomed');
-      document.body.classList.remove('diagram-active');
-    }
-  });
-
     })();
   </script>
 </body>
