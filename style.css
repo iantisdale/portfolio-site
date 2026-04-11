@@ -339,14 +339,37 @@ section {
   max-width: 100%;
 }
 
-.zoomable {
-  margin: 1.5rem 0;
+/* ===== DIAGRAM COMPONENT ===== */
+
+.diagram-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
 .diagram {
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem 0;
+  max-width: 100%;
+  border-radius: 10px;
+  cursor: zoom-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Zoomed state */
+.diagram.zoomed {
+  transform: scale(2); /* adjust zoom level here */
+  cursor: zoom-out;
+  z-index: 1000;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Optional: dim background when zoomed */
+body.diagram-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
 }
 
 .diagram img,

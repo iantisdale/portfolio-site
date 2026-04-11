@@ -83,13 +83,9 @@
         </p>
 
         <figure class="zoomable diagram">
-          <img
-            src="/images/packet-flow.png"
-            alt="Packet flow diagram showing a VLAN 30 client resolving a hostname through AdGuard Home, traversing the switch and router with ACL evaluation, reaching Nginx Proxy Manager, and being forwarded to a VLAN 20 backend service."
-            class="zoomable-image"
-            data-full="/images/packet-flow.png"
-          />
-        </figure>
+          <div class="diagram-container">
+  <img src="/images/packet-flow.png" alt="Packet Flow Diagram" class="diagram">
+</div>
         <p class="diagram-caption">
           Packet flow from a VLAN 30 client to a VLAN 20 backend service through DNS resolution, inter-VLAN routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
         </p>
@@ -265,6 +261,25 @@
           closeModal();
         }
       });
+
+document.querySelectorAll('.diagram').forEach(img => {
+  img.addEventListener('click', () => {
+    const isZoomed = img.classList.contains('zoomed');
+
+    // reset all others (if multiple diagrams)
+    document.querySelectorAll('.diagram.zoomed').forEach(el => {
+      el.classList.remove('zoomed');
+    });
+
+    if (!isZoomed) {
+      img.classList.add('zoomed');
+      document.body.classList.add('diagram-active');
+    } else {
+      img.classList.remove('zoomed');
+      document.body.classList.remove('diagram-active');
+    }
+  });
+
     })();
   </script>
 </body>
