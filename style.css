@@ -404,6 +404,7 @@ section {
 .image-modal-content {
   max-width: min(95vw, 1400px);
   max-height: 88vh;
+  object-fit: contain;
   width: auto;
   height: auto;
   border-radius: 12px;
