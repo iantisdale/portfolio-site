@@ -391,7 +391,7 @@ section {
   inset: 0;
   z-index: 9999;
   background: rgba(2, 6, 23, 0.92);
-  padding: 2rem;
+  padding: 20px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
