@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,17 +8,18 @@
   <meta name="description" content="VLAN segmentation and access control design project by Ian Tisdale." />
   <link rel="stylesheet" href="/style.css" />
 </head>
+
 <body>
   <nav class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="/">Ian Tisdale</a>
-    <div class="nav-links">
-      <a href="/projects/">Projects</a>
-      <a href="/case-studies/">Case Studies</a>
-      <a href="/#contact">Contact</a>
+    <div class="container nav-inner">
+      <a class="brand" href="/">Ian Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/#contact">Contact</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <main class="container project-hero">
     <article class="panel project-shell">
@@ -26,7 +28,8 @@
       <h1>Network Segmentation and Layered Access Control Design</h1>
 
       <p>
-        I designed a segmented homelab network to separate systems by trust level and function, then controlled inter-VLAN communication with router-based policy instead of broad default access.
+        I designed a segmented homelab network to separate systems by trust level and function, then controlled
+        inter-VLAN communication with router-based policy instead of broad default access.
       </p>
 
       <div class="tag-row">
@@ -58,7 +61,8 @@
           </div>
           <div class="detail-box">
             <strong>VLAN 50-60</strong>
-            <p>Lab networks, kept separate so Kali and other testing systems are isolated from the rest of the environment.</p>
+            <p>Lab networks, kept separate so Kali and other testing systems are isolated from the rest of the
+              environment.</p>
           </div>
         </div>
       </section>
@@ -66,14 +70,19 @@
       <section>
         <h2>Problem</h2>
         <p>
-          A flatter network makes early setup easier, but it also creates too much trust between systems that should not communicate freely. I wanted to separate management, services, clients, IoT, and lab traffic so that access between networks had to be explicitly allowed.
+          A flatter network makes early setup easier, but it also creates too much trust between systems that should not
+          communicate freely. I wanted to separate management, services, clients, IoT, and lab traffic so that access
+          between networks had to be explicitly allowed.
         </p>
       </section>
 
       <section>
         <h2>Approach</h2>
         <p>
-          I divided the network by both function and trust level, then treated inter-VLAN routing as a policy decision rather than an automatic convenience. Management needed broad access for administration, while other networks needed tighter boundaries. Lab networks were further separated because offensive tooling such as Kali should not sit on the same trust level as the rest of the environment.
+          I divided the network by both function and trust level, then treated inter-VLAN routing as a policy decision
+          rather than an automatic convenience. Management needed broad access for administration, while other networks
+          needed tighter boundaries. Lab networks were further separated because offensive tooling such as Kali should
+          not sit on the same trust level as the rest of the environment.
         </p>
       </section>
 
@@ -97,7 +106,10 @@
       <section>
         <h2>Key Lesson</h2>
         <p>
-          One of the biggest lessons from this project was that VLAN segmentation alone is not enough to provide real security. While VLANs separate broadcast domains at Layer 2, traffic is still routed at Layer 3 where policy must be enforced. Adding host-based firewalls created a layered security model, ensuring that even if network-level controls were misconfigured, individual systems still enforced their own access restrictions.
+          One of the biggest lessons from this project was that VLAN segmentation alone is not enough to provide real
+          security. While VLANs separate broadcast domains at Layer 2, traffic is still routed at Layer 3 where policy
+          must be enforced. Adding host-based firewalls created a layered security model, ensuring that even if
+          network-level controls were misconfigured, individual systems still enforced their own access restrictions.
         </p>
       </section>
 
@@ -114,7 +126,11 @@
       <section>
         <h2>Outcome</h2>
         <p>
-          The final design gave each part of the homelab a clearer trust boundary and made inter-VLAN access intentional instead of automatic. It also gave me a better troubleshooting model because I could separate switching problems, routing problems, and Access Control List (ACL) policy problems during testing. The design also evolved from simple segmentation into a layered security model combining VLANs, routing policy, and host-based firewalls.
+          The final design gave each part of the homelab a clearer trust boundary and made inter-VLAN access intentional
+          instead of automatic. It also gave me a better troubleshooting model because I could separate switching
+          problems, routing problems, and Access Control List (ACL) policy problems during testing. The design also
+          evolved from simple segmentation into a layered security model combining VLANs, routing policy, and host-based
+          firewalls.
         </p>
       </section>
 
@@ -132,7 +148,9 @@
       <section>
         <h2>What I'd Improve Next</h2>
         <p>
-          The next step would be turning the policy model into a cleaner source-of-truth document with an explicit flow matrix for every VLAN. That would make future rule changes easier to reason about and reduce the chance of accidental over-permissive access as the environment grows.
+          The next step would be turning the policy model into a cleaner source-of-truth document with an explicit flow
+          matrix for every VLAN. That would make future rule changes easier to reason about and reduce the chance of
+          accidental over-permissive access as the environment grows.
         </p>
       </section>
 
@@ -144,4 +162,5 @@
     Built on iantisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
   </footer>
 </body>
+
 </html>
