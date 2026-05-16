@@ -123,6 +123,20 @@ p {
   padding: 5rem 0 3rem;
 }
 
+.footer {
+    text-align: center;
+}
+
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.footer-link:hover {
+    opacity: 1;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -511,18 +525,4 @@ section {
 .project-card:focus-visible {
   outline: 2px solid rgba(96, 165, 250, 0.65);
   outline-offset: 3px;
-}
-
-.footer {
-    text-align: center;
-}
-
-.footer-link {
-    color: inherit;
-    text-decoration: none;
-    opacity: 0.85;
-}
-
-.footer-link:hover {
-    opacity: 1;
 }
