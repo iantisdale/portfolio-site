@@ -419,6 +419,22 @@ section {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.zoomable-image-small {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zoomable-image-small:hover {
+  transform: scale(1.01);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
 .zoomable-image:hover {
   transform: scale(1.01);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
