@@ -101,19 +101,32 @@
             </section>
 
             <section>
+                <div class="diagram">
+                    <img src="/images/azurevms.png"
+                        alt="Tailscale remote access flow through encrypted overlay connection to internal resources"
+                        class="zoomable-image" />
+                </div>
+            </section>
+
+
+
+            <section>
                 <h2>Architecture Overview</h2>
 
                 <p>
-                    The environment combined cloud-hosted Active Directory infrastructure with locally hosted services
+                    The environment combined cloud-hosted Active Directory infrastructure with locally hosted
+                    services
                     that depended on
-                    centralized identity authentication. Identity objects flowed from Active Directory into Microsoft
+                    centralized identity authentication. Identity objects flowed from Active Directory into
+                    Microsoft
                     Entra ID through
                     Entra Connect synchronization, while GLPI consumed those same identities through LDAP
                     authentication.
                 </p>
 
                 <p>
-                    Tailscale was used as a secure overlay network to connect the Azure environment back to the homelab
+                    Tailscale was used as a secure overlay network to connect the Azure environment back to the
+                    homelab
                     without
                     exposing internal authentication protocols publicly.
                 </p>
@@ -138,9 +151,11 @@
                     authentication workflows,
                     enterprise provisioning, and how identity systems interact across Windows, Linux, cloud, and
                     internal infrastructure.
-                    I also wanted to simulate realistic operational troubleshooting scenarios involving synchronization
+                    I also wanted to simulate realistic operational troubleshooting scenarios involving
+                    synchronization
                     delays, DNS
-                    dependencies, LDAP authentication failures, hybrid join issues, and identity registration problems.
+                    dependencies, LDAP authentication failures, hybrid join issues, and identity registration
+                    problems.
                 </p>
             </section>
 
@@ -148,7 +163,8 @@
                 <h2>Why This Matters</h2>
                 <ul>
                     <li>Hybrid identity environments are common in modern enterprise infrastructure.</li>
-                    <li>Identity systems become critical failure points when synchronization or authentication breaks.
+                    <li>Identity systems become critical failure points when synchronization or authentication
+                        breaks.
                     </li>
                     <li>Understanding how LDAP, Entra Connect, and hybrid join workflows operate improves
                         troubleshooting ability.</li>
@@ -163,23 +179,28 @@
                 <h2>Approach</h2>
 
                 <p>
-                    I first established the Active Directory environment inside Microsoft Azure using separate Windows
+                    I first established the Active Directory environment inside Microsoft Azure using separate
+                    Windows
                     virtual
                     machines for the domain controller and client workstation. Once the domain infrastructure was
                     operational,
-                    I configured Microsoft Entra ID integration and hybrid device synchronization through Entra Connect.
+                    I configured Microsoft Entra ID integration and hybrid device synchronization through Entra
+                    Connect.
                 </p>
 
                 <p>
-                    GLPI was then deployed locally inside a Debian 12 LXC container within my homelab environment. To
+                    GLPI was then deployed locally inside a Debian 12 LXC container within my homelab environment.
+                    To
                     securely
-                    connect the Azure-hosted infrastructure back to the homelab without exposing authentication services
+                    connect the Azure-hosted infrastructure back to the homelab without exposing authentication
+                    services
                     publicly,
                     I implemented a private Tailscale overlay network between both environments.
                 </p>
 
                 <p>
-                    One of the largest challenges involved hybrid synchronization and identity configuration. Because
+                    One of the largest challenges involved hybrid synchronization and identity configuration.
+                    Because
                     the internal
                     Active Directory environment used a non-routable <code>.local</code> domain, Microsoft Entra
                     integration
@@ -211,12 +232,14 @@
                 <p>
                     User onboarding was automated using PowerShell and CSV-driven provisioning workflows. The script
                     dynamically
-                    generated usernames, assigned organizational units, configured UPNs, enabled accounts, and applied
+                    generated usernames, assigned organizational units, configured UPNs, enabled accounts, and
+                    applied
                     department-based group memberships automatically.
                 </p>
 
                 <p>
-                    This helped simulate enterprise onboarding workflows while reducing manual administrative overhead
+                    This helped simulate enterprise onboarding workflows while reducing manual administrative
+                    overhead
                     and ensuring
                     consistent identity configuration across the environment.
                 </p>
@@ -231,11 +254,14 @@
                     <li>Configured Microsoft Entra Connect for password hash synchronization and hybrid device join.
                     </li>
                     <li>Implemented automated user provisioning workflows using PowerShell and CSV imports.</li>
-                    <li>Configured hybrid identity synchronization between Active Directory and Microsoft Entra ID.</li>
+                    <li>Configured hybrid identity synchronization between Active Directory and Microsoft Entra ID.
+                    </li>
                     <li>Integrated GLPI with Active Directory using LDAP authentication and service accounts.</li>
-                    <li>Used Tailscale overlay networking to securely connect Azure-hosted infrastructure with homelab
+                    <li>Used Tailscale overlay networking to securely connect Azure-hosted infrastructure with
+                        homelab
                         services.</li>
-                    <li>Validated successful hybrid device registration using <code>dsregcmd /status</code> and scheduled registration tasks.</li>
+                    <li>Validated successful hybrid device registration using <code>dsregcmd /status</code> and
+                        scheduled registration tasks.</li>
                 </ul>
             </section>
 
@@ -243,7 +269,8 @@
                 <h2>Validation</h2>
                 <ul>
                     <li>
-                        Initial LDAP and authentication testing failed because the homelab environment was using public
+                        Initial LDAP and authentication testing failed because the homelab environment was using
+                        public
                         DNS servers that
                         could not resolve internal Active Directory zones. After identifying the DNS dependency, I
                         implemented Tailscale
@@ -252,9 +279,11 @@
                         homelab infrastructure.
                     </li>
                     <li>
-                        After synchronization began working, I discovered that my provisioning script required users to
+                        After synchronization began working, I discovered that my provisioning script required users
+                        to
                         reset their password at first login.
-                        This caused GLPI login issues until the users completed the initial password reset. Once that
+                        This caused GLPI login issues until the users completed the initial password reset. Once
+                        that
                         was identified, authentication into
                         the ticketing system worked as expected.
                     </li>
@@ -272,7 +301,8 @@
                     services,
                     synchronization layers, and secure networking workflows interact across hybrid infrastructure.
                     Building the
-                    environment from the ground up provided hands-on experience with identity management, authentication
+                    environment from the ground up provided hands-on experience with identity management,
+                    authentication
                     flows,
                     troubleshooting methodologies, RBAC concepts, and enterprise operational design.
                 </p>
@@ -282,7 +312,8 @@
                     failures, DNS
                     dependencies, LDAP authentication issues, and hybrid registration problems across multiple
                     platforms. This
-                    significantly improved my understanding of how enterprise identity ecosystems function operationally
+                    significantly improved my understanding of how enterprise identity ecosystems function
+                    operationally
                     and how
                     infrastructure components depend on one another internally.
                 </p>
@@ -300,9 +331,11 @@
                 </p>
 
                 <p>
-                    The project also reinforced the importance of least privilege design, proper service account usage,
+                    The project also reinforced the importance of least privilege design, proper service account
+                    usage,
                     internal
-                    DNS architecture, and structured troubleshooting methodologies. Many of the most difficult problems
+                    DNS architecture, and structured troubleshooting methodologies. Many of the most difficult
+                    problems
                     were not
                     caused by a single broken service, but instead by dependencies between identity, networking,
                     synchronization,
@@ -318,7 +351,8 @@
                     <li>Integrate SIEM tooling for authentication and identity monitoring.</li>
                     <li>Connect existing homelab monitoring systems into GLPI for automated ticket generation and
                         alerting workflows.</li>
-                    <li>Implement additional RBAC mappings between Active Directory groups and GLPI technician roles.
+                    <li>Implement additional RBAC mappings between Active Directory groups and GLPI technician
+                        roles.
                     </li>
                 </ul>
             </section>
