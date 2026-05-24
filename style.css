@@ -586,6 +586,12 @@ section {
 }
 
 .project-shell .diagram img.screenshot-small {
+  width: 420px !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.project-shell .diagram img.screenshot-med {
   width: 620px !important;
   max-width: 100% !important;
   height: auto !important;
