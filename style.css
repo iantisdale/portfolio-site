@@ -422,7 +422,7 @@ section {
 .zoomable-image-small {
   display: block;
   width: 100%;
-  max-width: 500px;
+  max-width: 100px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
