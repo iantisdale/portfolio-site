@@ -422,7 +422,7 @@ section {
 .zoomable-image-small {
   display: block;
   width: 100%;
-  max-width: 100px;
+  max-width: 500px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -583,4 +583,10 @@ section {
 .project-card:focus-visible {
   outline: 2px solid rgba(96, 165, 250, 0.65);
   outline-offset: 3px;
+}
+
+.project-shell img.screenshot-small {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
 }
