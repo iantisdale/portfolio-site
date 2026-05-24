@@ -158,83 +158,163 @@
 
             <section>
                 <h2>Approach</h2>
+
                 <p>
-                    I treated public exposure as a design decision instead of a default convenience. Services that
-                    needed external
-                    access were evaluated individually, then assigned an access method that matched their purpose. I
-                    used
-                    Cloudflare for external entry points and reverse proxying for controlled routing, while keeping
-                    internal
-                    management paths separate from public-facing traffic. This reduced ambiguity and made it easier to
-                    reason
-                    about what should be reachable from where.
+                    I first established the Active Directory environment inside Microsoft Azure using separate Windows
+                    virtual
+                    machines for the domain controller and client workstation. Once the domain infrastructure was
+                    operational,
+                    I configured Microsoft Entra ID integration and hybrid device synchronization through Entra Connect.
                 </p>
+
+                <p>
+                    GLPI was then deployed locally inside a Debian 12 LXC container within my homelab environment. To
+                    securely
+                    connect the Azure-hosted infrastructure back to the homelab without exposing authentication services
+                    publicly,
+                    I implemented a private Tailscale overlay network between both environments.
+                </p>
+
+                <p>
+                    One of the largest challenges involved hybrid synchronization and identity configuration. Because
+                    the internal
+                    Active Directory environment used a non-routable <code>.local</code> domain, Microsoft Entra
+                    integration
+                    required configuring a public UPN suffix tied to a domain I owned. This allowed synchronized
+                    identities to
+                    authenticate properly against cloud identity services.
+                </p>
+
+                <p>
+                    I also implemented automated user provisioning using PowerShell and CSV imports to simulate
+                    enterprise-style
+                    onboarding workflows. The automation handled:
+                </p>
+
+                <ul>
+                    <li>User creation</li>
+                    <li>OU placement</li>
+                    <li>UPN assignment</li>
+                    <li>Group membership</li>
+                    <li>Manager role assignment</li>
+                </ul>
+
+                <!-- PLACE POWERSHELL SCREENSHOT HERE -->
+            </section>
+
+            <section>
+                <h2>Automation</h2>
+
+                <p>
+                    User onboarding was automated using PowerShell and CSV-driven provisioning workflows. The script
+                    dynamically
+                    generated usernames, assigned organizational units, configured UPNs, enabled accounts, and applied
+                    department-based group memberships automatically.
+                </p>
+
+                <p>
+                    This helped simulate enterprise onboarding workflows while reducing manual administrative overhead
+                    and ensuring
+                    consistent identity configuration across the environment.
+                </p>
+
+                <!-- PLACE POWERSHELL SCRIPT SCREENSHOT HERE -->
             </section>
 
             <section>
                 <h2>Implementation</h2>
                 <ul>
-                    <li>Defined which services were allowed to be publicly reachable and which were to remain internal
-                        only.</li>
-                    <li>Configured Cloudflare DNS records for published services using the correct upstream targets.
+                    <li>Created departmental Organizational Units and security groups inside Active Directory.</li>
+                    <li>Configured Microsoft Entra Connect for password hash synchronization and hybrid device join.
                     </li>
-                    <li>Used Nginx Proxy Manager to route subdomains to internal services where reverse proxying made
-                        sense.</li>
-                    <li>Separated public access paths from management access paths so administrative interfaces were not
-                        exposed
-                        in the same way as normal service traffic.</li>
-                    <li>Validated that each published hostname pointed to the intended internal service and not to the
-                        wrong node
-                        or stale address.</li>
+                    <li>Implemented automated user provisioning workflows using PowerShell and CSV imports.</li>
+                    <li>Configured hybrid identity synchronization between Active Directory and Microsoft Entra ID.</li>
+                    <li>Integrated GLPI with Active Directory using LDAP authentication and service accounts.</li>
+                    <li>Used Tailscale overlay networking to securely connect Azure-hosted infrastructure with homelab
+                        services.</li>
+                    <li>Validated successful hybrid device registration using dsregcmd and scheduled registration tasks.
+                    </li>
                 </ul>
             </section>
 
             <section>
                 <h2>Validation</h2>
                 <ul>
-                    <li>Tested external access to published services through their intended public hostnames.</li>
-                    <li>Verified internal-only services stayed internal and were not accidentally exposed.</li>
-                    <li>Confirmed reverse proxy targets matched the correct internal applications.</li>
-                    <li>Used troubleshooting to distinguish DNS issues, proxy issues, and upstream service issues when
-                        something
-                        failed.</li>
+                    <li>
+                        Initial LDAP and authentication testing failed because the homelab environment was using public
+                        DNS servers that
+                        could not resolve internal Active Directory zones. After identifying the DNS dependency, I
+                        implemented Tailscale
+                        overlay networking to provide private connectivity and internal name resolution between the
+                        Azure environment and
+                        homelab infrastructure.
+                    </li>
+                    <li>Once i got syncing to work, I realized that in my script I put each user needs to reset thier
+                        password on first login, which is why i was having issues logging into GLPI, once that was
+                        figgured out resetting
+                        and relogging into the ticket system was straigh forward.</li>
+                    <li>
+                        Verified successful hybrid device registration using <code>dsregcmd /status</code>, confirming
+                        successful
+                        Azure AD join state, domain join state, and device authentication status.
+                    </li>
                 </ul>
             </section>
 
             <section>
                 <h2>Outcome</h2>
                 <p>
-                    The final design gave me a clearer boundary between public services and internal administration.
-                    Services
-                    intended for external use had a defined publishing path, while management access stayed more
-                    controlled. It
-                    also improved troubleshooting because I could break the path into layers: public DNS, Cloudflare,
-                    reverse
-                    proxy, and internal upstream service.
+                    The final environment demonstrated how enterprise identity systems, cloud authentication, Linux
+                    services,
+                    synchronization layers, and secure networking workflows interact across hybrid infrastructure.
+                    Building the
+                    environment from the ground up provided hands-on experience with identity management, authentication
+                    flows,
+                    troubleshooting methodologies, RBAC concepts, and enterprise operational design.
+                </p>
+
+                <p>
+                    Rather than following a fixed deployment guide, the project required diagnosing synchronization
+                    failures, DNS
+                    dependencies, LDAP authentication issues, and hybrid registration problems across multiple
+                    platforms. This
+                    significantly improved my understanding of how enterprise identity ecosystems function operationally
+                    and how
+                    infrastructure components depend on one another internally.
                 </p>
             </section>
 
             <section>
                 <h2>Key Lesson</h2>
+
                 <p>
-                    One of the biggest lessons from this project was that public exposure should be treated as an
-                    architecture
-                    choice, not just a connectivity task. A service being reachable is not the same as it being safely
-                    and
-                    intentionally published. Clear separation between public access, proxy routing, and internal
-                    management makes
-                    the environment easier to secure and easier to troubleshoot.
+                    One of the biggest lessons from this project was realizing how dependent enterprise environments
+                    become on
+                    centralized identity systems. When synchronization, DNS resolution, device registration, or
+                    authentication
+                    workflows fail, the impact can spread across multiple services simultaneously.
+                </p>
+
+                <p>
+                    The project also reinforced the importance of least privilege design, proper service account usage,
+                    internal
+                    DNS architecture, and structured troubleshooting methodologies. Many of the most difficult problems
+                    were not
+                    caused by a single broken service, but instead by dependencies between identity, networking,
+                    synchronization,
+                    and authentication systems.
                 </p>
             </section>
 
             <section>
                 <h2>What I'd Improve Next</h2>
                 <ul>
-                    <li>Document a stricter source-of-truth list for which services are allowed public exposure.</li>
-                    <li>Add more formal validation for upstream targets after infrastructure changes.</li>
-                    <li>Further reduce management-plane exposure by tightening which interfaces can be reached
-                        externally.</li>
-                    <li>Add architecture diagrams showing the full request path from public DNS to internal service.
+                    <li>Expand Group Policy deployment and centralized workstation management.</li>
+                    <li>Further automate onboarding and identity lifecycle workflows.</li>
+                    <li>Integrate SIEM tooling for authentication and identity monitoring.</li>
+                    <li>Connect existing homelab monitoring systems into GLPI for automated ticket generation and
+                        alerting workflows.</li>
+                    <li>Implement additional RBAC mappings between Active Directory groups and GLPI technician roles.
                     </li>
                 </ul>
             </section>
