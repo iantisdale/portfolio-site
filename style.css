@@ -585,8 +585,8 @@ section {
   outline-offset: 3px;
 }
 
-.project-shell img.screenshot-small {
-  width: 100%;
-  max-width: 420px;
-  height: auto;
+.project-shell .diagram img.screenshot-small {
+  width: 420px !important;
+  max-width: 100% !important;
+  height: auto !important;
 }
