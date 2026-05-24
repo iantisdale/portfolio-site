@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hybrid Cloud Identity | Ian Tisdale</title>
-    <meta name="description" content="Hybrid Cloud Identity project by Ian Tisdale." />
+    <title>Hybrid Identity Infrastructure Lab | Ian Tisdale</title>
+    <meta name="description"
+        content="Hybrid identity infrastructure lab integrating Active Directory, Microsoft Entra ID, Entra Connect, GLPI, LDAP, and Tailscale." />
     <link rel="stylesheet" href="/style.css" />
 </head>
 
@@ -47,11 +48,13 @@
             </p>
 
             <div class="tag-row">
-                <span class="tag">Hybrid Cloud</span>
-                <span class="tag">Microsoft Azure</span>
-                <span class="tag">Microsoft Entra</span>
-                <span class="tag">Azure AD Connect</span>
-                <span class="tag">VPN</span>
+                <span class="tag">Active Directory</span>
+                <span class="tag">Microsoft Entra ID</span>
+                <span class="tag">Entra Connect</span>
+                <span class="tag">LDAP</span>
+                <span class="tag">GLPI</span>
+                <span class="tag">Tailscale</span>
+                <span class="tag">PowerShell</span>
             </div>
 
             <section>
@@ -232,8 +235,7 @@
                     <li>Integrated GLPI with Active Directory using LDAP authentication and service accounts.</li>
                     <li>Used Tailscale overlay networking to securely connect Azure-hosted infrastructure with homelab
                         services.</li>
-                    <li>Validated successful hybrid device registration using dsregcmd and scheduled registration tasks.
-                    </li>
+                    <li>Validated successful hybrid device registration using <code>dsregcmd /status</code> and scheduled registration tasks.</li>
                 </ul>
             </section>
 
@@ -249,14 +251,16 @@
                         Azure environment and
                         homelab infrastructure.
                     </li>
-                    <li>Once i got syncing to work, I realized that in my script I put each user needs to reset thier
-                        password on first login, which is why i was having issues logging into GLPI, once that was
-                        figgured out resetting
-                        and relogging into the ticket system was straigh forward.</li>
                     <li>
-                        Verified successful hybrid device registration using <code>dsregcmd /status</code>, confirming
-                        successful
-                        Azure AD join state, domain join state, and device authentication status.
+                        After synchronization began working, I discovered that my provisioning script required users to
+                        reset their password at first login.
+                        This caused GLPI login issues until the users completed the initial password reset. Once that
+                        was identified, authentication into
+                        the ticketing system worked as expected.
+                    </li>
+                    Verified successful hybrid device registration using <code>dsregcmd /status</code>, confirming
+                    successful
+                    Azure AD join state, domain join state, and device authentication status.
                     </li>
                 </ul>
             </section>
