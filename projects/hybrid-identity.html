@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hybrid Cloud Identity | Ian Tisdale</title>
+    <meta name="description" content="Hybrid Cloud Identity project by Ian Tisdale." />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="/">Ian Tisdale</a>
+            <div class="nav-links">
+                <a href="/projects/">Projects</a>
+                <a href="/case-studies/">Case Studies</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container project-hero">
+        <article class="panel project-shell">
+            <div class="eyebrow">Hybrid Identity • Active Directory • Microsoft Entra ID • LDAP • ITSM</div>
+
+            <h1>Hybrid Identity Infrastructure Lab</h1>
+
+            <p>
+                I designed and deployed a hybrid identity environment integrating on-premises Active Directory,
+                Microsoft Entra ID, Entra Connect synchronization, hybrid device join, and LDAP-based authentication
+                into a centralized ITSM
+                platform. The environment spans both Microsoft Azure and my segmented homelab infrastructure, with
+                secure
+                connectivity provided through a private Tailscale overlay network instead of exposing identity services
+                directly to the
+                internet.
+            </p>
+
+            <p>
+                The project focused on understanding how enterprise identity systems interact across cloud and
+                on-premises
+                environments, how authentication and synchronization workflows function internally, and how to
+                troubleshoot
+                real-world identity, DNS, registration, and synchronization failures.
+            </p>
+
+            <div class="tag-row">
+                <span class="tag">Hybrid Cloud</span>
+                <span class="tag">Microsoft Azure</span>
+                <span class="tag">Microsoft Entra</span>
+                <span class="tag">Azure AD Connect</span>
+                <span class="tag">VPN</span>
+            </div>
+
+            <section>
+                <h2>Environment</h2>
+                <div class="meta-grid">
+                    <div class="detail-box">
+                        <strong>Microsoft Azure</strong>
+                        <p>Azure hosted the primary Windows infrastructure for the environment, including the Active
+                            Directory domain controller
+                            and hybrid-joined client systems. This allowed testing of enterprise identity workflows in a
+                            cloud-hosted
+                            infrastructure while maintaining separation from the local homelab environment.</p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>Active Directory + Entra ID</strong>
+                        <p>Active Directory served as the authoritative identity source while Microsoft Entra ID
+                            extended authentication,
+                            synchronization, MFA, and hybrid identity functionality into the cloud. Entra Connect was
+                            used as the synchronization
+                            layer between on-premises identities and cloud identity services.
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>GLPI ITSM Platform</strong>
+                        <p>
+                            GLPI was deployed on a Debian 12 LXC container inside the homelab and integrated with Active
+                            Directory using LDAP
+                            authentication. This created an enterprise-style identity workflow where users provisioned
+                            in AD could authenticate
+                            directly into the ticketing platform.
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>Tailscale Overlay Network</strong>
+                        <p>
+                            Tailscale provided secure private connectivity between the Azure-hosted Active Directory
+                            environment and the local
+                            homelab infrastructure. This avoided exposing LDAP, Kerberos, SMB, or internal DNS services
+                            publicly while still
+                            allowing identity synchronization and LDAP authentication across environments.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Architecture Overview</h2>
+
+                <p>
+                    The environment combined cloud-hosted Active Directory infrastructure with locally hosted services
+                    that depended on
+                    centralized identity authentication. Identity objects flowed from Active Directory into Microsoft
+                    Entra ID through
+                    Entra Connect synchronization, while GLPI consumed those same identities through LDAP
+                    authentication.
+                </p>
+
+                <p>
+                    Tailscale was used as a secure overlay network to connect the Azure environment back to the homelab
+                    without
+                    exposing internal authentication protocols publicly.
+                </p>
+
+                <!-- PLACE ARCHITECTURE DIAGRAM HERE -->
+            </section>
+
+            <section>
+                <h2>Problem</h2>
+                <p>
+                    Modern enterprise environments rarely operate entirely on-premises or entirely in the cloud.
+                    Organizations commonly
+                    maintain traditional Active Directory environments while extending authentication, device
+                    management, and identity
+                    services into cloud platforms such as Microsoft Entra ID. Understanding how these systems
+                    synchronize, authenticate,
+                    and trust each other is critical for infrastructure, support, and security roles.
+                </p>
+
+                <p>
+                    I built this environment to better understand hybrid identity architecture, centralized
+                    authentication workflows,
+                    enterprise provisioning, and how identity systems interact across Windows, Linux, cloud, and
+                    internal infrastructure.
+                    I also wanted to simulate realistic operational troubleshooting scenarios involving synchronization
+                    delays, DNS
+                    dependencies, LDAP authentication failures, hybrid join issues, and identity registration problems.
+                </p>
+            </section>
+
+            <section>
+                <h2>Why This Matters</h2>
+                <ul>
+                    <li>Hybrid identity environments are common in modern enterprise infrastructure.</li>
+                    <li>Identity systems become critical failure points when synchronization or authentication breaks.
+                    </li>
+                    <li>Understanding how LDAP, Entra Connect, and hybrid join workflows operate improves
+                        troubleshooting ability.</li>
+                    <li>Centralized identity affects authentication, RBAC, MFA, ticketing systems, and operational
+                        security.</li>
+                    <li>Least privilege and proper service account design are essential in enterprise authentication
+                        environments.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Approach</h2>
+                <p>
+                    I treated public exposure as a design decision instead of a default convenience. Services that
+                    needed external
+                    access were evaluated individually, then assigned an access method that matched their purpose. I
+                    used
+                    Cloudflare for external entry points and reverse proxying for controlled routing, while keeping
+                    internal
+                    management paths separate from public-facing traffic. This reduced ambiguity and made it easier to
+                    reason
+                    about what should be reachable from where.
+                </p>
+            </section>
+
+            <section>
+                <h2>Implementation</h2>
+                <ul>
+                    <li>Defined which services were allowed to be publicly reachable and which were to remain internal
+                        only.</li>
+                    <li>Configured Cloudflare DNS records for published services using the correct upstream targets.
+                    </li>
+                    <li>Used Nginx Proxy Manager to route subdomains to internal services where reverse proxying made
+                        sense.</li>
+                    <li>Separated public access paths from management access paths so administrative interfaces were not
+                        exposed
+                        in the same way as normal service traffic.</li>
+                    <li>Validated that each published hostname pointed to the intended internal service and not to the
+                        wrong node
+                        or stale address.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Validation</h2>
+                <ul>
+                    <li>Tested external access to published services through their intended public hostnames.</li>
+                    <li>Verified internal-only services stayed internal and were not accidentally exposed.</li>
+                    <li>Confirmed reverse proxy targets matched the correct internal applications.</li>
+                    <li>Used troubleshooting to distinguish DNS issues, proxy issues, and upstream service issues when
+                        something
+                        failed.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Outcome</h2>
+                <p>
+                    The final design gave me a clearer boundary between public services and internal administration.
+                    Services
+                    intended for external use had a defined publishing path, while management access stayed more
+                    controlled. It
+                    also improved troubleshooting because I could break the path into layers: public DNS, Cloudflare,
+                    reverse
+                    proxy, and internal upstream service.
+                </p>
+            </section>
+
+            <section>
+                <h2>Key Lesson</h2>
+                <p>
+                    One of the biggest lessons from this project was that public exposure should be treated as an
+                    architecture
+                    choice, not just a connectivity task. A service being reachable is not the same as it being safely
+                    and
+                    intentionally published. Clear separation between public access, proxy routing, and internal
+                    management makes
+                    the environment easier to secure and easier to troubleshoot.
+                </p>
+            </section>
+
+            <section>
+                <h2>What I'd Improve Next</h2>
+                <ul>
+                    <li>Document a stricter source-of-truth list for which services are allowed public exposure.</li>
+                    <li>Add more formal validation for upstream targets after infrastructure changes.</li>
+                    <li>Further reduce management-plane exposure by tightening which interfaces can be reached
+                        externally.</li>
+                    <li>Add architecture diagrams showing the full request path from public DNS to internal service.
+                    </li>
+                </ul>
+            </section>
+
+            <a class="back-link" href="/#projects">← Back to Projects</a>
+        </article>
+    </main>
+
+    <footer class="footer container">
+        Built on iantisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+    </footer>
+</body>
+
+</html>
