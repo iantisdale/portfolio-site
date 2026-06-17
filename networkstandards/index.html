@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Network Standards Trainer | Ian Tisdale</title>
+
+    <meta name="description" content="Interactive A+ network standards trainer for Ethernet, Wi-Fi, PoE, fiber, copper, connectors, cloud, virtualization, and cellular." />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .trainer-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .trainer-card {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-top: 1rem;
+        }
+
+        .trainer-button,
+        .trainer-select,
+        .trainer-input {
+            border-radius: .75rem;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+            color: inherit;
+            padding: .75rem .9rem;
+            font: inherit;
+        }
+
+        .trainer-button {
+            cursor: pointer;
+        }
+
+        .trainer-button:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .trainer-button.primary {
+            background: rgba(59,130,246,0.22);
+            border-color: rgba(96,165,250,0.45);
+        }
+
+        .trainer-input {
+            width: min(100%, 28rem);
+        }
+
+        .question {
+            font-size: clamp(1.35rem, 3vw, 2.1rem);
+            line-height: 1.15;
+            margin: .75rem 0;
+        }
+
+        .subtitle {
+            opacity: .75;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+
+        .answer-button {
+            min-height: 4rem;
+            text-align: left;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: .85rem;
+        }
+
+        .feedback.correct {
+            display: block;
+            background: rgba(34,197,94,0.14);
+            border: 1px solid rgba(34,197,94,0.35);
+        }
+
+        .feedback.wrong {
+            display: block;
+            background: rgba(239,68,68,0.14);
+            border: 1px solid rgba(239,68,68,0.35);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            padding: .9rem;
+            border-radius: .85rem;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: .8rem;
+            opacity: .7;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .standards-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        .standards-table th,
+        .standards-table td {
+            padding: .75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .standards-table th {
+            font-size: .85rem;
+            opacity: .76;
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: .2rem .5rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .weak-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+
+        @media (max-width: 760px) {
+            .answer-grid,
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="/">Ian Tisdale</a>
+
+            <div class="nav-links">
+                <a href="/projects/">Projects</a>
+                <a href="/case-studies/">Case Studies</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container project-hero">
+
+        <article class="panel project-shell">
+
+            <div class="eyebrow">
+                Networking • CompTIA A+ • Standards Practice
+            </div>
+
+            <h1>Network Standards Trainer</h1>
+
+            <p>
+                Practice cable standards, Ethernet speeds, PoE power, Wi-Fi generations,
+                fiber types, connectors, cellular terms, cloud models, and virtualization.
+                Progress is stored locally in your browser.
+            </p>
+
+            <section class="project-section">
+
+                <h2>Quiz Mode</h2>
+
+                <div class="trainer-controls">
+                    <select id="categoryFilter" class="trainer-select">
+                        <option value="all">All Categories</option>
+                        <option value="weak">Weak Areas Only</option>
+                        <option value="ethernet">Ethernet</option>
+                        <option value="copper">Copper Cabling</option>
+                        <option value="fiber">Fiber</option>
+                        <option value="poe">PoE</option>
+                        <option value="wifi">Wi-Fi</option>
+                        <option value="cellular">Cellular</option>
+                        <option value="connectors">Connectors</option>
+                        <option value="cloud">Cloud</option>
+                        <option value="virtualization">Virtualization</option>
+                    </select>
+
+                    <select id="difficulty" class="trainer-select">
+                        <option value="multiple">Multiple Choice</option>
+                        <option value="typed">Typed Answer</option>
+                    </select>
+
+                    <button id="newQuestionBtn" class="trainer-button primary">New Question</button>
+                    <button id="resetBtn" class="trainer-button">Reset Stats</button>
+                </div>
+
+                <div class="trainer-card">
+                    <div class="subtitle" id="subtitle">Choose the best answer.</div>
+                    <div class="question" id="question">Loading question...</div>
+
+                    <div id="answerGrid" class="answer-grid"></div>
+
+                    <div id="typedArea" class="trainer-controls" style="display:none;">
+                        <input id="typedAnswer" class="trainer-input" type="text" placeholder="Type your answer..." />
+                        <button id="submitTypedBtn" class="trainer-button primary">Submit</button>
+                    </div>
+
+                    <div id="feedback" class="feedback"></div>
+
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <span class="stat-label">Correct</span>
+                            <span class="stat-value" id="correctStat">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Wrong</span>
+                            <span class="stat-value" id="wrongStat">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Accuracy</span>
+                            <span class="stat-value" id="accuracyStat">0%</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Streak</span>
+                            <span class="stat-value" id="streakStat">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">XP</span>
+                            <span class="stat-value" id="xpStat">0</span>
+                        </div>
+                    </div>
+
+                    <div class="weak-list" id="weakList"></div>
+                </div>
+
+                <h2>Reference Table</h2>
+
+                <div class="trainer-controls">
+                    <input id="searchBox" class="trainer-input" type="search" placeholder="Search standard, speed, length, connector, category..." />
+                    <button id="showAllBtn" class="trainer-button">Show All</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="standards-table">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Answer / Value</th>
+                                <th>Category</th>
+                                <th>Exam Note</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <a class="back-link" href="/">
+                ← Back to Home
+            </a>
+
+        </article>
+
+    </main>
+
+    <footer class="footer container">
+
+        <p>
+            Built on iantisdale.com • Focused on networking,
+            cybersecurity, and hands-on infrastructure learning
+        </p>
+
+        <p>
+            <a class="footer-link" href="/privacy.html">
+                Privacy Policy
+            </a>
+        </p>
+
+    </footer>
+
+    <script>
+        const bank = [
+            { c:"ethernet", q:"What is the maximum copper Ethernet cable length?", a:"100 meters", options:["100 meters","55 meters","185 meters","500 meters"], note:"For twisted-pair Ethernet, memorize 100m." },
+            { c:"ethernet", q:"What speed is 1000BASE-T?", a:"1 Gbps", options:["100 Mbps","1 Gbps","10 Gbps","40 Gbps"], note:"Gigabit Ethernet over twisted pair." },
+            { c:"ethernet", q:"What speed is 10GBASE-T?", a:"10 Gbps", options:["1 Gbps","2.5 Gbps","10 Gbps","40 Gbps"], note:"10 gigabit Ethernet over twisted pair." },
+            { c:"ethernet", q:"Which Ethernet standard is 802.3ab?", a:"1000BASE-T", options:["100BASE-TX","1000BASE-T","10GBASE-T","PoE"], note:"802.3ab is Gigabit Ethernet over copper." },
+            { c:"ethernet", q:"Which Ethernet standard is 802.3ae?", a:"10 Gigabit Ethernet over fiber", options:["PoE","Gigabit over copper","10 Gigabit Ethernet over fiber","Fast Ethernet"], note:"802.3ae is 10GbE fiber." },
+            { c:"ethernet", q:"Which Ethernet standard is 802.3an?", a:"10GBASE-T", options:["1000BASE-T","10GBASE-T","100BASE-FX","PoE+"], note:"802.3an is 10GbE over twisted pair." },
+
+            { c:"copper", q:"What connector is used for standard Ethernet twisted-pair cabling?", a:"RJ45", options:["RJ11","RJ45","LC","F-type"], note:"RJ45 is the common Ethernet connector." },
+            { c:"copper", q:"What connector is commonly used for analog phone lines?", a:"RJ11", options:["RJ11","RJ45","SC","BNC"], note:"RJ11 is smaller than RJ45." },
+            { c:"copper", q:"Which cable can support 10GBASE-T up to 55 meters?", a:"Cat6", options:["Cat3","Cat5","Cat5e","Cat6"], note:"Cat6 can do 10Gbps, but not always to 100m." },
+            { c:"copper", q:"Which cable is designed for 10GBASE-T up to 100 meters?", a:"Cat6a", options:["Cat5","Cat5e","Cat6","Cat6a"], note:"Cat6a is the safe exam answer for 10Gbps at 100m." },
+            { c:"copper", q:"What is the maximum speed commonly associated with Cat5e?", a:"1 Gbps", options:["10 Mbps","100 Mbps","1 Gbps","40 Gbps"], note:"Cat5e is commonly tested as Gigabit." },
+            { c:"copper", q:"Which cable type is most associated with cable TV and cable internet?", a:"Coaxial", options:["UTP","STP","Coaxial","Twinax"], note:"Coax uses connectors like F-type." },
+            { c:"copper", q:"What connector is commonly used for coax cable TV/internet?", a:"F-type", options:["RJ45","RJ11","F-type","LC"], note:"F-type is common for coax." },
+
+            { c:"fiber", q:"Which fiber type is used for longer distance runs?", a:"Single-mode fiber", options:["Single-mode fiber","Multimode fiber","Coaxial","UTP"], note:"Single-mode is longer distance and uses a smaller core." },
+            { c:"fiber", q:"Which fiber type is often used for shorter distance LAN/backbone connections?", a:"Multimode fiber", options:["Single-mode fiber","Multimode fiber","Coaxial","STP"], note:"Multimode is common for shorter distances." },
+            { c:"fiber", q:"What does SX usually indicate in fiber Ethernet?", a:"Short wavelength / multimode", options:["Short wavelength / multimode","Long wavelength / single-mode","Copper only","Wireless only"], note:"SX is the short-range/multimode association." },
+            { c:"fiber", q:"What does LX usually indicate in fiber Ethernet?", a:"Long wavelength / single-mode", options:["Short wavelength / multimode","Long wavelength / single-mode","Copper only","Coax only"], note:"LX is longer range and commonly single-mode." },
+            { c:"fiber", q:"Which connector is small and common on modern fiber transceivers?", a:"LC", options:["LC","RJ45","RJ11","F-type"], note:"LC is the small form-factor fiber connector." },
+            { c:"fiber", q:"Which older fiber connector uses a push-pull square design?", a:"SC", options:["SC","RJ45","BNC","F-type"], note:"SC is square and push-pull." },
+            { c:"fiber", q:"Which older fiber connector uses a twist-lock design?", a:"ST", options:["ST","LC","RJ11","RJ45"], note:"ST uses a bayonet/twist style." },
+
+            { c:"poe", q:"Which PoE standard provides about 15.4W from the switch?", a:"802.3af", options:["802.3af","802.3at","802.3bt Type 3","802.3bt Type 4"], note:"802.3af is basic PoE." },
+            { c:"poe", q:"Which PoE standard provides about 30W from the switch?", a:"802.3at", options:["802.3af","802.3at","802.3ab","802.11ax"], note:"802.3at is PoE+." },
+            { c:"poe", q:"What is 802.3at commonly called?", a:"PoE+", options:["PoE","PoE+","UPoE","Wi-Fi 6"], note:"802.3at = PoE+." },
+            { c:"poe", q:"Which PoE standard is commonly called PoE++?", a:"802.3bt", options:["802.3af","802.3at","802.3bt","802.3ae"], note:"802.3bt is PoE++." },
+            { c:"poe", q:"Which devices commonly use PoE?", a:"APs, IP phones, and cameras", options:["APs, IP phones, and cameras","Only desktop PCs","Only monitors","Only keyboards"], note:"PoE powers network devices over Ethernet." },
+
+            { c:"wifi", q:"Which Wi-Fi standard is Wi-Fi 4?", a:"802.11n", options:["802.11a","802.11g","802.11n","802.11ac"], note:"Wi-Fi 4 = 802.11n." },
+            { c:"wifi", q:"Which Wi-Fi standard is Wi-Fi 5?", a:"802.11ac", options:["802.11n","802.11ac","802.11ax","802.11be"], note:"Wi-Fi 5 = 802.11ac." },
+            { c:"wifi", q:"Which Wi-Fi standard is Wi-Fi 6?", a:"802.11ax", options:["802.11ac","802.11ax","802.11be","802.11g"], note:"Wi-Fi 6 = 802.11ax." },
+            { c:"wifi", q:"Which Wi-Fi standard is Wi-Fi 7?", a:"802.11be", options:["802.11n","802.11ac","802.11ax","802.11be"], note:"Wi-Fi 7 = 802.11be." },
+            { c:"wifi", q:"Which 2.4 GHz Wi-Fi channels are non-overlapping in the US?", a:"1, 6, and 11", options:["1, 6, and 11","2, 7, and 12","3, 8, and 13","1, 5, and 9"], note:"Memorize 1, 6, 11." },
+            { c:"wifi", q:"Which Wi-Fi band has better range but more interference?", a:"2.4 GHz", options:["2.4 GHz","5 GHz","6 GHz","60 GHz"], note:"2.4 GHz travels farther but is crowded." },
+            { c:"wifi", q:"Which Wi-Fi band is faster with shorter range?", a:"5 GHz", options:["900 MHz","2.4 GHz","5 GHz","AM radio"], note:"5 GHz has more bandwidth but less range." },
+            { c:"wifi", q:"Which Wi-Fi 6 feature helps split channels among multiple clients?", a:"OFDMA", options:["NAT","OFDMA","SMTP","LDAP"], note:"OFDMA is a Wi-Fi 6 feature." },
+
+            { c:"cellular", q:"Which cellular generation is LTE associated with?", a:"4G", options:["2G","3G","4G","5G"], note:"LTE is the major 4G technology." },
+            { c:"cellular", q:"Which is generally faster: HSPA+ or LTE?", a:"LTE", options:["HSPA+","LTE","EDGE","GPRS"], note:"LTE is the better exam answer." },
+            { c:"cellular", q:"What does GSM use for subscriber identity?", a:"SIM card", options:["SIM card","RJ45","MAC address only","F-type connector"], note:"GSM networks use SIM cards." },
+            { c:"cellular", q:"Which older cellular data term is associated with 2G?", a:"EDGE", options:["EDGE","LTE","5G NR","802.11ax"], note:"EDGE is an older 2G-era data technology." },
+            { c:"cellular", q:"What is 5G NR?", a:"5G New Radio", options:["5G New Radio","5G Network Relay","Fiber connector","Cloud model"], note:"NR means New Radio." },
+
+            { c:"connectors", q:"Which connector is used for Ethernet?", a:"RJ45", options:["RJ45","RJ11","LC","F-type"], note:"Ethernet twisted pair uses RJ45." },
+            { c:"connectors", q:"Which connector is used for telephone?", a:"RJ11", options:["RJ11","RJ45","SC","BNC"], note:"Telephone uses RJ11." },
+            { c:"connectors", q:"Which connectors are fiber connectors?", a:"LC, SC, ST", options:["LC, SC, ST","RJ11, RJ45, F-type","HDMI, DP, VGA","SATA, Molex, PCIe"], note:"LC/SC/ST are common fiber connectors." },
+            { c:"connectors", q:"Which connector is associated with coax?", a:"F-type", options:["RJ45","LC","F-type","SC"], note:"F-type is common for coax cable." },
+            { c:"connectors", q:"Which connector was historically common for coax Ethernet?", a:"BNC", options:["BNC","RJ11","LC","SC"], note:"BNC is an older coax connector." },
+
+            { c:"cloud", q:"Which cloud model gives you virtual servers, storage, and networking?", a:"IaaS", options:["IaaS","PaaS","SaaS","DaaS"], note:"IaaS means you manage the OS and above." },
+            { c:"cloud", q:"Which cloud model lets you deploy your code while the provider manages the platform?", a:"PaaS", options:["IaaS","PaaS","SaaS","VDI"], note:"PaaS is platform for your app/code." },
+            { c:"cloud", q:"Which cloud model is Microsoft 365 an example of?", a:"SaaS", options:["IaaS","PaaS","SaaS","Private cloud"], note:"SaaS is finished software delivered as a service." },
+            { c:"cloud", q:"Which cloud type combines on-premises resources with cloud resources?", a:"Hybrid cloud", options:["Public cloud","Private cloud","Hybrid cloud","Community cloud"], note:"Hybrid means mixed on-prem and cloud." },
+            { c:"cloud", q:"Which cloud type is dedicated to one organization?", a:"Private cloud", options:["Public cloud","Private cloud","Hybrid cloud","SaaS"], note:"Private cloud is for one organization." },
+
+            { c:"virtualization", q:"Which hypervisor runs directly on hardware?", a:"Type 1", options:["Type 1","Type 2","Container","Emulator"], note:"Type 1 is bare-metal." },
+            { c:"virtualization", q:"Which hypervisor runs on top of a host OS?", a:"Type 2", options:["Type 1","Type 2","IaaS","VLAN"], note:"VirtualBox/VMware Workstation are Type 2." },
+            { c:"virtualization", q:"What is Intel's CPU virtualization technology called?", a:"VT-x", options:["VT-x","AMD-V","Hyper-V","OFDMA"], note:"Intel = VT-x." },
+            { c:"virtualization", q:"What is AMD's CPU virtualization technology called?", a:"AMD-V", options:["VT-x","AMD-V","VLAN-V","802.3at"], note:"AMD = AMD-V." },
+            { c:"virtualization", q:"Which gives users a full hosted desktop experience?", a:"DaaS", options:["DaaS","DNS","DHCP","SMTP"], note:"Desktop as a Service." }
+        ];
+
+        const categoryNames = {
+            ethernet:"Ethernet",
+            copper:"Copper Cabling",
+            fiber:"Fiber",
+            poe:"PoE",
+            wifi:"Wi-Fi",
+            cellular:"Cellular",
+            connectors:"Connectors",
+            cloud:"Cloud",
+            virtualization:"Virtualization"
+        };
+
+        const statsKey = "ianStandardsTrainerStats";
+        const stats = JSON.parse(localStorage.getItem(statsKey)) || {
+            correct:0,
+            wrong:0,
+            streak:0,
+            xp:0,
+            misses:{}
+        };
+
+        let current = null;
+        let answered = false;
+
+        const categoryFilter = document.getElementById("categoryFilter");
+        const difficulty = document.getElementById("difficulty");
+        const newQuestionBtn = document.getElementById("newQuestionBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const subtitle = document.getElementById("subtitle");
+        const question = document.getElementById("question");
+        const answerGrid = document.getElementById("answerGrid");
+        const typedArea = document.getElementById("typedArea");
+        const typedAnswer = document.getElementById("typedAnswer");
+        const submitTypedBtn = document.getElementById("submitTypedBtn");
+        const feedback = document.getElementById("feedback");
+        const correctStat = document.getElementById("correctStat");
+        const wrongStat = document.getElementById("wrongStat");
+        const accuracyStat = document.getElementById("accuracyStat");
+        const streakStat = document.getElementById("streakStat");
+        const xpStat = document.getElementById("xpStat");
+        const weakList = document.getElementById("weakList");
+        const searchBox = document.getElementById("searchBox");
+        const showAllBtn = document.getElementById("showAllBtn");
+        const tableBody = document.getElementById("tableBody");
+
+        function save() {
+            localStorage.setItem(statsKey, JSON.stringify(stats));
+        }
+
+        function shuffle(arr) {
+            return [...arr].sort(() => Math.random() - 0.5);
+        }
+
+        function norm(x) {
+            return String(x).toLowerCase().replace(/[^a-z0-9]/g, "");
+        }
+
+        function filteredBank() {
+            const cat = categoryFilter.value;
+
+            if (cat === "all") return bank;
+
+            if (cat === "weak") {
+                const weakCats = Object.keys(stats.misses).filter(c => stats.misses[c] > 0);
+                const weakQuestions = bank.filter(item => weakCats.includes(item.c));
+                return weakQuestions.length ? weakQuestions : bank;
+            }
+
+            return bank.filter(item => item.c === cat);
+        }
+
+        function updateStats() {
+            const total = stats.correct + stats.wrong;
+            const acc = total ? Math.round((stats.correct / total) * 100) : 0;
+
+            correctStat.textContent = stats.correct;
+            wrongStat.textContent = stats.wrong;
+            accuracyStat.textContent = acc + "%";
+            streakStat.textContent = stats.streak;
+            xpStat.textContent = stats.xp;
+
+            weakList.innerHTML = "";
+            const weakCats = Object.entries(stats.misses)
+                .filter(entry => entry[1] > 0)
+                .sort((a,b) => b[1] - a[1]);
+
+            if (!weakCats.length) {
+                const span = document.createElement("span");
+                span.className = "tag";
+                span.textContent = "No weak areas yet";
+                weakList.appendChild(span);
+                return;
+            }
+
+            weakCats.forEach(([cat, count]) => {
+                const span = document.createElement("span");
+                span.className = "tag";
+                span.textContent = categoryNames[cat] + ": " + count + " misses";
+                weakList.appendChild(span);
+            });
+        }
+
+        function newQuestion() {
+            answered = false;
+            feedback.className = "feedback";
+            feedback.textContent = "";
+            typedAnswer.value = "";
+
+            const pool = filteredBank();
+            current = pool[Math.floor(Math.random() * pool.length)];
+
+            subtitle.textContent = categoryNames[current.c] + " Practice";
+            question.textContent = current.q;
+
+            if (difficulty.value === "typed") {
+                answerGrid.style.display = "none";
+                typedArea.style.display = "flex";
+                typedAnswer.focus();
+                return;
+            }
+
+            typedArea.style.display = "none";
+            answerGrid.style.display = "grid";
+            answerGrid.innerHTML = "";
+
+            shuffle(current.options).forEach(opt => {
+                const btn = document.createElement("button");
+                btn.className = "trainer-button answer-button";
+                btn.textContent = opt;
+                btn.addEventListener("click", () => check(opt));
+                answerGrid.appendChild(btn);
+            });
+        }
+
+        function check(answer) {
+            if (answered || !current) return;
+            answered = true;
+
+            const correct = norm(answer) === norm(current.a);
+
+            if (correct) {
+                stats.correct++;
+                stats.streak++;
+                stats.xp += difficulty.value === "typed" ? 20 : 10;
+                if (stats.misses[current.c]) stats.misses[current.c] = Math.max(0, stats.misses[current.c] - 1);
+                feedback.className = "feedback correct";
+                feedback.innerHTML = "<strong>Correct.</strong> " + current.note;
+            } else {
+                stats.wrong++;
+                stats.streak = 0;
+                stats.misses[current.c] = (stats.misses[current.c] || 0) + 1;
+                feedback.className = "feedback wrong";
+                feedback.innerHTML = "<strong>Not quite.</strong> Correct answer: <strong>" + current.a + "</strong>. " + current.note;
+            }
+
+            save();
+            updateStats();
+
+            Array.from(answerGrid.children).forEach(btn => {
+                if (norm(btn.textContent) === norm(current.a)) btn.classList.add("primary");
+            });
+        }
+
+        function renderTable() {
+            const q = searchBox.value.trim().toLowerCase();
+            const cat = categoryFilter.value;
+
+            const rows = bank.filter(item => {
+                const catMatch = cat === "all" || cat === "weak" || item.c === cat;
+                const text = (item.q + " " + item.a + " " + item.note + " " + categoryNames[item.c]).toLowerCase();
+                return catMatch && (!q || text.includes(q));
+            });
+
+            tableBody.innerHTML = "";
+
+            rows.forEach(item => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = "<td><strong>" + item.q + "</strong></td><td>" + item.a + "</td><td><span class='tag'>" + categoryNames[item.c] + "</span></td><td>" + item.note + "</td>";
+                tableBody.appendChild(tr);
+            });
+        }
+
+        newQuestionBtn.addEventListener("click", newQuestion);
+        categoryFilter.addEventListener("change", () => { renderTable(); newQuestion(); });
+        difficulty.addEventListener("change", newQuestion);
+        searchBox.addEventListener("input", renderTable);
+
+        showAllBtn.addEventListener("click", () => {
+            searchBox.value = "";
+            categoryFilter.value = "all";
+            renderTable();
+            newQuestion();
+        });
+
+        resetBtn.addEventListener("click", () => {
+            stats.correct = 0;
+            stats.wrong = 0;
+            stats.streak = 0;
+            stats.xp = 0;
+            stats.misses = {};
+            save();
+            updateStats();
+        });
+
+        submitTypedBtn.addEventListener("click", () => check(typedAnswer.value));
+        typedAnswer.addEventListener("keydown", e => {
+            if (e.key === "Enter") check(typedAnswer.value);
+        });
+
+        updateStats();
+        renderTable();
+        newQuestion();
+    </script>
+
+</body>
+
+</html>
