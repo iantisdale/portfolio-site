@@ -1,0 +1,650 @@
+[
+  {
+    "category": "ethernet",
+    "question": "What is the maximum copper Ethernet cable length?",
+    "answer": "100 meters",
+    "options": [
+      "100 meters",
+      "55 meters",
+      "185 meters",
+      "500 meters"
+    ],
+    "note": "Twisted-pair Ethernet is commonly tested as 100 meters maximum."
+  },
+  {
+    "category": "ethernet",
+    "question": "What speed is 1000BASE-T?",
+    "answer": "1 Gbps",
+    "options": [
+      "100 Mbps",
+      "1 Gbps",
+      "10 Gbps",
+      "40 Gbps"
+    ],
+    "note": "1000BASE-T is Gigabit Ethernet over twisted pair."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which Ethernet standard is 802.3ab?",
+    "answer": "1000BASE-T",
+    "options": [
+      "100BASE-TX",
+      "1000BASE-T",
+      "10GBASE-T",
+      "PoE"
+    ],
+    "note": "802.3ab is Gigabit Ethernet over copper."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which Ethernet standard is 802.3ae?",
+    "answer": "10 Gigabit Ethernet over fiber",
+    "options": [
+      "PoE",
+      "Gigabit over copper",
+      "10 Gigabit Ethernet over fiber",
+      "Fast Ethernet"
+    ],
+    "note": "802.3ae is 10GbE over fiber."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which Ethernet standard is 802.3an?",
+    "answer": "10GBASE-T",
+    "options": [
+      "1000BASE-T",
+      "10GBASE-T",
+      "100BASE-FX",
+      "PoE+"
+    ],
+    "note": "802.3an is 10GbE over twisted pair."
+  },
+  {
+    "category": "copper",
+    "question": "What connector is used for Ethernet twisted-pair cabling?",
+    "answer": "RJ45",
+    "options": [
+      "RJ11",
+      "RJ45",
+      "LC",
+      "F-type"
+    ],
+    "note": "RJ45 is the common Ethernet connector."
+  },
+  {
+    "category": "copper",
+    "question": "What connector is commonly used for analog phone lines?",
+    "answer": "RJ11",
+    "options": [
+      "RJ11",
+      "RJ45",
+      "SC",
+      "BNC"
+    ],
+    "note": "RJ11 is associated with phone lines."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable can support 10GBASE-T up to 55 meters?",
+    "answer": "Cat6",
+    "options": [
+      "Cat3",
+      "Cat5",
+      "Cat5e",
+      "Cat6"
+    ],
+    "note": "Cat6 can support 10Gbps, but not always to 100 meters."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable is designed for 10GBASE-T up to 100 meters?",
+    "answer": "Cat6a",
+    "options": [
+      "Cat5",
+      "Cat5e",
+      "Cat6",
+      "Cat6a"
+    ],
+    "note": "Cat6a is the safe exam answer for 10Gbps at 100 meters."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable type is most associated with cable TV and cable internet?",
+    "answer": "Coaxial",
+    "options": [
+      "UTP",
+      "STP",
+      "Coaxial",
+      "Twinax"
+    ],
+    "note": "Coaxial cable is common for cable TV and cable internet."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber type is used for longer distance runs?",
+    "answer": "Single-mode fiber",
+    "options": [
+      "Single-mode fiber",
+      "Multimode fiber",
+      "Coaxial",
+      "UTP"
+    ],
+    "note": "Single-mode fiber is used for longer distances."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber type is often used for shorter LAN/backbone connections?",
+    "answer": "Multimode fiber",
+    "options": [
+      "Single-mode fiber",
+      "Multimode fiber",
+      "Coaxial",
+      "STP"
+    ],
+    "note": "Multimode is common for shorter distance fiber links."
+  },
+  {
+    "category": "fiber",
+    "question": "What does SX usually indicate in fiber Ethernet?",
+    "answer": "Short wavelength / multimode",
+    "options": [
+      "Short wavelength / multimode",
+      "Long wavelength / single-mode",
+      "Copper only",
+      "Wireless only"
+    ],
+    "note": "SX is associated with short-range multimode fiber."
+  },
+  {
+    "category": "fiber",
+    "question": "What does LX usually indicate in fiber Ethernet?",
+    "answer": "Long wavelength / single-mode",
+    "options": [
+      "Short wavelength / multimode",
+      "Long wavelength / single-mode",
+      "Copper only",
+      "Coax only"
+    ],
+    "note": "LX is associated with longer-range fiber and commonly single-mode."
+  },
+  {
+    "category": "fiber",
+    "question": "Which small fiber connector is common on modern transceivers?",
+    "answer": "LC",
+    "options": [
+      "LC",
+      "RJ45",
+      "RJ11",
+      "F-type"
+    ],
+    "note": "LC is a small form-factor fiber connector."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber connector uses a push-pull square design?",
+    "answer": "SC",
+    "options": [
+      "SC",
+      "RJ45",
+      "BNC",
+      "F-type"
+    ],
+    "note": "SC is square and push-pull."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber connector uses a twist-lock design?",
+    "answer": "ST",
+    "options": [
+      "ST",
+      "LC",
+      "RJ11",
+      "RJ45"
+    ],
+    "note": "ST uses a bayonet/twist style."
+  },
+  {
+    "category": "poe",
+    "question": "Which PoE standard provides about 15.4W from the switch?",
+    "answer": "802.3af",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt Type 3",
+      "802.3bt Type 4"
+    ],
+    "note": "802.3af is basic PoE."
+  },
+  {
+    "category": "poe",
+    "question": "Which PoE standard provides about 30W from the switch?",
+    "answer": "802.3at",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3ab",
+      "802.11ax"
+    ],
+    "note": "802.3at is PoE+."
+  },
+  {
+    "category": "poe",
+    "question": "Which PoE standard is commonly called PoE++?",
+    "answer": "802.3bt",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.3ae"
+    ],
+    "note": "802.3bt is PoE++."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 4?",
+    "answer": "802.11n",
+    "options": [
+      "802.11a",
+      "802.11g",
+      "802.11n",
+      "802.11ac"
+    ],
+    "note": "Wi-Fi 4 is 802.11n."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 5?",
+    "answer": "802.11ac",
+    "options": [
+      "802.11n",
+      "802.11ac",
+      "802.11ax",
+      "802.11be"
+    ],
+    "note": "Wi-Fi 5 is 802.11ac."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 6?",
+    "answer": "802.11ax",
+    "options": [
+      "802.11ac",
+      "802.11ax",
+      "802.11be",
+      "802.11g"
+    ],
+    "note": "Wi-Fi 6 is 802.11ax."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 7?",
+    "answer": "802.11be",
+    "options": [
+      "802.11n",
+      "802.11ac",
+      "802.11ax",
+      "802.11be"
+    ],
+    "note": "Wi-Fi 7 is 802.11be."
+  },
+  {
+    "category": "wifi",
+    "question": "Which 2.4 GHz Wi-Fi channels are non-overlapping in the US?",
+    "answer": "1, 6, and 11",
+    "options": [
+      "1, 6, and 11",
+      "2, 7, and 12",
+      "3, 8, and 13",
+      "1, 5, and 9"
+    ],
+    "note": "The 1/6/11 rule is for 2.4 GHz Wi-Fi."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi band has better range but more interference?",
+    "answer": "2.4 GHz",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "6 GHz",
+      "60 GHz"
+    ],
+    "note": "2.4 GHz travels farther but is crowded."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi 6 feature helps split channels among multiple clients?",
+    "answer": "OFDMA",
+    "options": [
+      "NAT",
+      "OFDMA",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "OFDMA is a Wi-Fi 6 feature."
+  },
+  {
+    "category": "wifi",
+    "question": "What does MIMO stand for?",
+    "answer": "Multiple Input Multiple Output",
+    "options": [
+      "Multiple Input Multiple Output",
+      "Managed Internet Mode Operation",
+      "Media Input Media Output",
+      "Multiple IP Multiple Objects"
+    ],
+    "note": "MIMO uses multiple antennas/streams to improve wireless performance."
+  },
+  {
+    "category": "cellular",
+    "question": "Which cellular generation is LTE associated with?",
+    "answer": "4G",
+    "options": [
+      "2G",
+      "3G",
+      "4G",
+      "5G"
+    ],
+    "note": "LTE is associated with 4G."
+  },
+  {
+    "category": "cellular",
+    "question": "Which is generally faster: HSPA+ or LTE?",
+    "answer": "LTE",
+    "options": [
+      "HSPA+",
+      "LTE",
+      "EDGE",
+      "GPRS"
+    ],
+    "note": "LTE is the better exam answer."
+  },
+  {
+    "category": "cellular",
+    "question": "What does GSM use for subscriber identity?",
+    "answer": "SIM card",
+    "options": [
+      "SIM card",
+      "RJ45",
+      "MAC address only",
+      "F-type connector"
+    ],
+    "note": "GSM networks use SIM cards."
+  },
+  {
+    "category": "cellular",
+    "question": "Which older cellular data term is associated with 2G?",
+    "answer": "EDGE",
+    "options": [
+      "EDGE",
+      "LTE",
+      "5G NR",
+      "802.11ax"
+    ],
+    "note": "EDGE is an older 2G-era data technology."
+  },
+  {
+    "category": "cellular",
+    "question": "What is 5G NR?",
+    "answer": "5G New Radio",
+    "options": [
+      "5G New Radio",
+      "5G Network Relay",
+      "Fiber connector",
+      "Cloud model"
+    ],
+    "note": "NR means New Radio."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model gives you virtual servers, storage, and networking?",
+    "answer": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "IaaS gives you infrastructure; you manage the OS and above."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model lets you deploy your code while the provider manages the platform?",
+    "answer": "PaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "VDI"
+    ],
+    "note": "PaaS is a managed platform for your app/code."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model is Microsoft 365 an example of?",
+    "answer": "SaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Private cloud"
+    ],
+    "note": "Microsoft 365 is software delivered as a service."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud type combines on-premises resources with cloud resources?",
+    "answer": "Hybrid cloud",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Community cloud"
+    ],
+    "note": "Hybrid cloud mixes on-premises and cloud resources."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which hypervisor runs directly on hardware?",
+    "answer": "Type 1",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Emulator"
+    ],
+    "note": "Type 1 is bare-metal."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which hypervisor runs on top of a host OS?",
+    "answer": "Type 2",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "IaaS",
+      "VLAN"
+    ],
+    "note": "VirtualBox and VMware Workstation are Type 2 examples."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is Intel's CPU virtualization technology called?",
+    "answer": "VT-x",
+    "options": [
+      "VT-x",
+      "AMD-V",
+      "Hyper-V",
+      "OFDMA"
+    ],
+    "note": "Intel virtualization is VT-x."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is AMD's CPU virtualization technology called?",
+    "answer": "AMD-V",
+    "options": [
+      "VT-x",
+      "AMD-V",
+      "VLAN-V",
+      "802.3at"
+    ],
+    "note": "AMD virtualization is AMD-V."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does HTTPS use?",
+    "answer": "443",
+    "options": [
+      "80",
+      "110",
+      "143",
+      "443"
+    ],
+    "note": "HTTPS uses TCP 443."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does HTTP use?",
+    "answer": "80",
+    "options": [
+      "25",
+      "53",
+      "80",
+      "443"
+    ],
+    "note": "HTTP uses TCP 80."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SSH use?",
+    "answer": "22",
+    "options": [
+      "21",
+      "22",
+      "23",
+      "3389"
+    ],
+    "note": "SSH uses TCP 22."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does RDP use?",
+    "answer": "3389",
+    "options": [
+      "389",
+      "445",
+      "1433",
+      "3389"
+    ],
+    "note": "RDP commonly uses 3389."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DNS use?",
+    "answer": "53",
+    "options": [
+      "25",
+      "53",
+      "67",
+      "110"
+    ],
+    "note": "DNS uses port 53, commonly UDP and sometimes TCP."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol sends mail between mail servers?",
+    "answer": "SMTP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "SNMP"
+    ],
+    "note": "SMTP is used to send email."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol leaves mail on the server and synchronizes folders?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "SMTP",
+      "IMAP",
+      "SNMP"
+    ],
+    "note": "IMAP synchronizes mail while keeping it on the server."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record identifies mail servers for a domain?",
+    "answer": "MX",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "TXT"
+    ],
+    "note": "MX records point to mail servers."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record maps a hostname to an IPv4 address?",
+    "answer": "A",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "PTR"
+    ],
+    "note": "A records map names to IPv4 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record maps a hostname to an IPv6 address?",
+    "answer": "AAAA",
+    "options": [
+      "A",
+      "AAAA",
+      "CNAME",
+      "SRV"
+    ],
+    "note": "AAAA records map names to IPv6 addresses."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level provides striping with parity?",
+    "answer": "RAID 5",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 5 uses striping with parity."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level is mirroring?",
+    "answer": "RAID 1",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 1 mirrors data across disks."
+  },
+  {
+    "category": "printers",
+    "question": "What printer process uses a corona wire or transfer roller?",
+    "answer": "Laser",
+    "options": [
+      "Inkjet",
+      "Laser",
+      "Thermal",
+      "Impact"
+    ],
+    "note": "Laser printers use electrostatic charge during printing."
+  }
+]
