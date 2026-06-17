@@ -1582,5 +1582,4694 @@
       "DaaS"
     ],
     "note": "IaaS provides infrastructure only."
+  },
+  {
+    "category": "networking",
+    "question": "Which address is a private IPv4 address?",
+    "answer": "192.168.1.50",
+    "options": [
+      "8.8.8.8",
+      "172.40.1.1",
+      "192.168.1.50",
+      "54.23.100.10"
+    ],
+    "note": "192.168.0.0/16 is a private address range."
+  },
+  {
+    "category": "networking",
+    "question": "Which address is a public IPv4 address?",
+    "answer": "8.8.8.8",
+    "options": [
+      "10.0.0.5",
+      "172.16.1.10",
+      "192.168.100.1",
+      "8.8.8.8"
+    ],
+    "note": "8.8.8.8 is Google's public DNS server."
+  },
+  {
+    "category": "networking",
+    "question": "Which range is reserved for private Class A addresses?",
+    "answer": "10.0.0.0 - 10.255.255.255",
+    "options": [
+      "10.0.0.0 - 10.255.255.255",
+      "172.32.0.0 - 172.63.255.255",
+      "192.0.0.0 - 192.255.255.255",
+      "100.64.0.0 - 100.127.255.255"
+    ],
+    "note": "10.0.0.0/8 is private."
+  },
+  {
+    "category": "networking",
+    "question": "Which range is reserved for private Class B addresses?",
+    "answer": "172.16.0.0 - 172.31.255.255",
+    "options": [
+      "172.16.0.0 - 172.31.255.255",
+      "172.32.0.0 - 172.63.255.255",
+      "192.168.0.0 - 192.168.255.255",
+      "10.0.0.0 - 10.255.255.255"
+    ],
+    "note": "172.16.0.0/12 is private."
+  },
+  {
+    "category": "networking",
+    "question": "Which range is reserved for private Class C addresses?",
+    "answer": "192.168.0.0 - 192.168.255.255",
+    "options": [
+      "192.168.0.0 - 192.168.255.255",
+      "192.0.0.0 - 192.255.255.255",
+      "172.16.0.0 - 172.31.255.255",
+      "10.0.0.0 - 10.255.255.255"
+    ],
+    "note": "192.168.0.0/16 is private."
+  },
+  {
+    "category": "networking",
+    "question": "What device translates private addresses to public addresses?",
+    "answer": "NAT",
+    "options": [
+      "DNS",
+      "DHCP",
+      "NAT",
+      "LDAP"
+    ],
+    "note": "Network Address Translation allows many devices to share one public IP."
+  },
+  {
+    "category": "networking",
+    "question": "What service automatically assigns IP addresses?",
+    "answer": "DHCP",
+    "options": [
+      "DNS",
+      "DHCP",
+      "NAT",
+      "ARP"
+    ],
+    "note": "DHCP dynamically assigns IP settings."
+  },
+  {
+    "category": "networking",
+    "question": "What service converts hostnames into IP addresses?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "ARP",
+      "NAT"
+    ],
+    "note": "DNS performs name resolution."
+  },
+  {
+    "category": "networking",
+    "question": "Which address is used to communicate with all hosts on a subnet?",
+    "answer": "Broadcast address",
+    "options": [
+      "Default gateway",
+      "Loopback address",
+      "Broadcast address",
+      "MAC address"
+    ],
+    "note": "Broadcast traffic is sent to every host on the subnet."
+  },
+  {
+    "category": "networking",
+    "question": "What is the loopback address in IPv4?",
+    "answer": "127.0.0.1",
+    "options": [
+      "0.0.0.0",
+      "127.0.0.1",
+      "255.255.255.255",
+      "169.254.1.1"
+    ],
+    "note": "127.0.0.1 refers to the local machine."
+  },
+  {
+    "category": "networking",
+    "question": "What address range indicates APIPA?",
+    "answer": "169.254.x.x",
+    "options": [
+      "10.x.x.x",
+      "172.16.x.x",
+      "192.168.x.x",
+      "169.254.x.x"
+    ],
+    "note": "APIPA is assigned when DHCP fails."
+  },
+  {
+    "category": "networking",
+    "question": "A PC receives a 169.254 address. What is the MOST likely problem?",
+    "answer": "DHCP failure",
+    "options": [
+      "DNS failure",
+      "DHCP failure",
+      "Gateway failure",
+      "Firewall issue"
+    ],
+    "note": "APIPA indicates DHCP was unavailable."
+  },
+  {
+    "category": "networking",
+    "question": "Which protocol resolves IP addresses to MAC addresses?",
+    "answer": "ARP",
+    "options": [
+      "ARP",
+      "DNS",
+      "DHCP",
+      "ICMP"
+    ],
+    "note": "ARP maps IPv4 addresses to MAC addresses."
+  },
+  {
+    "category": "networking",
+    "question": "What is the purpose of a default gateway?",
+    "answer": "Reach remote networks",
+    "options": [
+      "Assign IP addresses",
+      "Reach remote networks",
+      "Resolve hostnames",
+      "Filter packets"
+    ],
+    "note": "Traffic leaving the subnet is sent to the gateway."
+  },
+  {
+    "category": "networking",
+    "question": "What subnet mask is associated with a /24 network?",
+    "answer": "255.255.255.0",
+    "options": [
+      "255.255.0.0",
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.252"
+    ],
+    "note": "A /24 leaves 8 host bits."
+  },
+  {
+    "category": "networking",
+    "question": "How many usable hosts are available in a /24 network?",
+    "answer": "254",
+    "options": [
+      "252",
+      "254",
+      "255",
+      "256"
+    ],
+    "note": "256 total addresses minus network and broadcast."
+  },
+  {
+    "category": "networking",
+    "question": "Which IPv6 address type is equivalent to IPv4 public addresses?",
+    "answer": "Global Unicast",
+    "options": [
+      "Link-local",
+      "Loopback",
+      "Global Unicast",
+      "Multicast"
+    ],
+    "note": "Global Unicast addresses are routable on the Internet."
+  },
+  {
+    "category": "networking",
+    "question": "Which IPv6 address starts with FE80?",
+    "answer": "Link-local",
+    "options": [
+      "Global Unicast",
+      "Loopback",
+      "Multicast",
+      "Link-local"
+    ],
+    "note": "FE80::/10 is link-local."
+  },
+  {
+    "category": "networking",
+    "question": "What is the IPv6 loopback address?",
+    "answer": "::1",
+    "options": [
+      "::",
+      "::1",
+      "FF02::1",
+      "FE80::1"
+    ],
+    "note": "IPv6 loopback is ::1."
+  },
+  {
+    "category": "networking",
+    "question": "A user can ping 8.8.8.8 but cannot browse to google.com. What is the MOST likely issue?",
+    "answer": "DNS problem",
+    "options": [
+      "DHCP problem",
+      "DNS problem",
+      "Switch failure",
+      "Bad NIC"
+    ],
+    "note": "IP connectivity exists; name resolution is failing."
+  },
+  {
+    "category": "networking",
+    "question": "A user can access local resources but cannot reach the Internet. Which setting should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Subnet mask",
+      "Hostname",
+      "Default gateway",
+      "MAC address"
+    ],
+    "note": "Internet traffic requires a valid gateway."
+  },
+  {
+    "category": "networking",
+    "question": "Which device operates primarily at Layer 2 of the OSI model?",
+    "answer": "Switch",
+    "options": [
+      "Router",
+      "Switch",
+      "Firewall",
+      "Modem"
+    ],
+    "note": "Switches forward frames using MAC addresses."
+  },
+  {
+    "category": "networking",
+    "question": "Which device separates broadcast domains?",
+    "answer": "Router",
+    "options": [
+      "Hub",
+      "Switch",
+      "Router",
+      "Access Point"
+    ],
+    "note": "Routers create separate networks."
+  },
+  {
+    "category": "networking",
+    "question": "Which device extends wireless connectivity to clients?",
+    "answer": "Access Point",
+    "options": [
+      "Switch",
+      "Router",
+      "Access Point",
+      "Patch Panel"
+    ],
+    "note": "An AP bridges wireless and wired networks."
+  },
+  {
+    "category": "networking",
+    "question": "What does VLAN stand for?",
+    "answer": "Virtual Local Area Network",
+    "options": [
+      "Virtual Local Area Network",
+      "Variable LAN",
+      "Virtual Link Access Network",
+      "Verified Local Access Network"
+    ],
+    "note": "VLANs logically segment networks."
+  },
+  {
+    "category": "displays",
+    "question": "Which display connector is most commonly associated with analog video?",
+    "answer": "VGA",
+    "options": ["HDMI", "DisplayPort", "VGA", "USB-C"],
+    "note": "VGA is an older analog video connector."
+  },
+  {
+    "category": "displays",
+    "question": "Which display connector can carry both video and audio?",
+    "answer": "HDMI",
+    "options": ["VGA", "HDMI", "RJ45", "RJ11"],
+    "note": "HDMI commonly carries digital video and audio."
+  },
+  {
+    "category": "displays",
+    "question": "Which display connector is common on PCs and supports high refresh rates?",
+    "answer": "DisplayPort",
+    "options": ["VGA", "DVI-A", "DisplayPort", "RJ45"],
+    "note": "DisplayPort is common for PC monitors and high refresh displays."
+  },
+  {
+    "category": "displays",
+    "question": "Which connector can carry video using DisplayPort Alt Mode?",
+    "answer": "USB-C",
+    "options": ["USB-C", "RJ11", "F-type", "BNC"],
+    "note": "USB-C can carry video when DisplayPort Alt Mode is supported."
+  },
+  {
+    "category": "displays",
+    "question": "Which display technology uses organic compounds that emit light individually?",
+    "answer": "OLED",
+    "options": ["LCD", "OLED", "CRT", "DLP"],
+    "note": "OLED pixels emit their own light."
+  },
+  {
+    "category": "displays",
+    "question": "Which display type uses a backlight?",
+    "answer": "LCD",
+    "options": ["OLED", "LCD", "Plasma", "CRT"],
+    "note": "LCD panels require a backlight."
+  },
+  {
+    "category": "displays",
+    "question": "Which display problem is commonly caused by a dead pixel?",
+    "answer": "A single stuck or dark dot on the screen",
+    "options": [
+      "A single stuck or dark dot on the screen",
+      "No network connection",
+      "Paper jam",
+      "Incorrect IP address"
+    ],
+    "note": "Dead or stuck pixels appear as individual dots."
+  },
+  {
+    "category": "displays",
+    "question": "Which setting controls how many times per second a monitor updates?",
+    "answer": "Refresh rate",
+    "options": ["Resolution", "Refresh rate", "Brightness", "Contrast"],
+    "note": "Refresh rate is measured in Hz."
+  },
+  {
+    "category": "displays",
+    "question": "Which setting describes the number of pixels shown on a display?",
+    "answer": "Resolution",
+    "options": ["Resolution", "Refresh rate", "Contrast", "Brightness"],
+    "note": "Resolution is the pixel dimensions, such as 1920x1080."
+  },
+  {
+    "category": "displays",
+    "question": "A user says everything on the screen looks too large after connecting a monitor. What should be checked first?",
+    "answer": "Display resolution",
+    "options": ["DNS", "Display resolution", "Printer driver", "DHCP"],
+    "note": "Incorrect resolution can make items look too large or blurry."
+  },
+  {
+    "category": "displays",
+    "question": "A laptop display is very dim, but an external monitor works normally. What is the MOST likely issue?",
+    "answer": "Backlight problem",
+    "options": ["Backlight problem", "DNS problem", "Bad toner", "DHCP failure"],
+    "note": "A failed backlight can make the image barely visible."
+  },
+  {
+    "category": "displays",
+    "question": "Which display connector is digital-only and commonly found on modern TVs?",
+    "answer": "HDMI",
+    "options": ["VGA", "HDMI", "Serial", "RJ45"],
+    "note": "HDMI is common on TVs and monitors."
+  },
+  {
+    "category": "displays",
+    "question": "Which older display technology is large, heavy, and uses an electron beam?",
+    "answer": "CRT",
+    "options": ["CRT", "OLED", "LCD", "LED"],
+    "note": "CRT displays are older, bulky monitors."
+  },
+  {
+    "category": "displays",
+    "question": "What does DVI stand for?",
+    "answer": "Digital Visual Interface",
+    "options": [
+      "Digital Visual Interface",
+      "Display Video Input",
+      "Direct Visual Integration",
+      "Digital Voltage Interface"
+    ],
+    "note": "DVI stands for Digital Visual Interface."
+  },
+  {
+    "category": "displays",
+    "question": "Which DVI type supports both analog and digital signals?",
+    "answer": "DVI-I",
+    "options": ["DVI-A", "DVI-D", "DVI-I", "HDMI"],
+    "note": "DVI-I means integrated analog and digital."
+  },
+  {
+    "category": "cellular",
+    "question": "Which cellular generation is GSM associated with?",
+    "answer": "2G",
+    "options": ["2G", "3G", "4G", "5G"],
+    "note": "GSM is a 2G cellular technology."
+  },
+  {
+    "category": "cellular",
+    "question": "Which cellular generation is HSPA+ associated with?",
+    "answer": "3G",
+    "options": ["2G", "3G", "4G", "5G"],
+    "note": "HSPA+ is considered a 3G technology."
+  },
+  {
+    "category": "cellular",
+    "question": "What does LTE stand for?",
+    "answer": "Long Term Evolution",
+    "options": [
+      "Long Term Evolution",
+      "Long Transmission Ethernet",
+      "Local Telecom Exchange",
+      "Long Technology Extension"
+    ],
+    "note": "LTE is the dominant 4G technology."
+  },
+  {
+    "category": "cellular",
+    "question": "What does HSPA stand for?",
+    "answer": "High Speed Packet Access",
+    "options": [
+      "High Speed Packet Access",
+      "High Speed Public Access",
+      "Host Signal Packet Access",
+      "High Spectrum Packet Architecture"
+    ],
+    "note": "HSPA was a major 3G technology."
+  },
+  {
+    "category": "cellular",
+    "question": "What does EDGE stand for?",
+    "answer": "Enhanced Data Rates for GSM Evolution",
+    "options": [
+      "Enhanced Data Rates for GSM Evolution",
+      "Enhanced Digital Radio Gateway",
+      "Extended Data Routing Engine",
+      "Enhanced Data Relay Gateway"
+    ],
+    "note": "EDGE is a 2G-era data technology."
+  },
+  {
+    "category": "cellular",
+    "question": "Which cellular technology is newer?",
+    "answer": "5G NR",
+    "options": [
+      "EDGE",
+      "HSPA+",
+      "LTE",
+      "5G NR"
+    ],
+    "note": "5G NR is the newest technology on the A+ exam."
+  },
+  {
+    "category": "cellular",
+    "question": "Put these technologies in order from oldest to newest.",
+    "answer": "EDGE → HSPA+ → LTE → 5G NR",
+    "options": [
+      "EDGE → HSPA+ → LTE → 5G NR",
+      "HSPA+ → EDGE → LTE → 5G NR",
+      "EDGE → LTE → HSPA+ → 5G NR",
+      "LTE → HSPA+ → EDGE → 5G NR"
+    ],
+    "note": "Remember the progression: 2G → 3G → 4G → 5G."
+  },
+  {
+    "category": "cellular",
+    "question": "What technology is used by GSM networks to identify subscribers?",
+    "answer": "SIM card",
+    "options": [
+      "SIM card",
+      "MAC address",
+      "IMEI",
+      "SSID"
+    ],
+    "note": "GSM uses SIM cards."
+  },
+  {
+    "category": "cellular",
+    "question": "What does SIM stand for?",
+    "answer": "Subscriber Identity Module",
+    "options": [
+      "Subscriber Identity Module",
+      "System Identity Module",
+      "Subscriber Information Manager",
+      "Secure Identity Method"
+    ],
+    "note": "SIM stores subscriber identity information."
+  },
+  {
+    "category": "cellular",
+    "question": "What does IMEI identify?",
+    "answer": "The mobile device",
+    "options": [
+      "The mobile device",
+      "The SIM card",
+      "The cellular tower",
+      "The carrier"
+    ],
+    "note": "IMEI uniquely identifies a phone."
+  },
+  {
+    "category": "cellular",
+    "question": "A phone displays LTE in the status bar. What generation is it using?",
+    "answer": "4G",
+    "options": [
+      "2G",
+      "3G",
+      "4G",
+      "5G"
+    ],
+    "note": "LTE is associated with 4G."
+  },
+  {
+    "category": "cellular",
+    "question": "A phone displays 5G. Which technology is it using?",
+    "answer": "NR",
+    "options": [
+      "EDGE",
+      "HSPA+",
+      "LTE",
+      "NR"
+    ],
+    "note": "NR stands for New Radio."
+  },
+  {
+    "category": "cellular",
+    "question": "Which technology would typically provide the fastest data speeds?",
+    "answer": "5G NR",
+    "options": [
+      "EDGE",
+      "HSPA+",
+      "LTE",
+      "5G NR"
+    ],
+    "note": "5G NR is generally the fastest."
+  },
+  {
+    "category": "cellular",
+    "question": "Which technology would typically provide the slowest data speeds?",
+    "answer": "EDGE",
+    "options": [
+      "EDGE",
+      "HSPA+",
+      "LTE",
+      "5G NR"
+    ],
+    "note": "EDGE is a legacy 2G technology."
+  },
+  {
+    "category": "cellular",
+    "question": "Which cellular technology is commonly associated with 3G smartphones?",
+    "answer": "HSPA+",
+    "options": [
+      "EDGE",
+      "HSPA+",
+      "LTE",
+      "NR"
+    ],
+    "note": "HSPA+ is one of the most common 3G answers on A+."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model provides a complete desktop environment?",
+    "answer": "DaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "Desktop as a Service provides cloud-hosted desktops."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud type is owned and operated by a third-party provider?",
+    "answer": "Public cloud",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Community cloud"
+    ],
+    "note": "Public clouds are available to many customers."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud type is dedicated to a single organization?",
+    "answer": "Private cloud",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Community cloud"
+    ],
+    "note": "Private clouds are used by one organization."
+  },
+  {
+    "category": "cloud",
+    "question": "Who manages the operating system in SaaS?",
+    "answer": "Cloud provider",
+    "options": [
+      "Customer",
+      "Cloud provider",
+      "Both",
+      "Nobody"
+    ],
+    "note": "In SaaS the provider manages everything."
+  },
+  {
+    "category": "cloud",
+    "question": "Who manages the operating system in IaaS?",
+    "answer": "Customer",
+    "options": [
+      "Customer",
+      "Cloud provider",
+      "Both",
+      "Nobody"
+    ],
+    "note": "In IaaS you manage the OS and applications."
+  },
+  {
+    "category": "cloud",
+    "question": "Who manages applications in PaaS?",
+    "answer": "Customer",
+    "options": [
+      "Customer",
+      "Cloud provider",
+      "Both",
+      "Nobody"
+    ],
+    "note": "You provide the code and applications in PaaS."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model is best described as 'renting virtual servers'?",
+    "answer": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "IaaS provides virtual machines, storage, and networking."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model is best described as 'bring your code'?",
+    "answer": "PaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Private cloud"
+    ],
+    "note": "PaaS provides the platform while you provide the application."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model is best described as 'just use the software'?",
+    "answer": "SaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "SaaS users simply consume the application."
+  },
+  {
+    "category": "cloud",
+    "question": "Microsoft Azure virtual machines are an example of which cloud model?",
+    "answer": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Hybrid cloud"
+    ],
+    "note": "Azure VMs provide infrastructure."
+  },
+  {
+    "category": "cloud",
+    "question": "Microsoft Azure App Service is an example of which cloud model?",
+    "answer": "PaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Private cloud"
+    ],
+    "note": "You deploy code while Microsoft manages the platform."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model allows users to access a Windows desktop through the Internet?",
+    "answer": "DaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "DaaS delivers a full virtual desktop."
+  },
+  {
+    "category": "cloud",
+    "question": "A company keeps Active Directory on-premises but uses Microsoft 365 for email. Which cloud type is this?",
+    "answer": "Hybrid cloud",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Community cloud"
+    ],
+    "note": "Part on-premises and part cloud equals hybrid."
+  },
+  {
+    "category": "cloud",
+    "question": "A company runs all resources in its own datacenter and does not share them with others. Which cloud type is this?",
+    "answer": "Private cloud",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Community cloud"
+    ],
+    "note": "Private cloud resources belong to one organization."
+  },
+  {
+    "category": "cloud",
+    "question": "A company uses only AWS resources and has no on-premises infrastructure. Which cloud type is this?",
+    "answer": "Public cloud",
+    "options": [
+      "Public cloud",
+      "Private cloud",
+      "Hybrid cloud",
+      "Community cloud"
+    ],
+    "note": "All resources are hosted by a cloud provider."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model requires the LEAST management from the customer?",
+    "answer": "SaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "The provider manages nearly everything."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model requires the MOST management from the customer?",
+    "answer": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "You manage the operating system, applications, and data."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model would most closely resemble moving your Proxmox VMs into Azure virtual machines?",
+    "answer": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "You are still managing the virtual machines."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model would most closely resemble hosting a website where you only upload code?",
+    "answer": "PaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Private cloud"
+    ],
+    "note": "The provider manages the underlying platform."
+  },
+  {
+    "category": "cloud",
+    "question": "Which cloud model would Microsoft 365, Google Workspace, and Salesforce all be examples of?",
+    "answer": "SaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "These are software applications delivered over the Internet."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record aliases one hostname to another?",
+    "answer": "CNAME",
+    "options": [
+      "A",
+      "AAAA",
+      "CNAME",
+      "MX"
+    ],
+    "note": "CNAME creates an alias for another hostname."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record performs reverse lookups?",
+    "answer": "PTR",
+    "options": [
+      "A",
+      "AAAA",
+      "PTR",
+      "TXT"
+    ],
+    "note": "PTR records map IP addresses back to hostnames."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record identifies authoritative name servers for a domain?",
+    "answer": "NS",
+    "options": [
+      "NS",
+      "MX",
+      "TXT",
+      "PTR"
+    ],
+    "note": "NS records point to authoritative DNS servers."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record commonly stores SPF information?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "MX",
+      "AAAA",
+      "NS"
+    ],
+    "note": "SPF records are stored as TXT records."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is commonly used for DKIM information?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "PTR",
+      "MX",
+      "AAAA"
+    ],
+    "note": "DKIM public keys are commonly stored in TXT records."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is used to locate services such as SIP or Active Directory services?",
+    "answer": "SRV",
+    "options": [
+      "SRV",
+      "TXT",
+      "MX",
+      "PTR"
+    ],
+    "note": "SRV records identify service locations."
+  },
+  {
+    "category": "dns",
+    "question": "What record would you create to point mail.example.com to an email server?",
+    "answer": "MX",
+    "options": [
+      "MX",
+      "A",
+      "PTR",
+      "TXT"
+    ],
+    "note": "MX records identify mail servers."
+  },
+  {
+    "category": "dns",
+    "question": "What record would you use to map www.example.com to 192.168.1.10?",
+    "answer": "A",
+    "options": [
+      "A",
+      "AAAA",
+      "PTR",
+      "MX"
+    ],
+    "note": "A records map hostnames to IPv4 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "What record would you use to map www.example.com to 2001:db8::1?",
+    "answer": "AAAA",
+    "options": [
+      "AAAA",
+      "A",
+      "MX",
+      "PTR"
+    ],
+    "note": "AAAA records map hostnames to IPv6 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "A user can browse websites using IP addresses but not hostnames. Which service is MOST likely failing?",
+    "answer": "DNS",
+    "options": [
+      "DHCP",
+      "DNS",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "Name resolution failures usually indicate a DNS problem."
+  },
+  {
+    "category": "dns",
+    "question": "A DNS lookup returns an IPv4 address. Which record type was queried?",
+    "answer": "A",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "PTR"
+    ],
+    "note": "A records return IPv4 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "A DNS lookup returns an IPv6 address. Which record type was queried?",
+    "answer": "AAAA",
+    "options": [
+      "AAAA",
+      "A",
+      "NS",
+      "TXT"
+    ],
+    "note": "AAAA records return IPv6 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record would be checked first when troubleshooting email delivery to a domain?",
+    "answer": "MX",
+    "options": [
+      "MX",
+      "PTR",
+      "TXT",
+      "AAAA"
+    ],
+    "note": "MX records determine where mail is delivered."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record type is most commonly associated with SPF, DKIM, and domain verification?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "NS",
+      "PTR",
+      "SRV"
+    ],
+    "note": "TXT records store miscellaneous verification information."
+  },
+  {
+    "category": "dns",
+    "question": "What does DNS stand for?",
+    "answer": "Domain Name System",
+    "options": [
+      "Domain Name System",
+      "Dynamic Network Service",
+      "Distributed Name Service",
+      "Data Naming System"
+    ],
+    "note": "DNS translates names into IP addresses."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol typically downloads email to a device and may remove it from the server?",
+    "answer": "POP3",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "LDAP"
+    ],
+    "note": "POP3 traditionally downloads mail locally."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol is used to send outbound email?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "SNMP"
+    ],
+    "note": "SMTP handles outgoing mail."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol is best for accessing email from multiple devices?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "FTP"
+    ],
+    "note": "IMAP synchronizes messages across devices."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol uses TCP port 25 by default?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "DNS"
+    ],
+    "note": "SMTP commonly uses TCP 25."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol uses TCP port 110?",
+    "answer": "POP3",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "POP3 uses TCP 110."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol uses TCP port 143?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "IMAP uses TCP 143."
+  },
+  {
+    "category": "email",
+    "question": "Which secure email protocol uses TCP port 993?",
+    "answer": "IMAPS",
+    "options": [
+      "POP3S",
+      "IMAPS",
+      "SMTP",
+      "SMTPS"
+    ],
+    "note": "IMAPS is secure IMAP."
+  },
+  {
+    "category": "email",
+    "question": "Which secure email protocol uses TCP port 995?",
+    "answer": "POP3S",
+    "options": [
+      "IMAPS",
+      "SMTP",
+      "POP3S",
+      "DNS"
+    ],
+    "note": "POP3S is secure POP3."
+  },
+  {
+    "category": "email",
+    "question": "What does SPF help prevent?",
+    "answer": "Email spoofing",
+    "options": [
+      "Email spoofing",
+      "Encryption failures",
+      "DNS outages",
+      "Password reuse"
+    ],
+    "note": "SPF validates authorized sending servers."
+  },
+  {
+    "category": "email",
+    "question": "What does DKIM provide?",
+    "answer": "Message signing",
+    "options": [
+      "Message signing",
+      "Encryption",
+      "Compression",
+      "Routing"
+    ],
+    "note": "DKIM digitally signs email messages."
+  },
+  {
+    "category": "email",
+    "question": "What does DMARC do?",
+    "answer": "Provides policy for SPF and DKIM failures",
+    "options": [
+      "Provides policy for SPF and DKIM failures",
+      "Encrypts email",
+      "Creates MX records",
+      "Filters DNS traffic"
+    ],
+    "note": "DMARC tells receivers how to handle failed messages."
+  },
+  {
+    "category": "email",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated first?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "DNS"
+    ],
+    "note": "SMTP handles outbound mail."
+  },
+  {
+    "category": "email",
+    "question": "A user can send email but cannot receive email. Which protocols should be investigated?",
+    "answer": "POP3 or IMAP",
+    "options": [
+      "SMTP",
+      "POP3 or IMAP",
+      "LDAP",
+      "SNMP"
+    ],
+    "note": "Receiving mail uses POP3 or IMAP."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol keeps messages stored on the mail server by default?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "FTP"
+    ],
+    "note": "IMAP is designed for synchronization."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol was originally designed for a single computer downloading email?",
+    "answer": "POP3",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "HTTPS"
+    ],
+    "note": "POP3 predates multi-device synchronization."
+  },
+  {
+    "category": "email",
+    "question": "Which DNS record is required for receiving email for a domain?",
+    "answer": "MX",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "PTR"
+    ],
+    "note": "MX records identify mail servers."
+  },
+  {
+    "category": "email",
+    "question": "What does SMTP stand for?",
+    "answer": "Simple Mail Transfer Protocol",
+    "options": [
+      "Simple Mail Transfer Protocol",
+      "Secure Mail Transfer Protocol",
+      "System Mail Transfer Process",
+      "Simple Message Transport Protocol"
+    ],
+    "note": "SMTP is used for sending email."
+  },
+  {
+    "category": "email",
+    "question": "What does IMAP stand for?",
+    "answer": "Internet Message Access Protocol",
+    "options": [
+      "Internet Message Access Protocol",
+      "Internet Mail Authentication Protocol",
+      "Integrated Mail Access Protocol",
+      "Internet Messaging Application Protocol"
+    ],
+    "note": "IMAP synchronizes mail across devices."
+  },
+  {
+    "category": "email",
+    "question": "What does POP3 stand for?",
+    "answer": "Post Office Protocol Version 3",
+    "options": [
+      "Post Office Protocol Version 3",
+      "Post Office Process Version 3",
+      "Personal Office Protocol Version 3",
+      "Primary Office Protocol Version 3"
+    ],
+    "note": "POP3 downloads email from a server."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component melts toner onto the paper?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Transfer roller",
+      "Pickup roller",
+      "Imaging drum"
+    ],
+    "note": "The fuser uses heat and pressure to bond toner to paper."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component applies toner to the paper?",
+    "answer": "Transfer roller",
+    "options": [
+      "Transfer roller",
+      "Pickup roller",
+      "Fuser",
+      "Maintenance kit"
+    ],
+    "note": "The transfer roller moves toner from the drum to the paper."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component creates the image that attracts toner?",
+    "answer": "Imaging drum",
+    "options": [
+      "Imaging drum",
+      "Fuser",
+      "Pickup roller",
+      "Duplexer"
+    ],
+    "note": "The drum holds the electrostatic image."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component pulls paper from the tray?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Transfer roller",
+      "Fuser",
+      "Corona wire"
+    ],
+    "note": "The pickup roller feeds paper into the printer."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type uses toner instead of liquid ink?",
+    "answer": "Laser",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Impact"
+    ],
+    "note": "Laser printers use toner powder."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type sprays liquid ink onto paper?",
+    "answer": "Inkjet",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Dot Matrix"
+    ],
+    "note": "Inkjet printers spray microscopic droplets of ink."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type is commonly used for cash register receipts?",
+    "answer": "Thermal",
+    "options": [
+      "Thermal",
+      "Laser",
+      "Inkjet",
+      "Impact"
+    ],
+    "note": "Thermal printers use heat-sensitive paper."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type uses a ribbon and print head that strikes the paper?",
+    "answer": "Dot Matrix",
+    "options": [
+      "Dot Matrix",
+      "Laser",
+      "Thermal",
+      "Inkjet"
+    ],
+    "note": "Dot matrix is an impact printer."
+  },
+  {
+    "category": "printers",
+    "question": "What does duplex printing mean?",
+    "answer": "Printing on both sides of the page",
+    "options": [
+      "Printing on both sides of the page",
+      "Printing in color",
+      "Printing over the network",
+      "Printing at double speed"
+    ],
+    "note": "Duplexing means two-sided printing."
+  },
+  {
+    "category": "printers",
+    "question": "What does IPP stand for?",
+    "answer": "Internet Printing Protocol",
+    "options": [
+      "Internet Printing Protocol",
+      "Internal Printer Process",
+      "Integrated Print Platform",
+      "Internet Print Path"
+    ],
+    "note": "IPP is a common network printing protocol."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer prints pages where toner wipes off with your finger. Which component is most likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Transfer roller",
+      "Drum"
+    ],
+    "note": "A bad fuser cannot properly bond toner to paper."
+  },
+  {
+    "category": "printers",
+    "question": "A printer frequently pulls multiple sheets at once. Which component is the most likely cause?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Transfer roller",
+      "Toner cartridge"
+    ],
+    "note": "Worn pickup rollers commonly cause paper feed issues."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer produces completely blank pages. Which component should be investigated first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Toner cartridge",
+      "Duplexer",
+      "Paper tray",
+      "Print server"
+    ],
+    "note": "An empty or defective toner cartridge can cause blank pages."
+  },
+  {
+    "category": "printers",
+    "question": "What consumable is replaced in a laser printer?",
+    "answer": "Toner",
+    "options": [
+      "Toner",
+      "Ink",
+      "Ribbon",
+      "Thermal paper"
+    ],
+    "note": "Laser printers use toner powder."
+  },
+  {
+    "category": "printers",
+    "question": "What consumable is replaced in an inkjet printer?",
+    "answer": "Ink cartridge",
+    "options": [
+      "Ink cartridge",
+      "Toner cartridge",
+      "Drum",
+      "Fuser"
+    ],
+    "note": "Inkjet printers use liquid ink cartridges."
+  },
+  {
+    "category": "printers",
+    "question": "What is the first step in the laser printing process?",
+    "answer": "Processing",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Fusing"
+    ],
+    "note": "Remember: Processing, Charging, Exposing, Developing, Transferring, Fusing, Cleaning."
+  },
+  {
+    "category": "printers",
+    "question": "Which step of laser printing permanently bonds toner to paper?",
+    "answer": "Fusing",
+    "options": [
+      "Charging",
+      "Developing",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "The fusing stage uses heat and pressure."
+  },
+  {
+    "category": "printers",
+    "question": "What is a print server used for?",
+    "answer": "Managing network printers",
+    "options": [
+      "Managing network printers",
+      "Providing DNS",
+      "Hosting websites",
+      "Providing DHCP"
+    ],
+    "note": "Print servers allow multiple users to share printers."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level provides striping with no fault tolerance?",
+    "answer": "RAID 0",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 0 improves performance but offers no redundancy."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level combines mirroring and striping?",
+    "answer": "RAID 10",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 10 provides both performance and redundancy."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level requires a minimum of 3 drives?",
+    "answer": "RAID 5",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 5 requires at least three disks."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level requires a minimum of 4 drives?",
+    "answer": "RAID 10",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 10 requires at least four drives."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level provides the best performance but no redundancy?",
+    "answer": "RAID 0",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 0 stripes data across disks."
+  },
+  {
+    "category": "storage",
+    "question": "Which RAID level creates an exact copy of data on another drive?",
+    "answer": "RAID 1",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 1 mirrors data."
+  },
+  {
+    "category": "storage",
+    "question": "What does parity provide in RAID?",
+    "answer": "Fault tolerance",
+    "options": [
+      "Fault tolerance",
+      "Encryption",
+      "Compression",
+      "Faster boot times"
+    ],
+    "note": "Parity allows data recovery after a disk failure."
+  },
+  {
+    "category": "storage",
+    "question": "Which storage technology has no moving parts?",
+    "answer": "SSD",
+    "options": [
+      "HDD",
+      "SSD",
+      "Blu-ray",
+      "Tape"
+    ],
+    "note": "SSDs use flash memory."
+  },
+  {
+    "category": "storage",
+    "question": "Which storage technology uses spinning platters?",
+    "answer": "HDD",
+    "options": [
+      "HDD",
+      "SSD",
+      "NVMe",
+      "RAM"
+    ],
+    "note": "Hard drives store data on magnetic platters."
+  },
+  {
+    "category": "storage",
+    "question": "Which storage interface communicates directly over PCIe?",
+    "answer": "NVMe",
+    "options": [
+      "SATA",
+      "PATA",
+      "NVMe",
+      "eSATA"
+    ],
+    "note": "NVMe uses PCIe lanes for very high performance."
+  },
+  {
+    "category": "storage",
+    "question": "Which storage interface is commonly associated with 2.5-inch SSDs?",
+    "answer": "SATA",
+    "options": [
+      "SATA",
+      "NVMe",
+      "PCI",
+      "IDE"
+    ],
+    "note": "Most traditional SSDs use SATA."
+  },
+  {
+    "category": "storage",
+    "question": "What does M.2 describe?",
+    "answer": "Form factor",
+    "options": [
+      "Form factor",
+      "Protocol",
+      "File system",
+      "RAID level"
+    ],
+    "note": "M.2 refers to the physical connector and size."
+  },
+  {
+    "category": "storage",
+    "question": "What do the numbers in a 2280 M.2 drive indicate?",
+    "answer": "22mm wide and 80mm long",
+    "options": [
+      "22mm wide and 80mm long",
+      "22GB and 80GB",
+      "PCIe Gen 2 x8",
+      "Transfer speed"
+    ],
+    "note": "2280 refers to the physical dimensions."
+  },
+  {
+    "category": "storage",
+    "question": "Which is generally faster?",
+    "answer": "NVMe SSD",
+    "options": [
+      "HDD",
+      "SATA SSD",
+      "NVMe SSD",
+      "DVD"
+    ],
+    "note": "NVMe uses PCIe and is typically much faster."
+  },
+  {
+    "category": "storage",
+    "question": "Which optical media format provides the highest capacity?",
+    "answer": "Blu-ray",
+    "options": [
+      "CD",
+      "DVD",
+      "Blu-ray",
+      "Zip Disk"
+    ],
+    "note": "Blu-ray stores more data than CDs or DVDs."
+  },
+  {
+    "category": "storage",
+    "question": "What does S.M.A.R.T. monitor?",
+    "answer": "Drive health",
+    "options": [
+      "Drive health",
+      "Network traffic",
+      "CPU temperature",
+      "Memory usage"
+    ],
+    "note": "S.M.A.R.T. helps predict drive failures."
+  },
+  {
+    "category": "storage",
+    "question": "A user wants the fastest possible storage performance for a gaming PC. Which option is BEST?",
+    "answer": "NVMe SSD",
+    "options": [
+      "HDD",
+      "DVD",
+      "NVMe SSD",
+      "Tape Drive"
+    ],
+    "note": "NVMe SSDs provide the highest performance."
+  },
+  {
+    "category": "storage",
+    "question": "A company wants redundancy with only two drives. Which RAID level should be used?",
+    "answer": "RAID 1",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 1 mirrors data across two disks."
+  },
+  {
+    "category": "storage",
+    "question": "A company wants fault tolerance and efficient disk usage with three drives. Which RAID level should be used?",
+    "answer": "RAID 5",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 5 uses parity for fault tolerance."
+  },
+  {
+    "category": "storage",
+    "question": "A user installs a new SSD but it is not detected. What should be checked first?",
+    "answer": "Power and data connections",
+    "options": [
+      "Power and data connections",
+      "Printer drivers",
+      "Wi-Fi settings",
+      "DNS settings"
+    ],
+    "note": "Always verify physical connections first."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which Microsoft hypervisor is built into Windows Server?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "VirtualBox",
+      "VMware Workstation",
+      "Docker"
+    ],
+    "note": "Hyper-V is Microsoft's Type 1 hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 1 hypervisor?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "VirtualBox",
+      "VMware Workstation",
+      "Parallels"
+    ],
+    "note": "Type 1 hypervisors run directly on hardware."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 2 hypervisor?",
+    "answer": "VirtualBox",
+    "options": [
+      "Hyper-V",
+      "ESXi",
+      "VirtualBox",
+      "Proxmox"
+    ],
+    "note": "VirtualBox runs on top of a host operating system."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 1 hypervisor?",
+    "answer": "VMware ESXi",
+    "options": [
+      "VMware ESXi",
+      "VirtualBox",
+      "VMware Workstation",
+      "Parallels"
+    ],
+    "note": "ESXi is a bare-metal hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 1 hypervisor commonly used in homelabs?",
+    "answer": "Proxmox",
+    "options": [
+      "Proxmox",
+      "VirtualBox",
+      "VMware Workstation",
+      "Parallels"
+    ],
+    "note": "Proxmox VE is a Type 1 hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "What does VDI stand for?",
+    "answer": "Virtual Desktop Infrastructure",
+    "options": [
+      "Virtual Desktop Infrastructure",
+      "Virtual Device Interface",
+      "Visual Desktop Integration",
+      "Virtual Drive Infrastructure"
+    ],
+    "note": "VDI provides centrally hosted desktops."
+  },
+  {
+    "category": "virtualization",
+    "question": "What does DaaS stand for?",
+    "answer": "Desktop as a Service",
+    "options": [
+      "Desktop as a Service",
+      "Data as a Service",
+      "Device as a Service",
+      "Drive as a Service"
+    ],
+    "note": "DaaS provides cloud-hosted desktops."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is required in the BIOS before most hypervisors can run virtual machines efficiently?",
+    "answer": "Hardware virtualization support",
+    "options": [
+      "Hardware virtualization support",
+      "RAID support",
+      "Secure Boot disabled",
+      "TPM disabled"
+    ],
+    "note": "VT-x or AMD-V should be enabled."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which Intel technology should be enabled to support virtualization?",
+    "answer": "VT-x",
+    "options": [
+      "VT-x",
+      "Hyper-Threading",
+      "Turbo Boost",
+      "SpeedStep"
+    ],
+    "note": "VT-x enables hardware-assisted virtualization."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which AMD technology should be enabled to support virtualization?",
+    "answer": "AMD-V",
+    "options": [
+      "AMD-V",
+      "Infinity Fabric",
+      "StoreMI",
+      "Precision Boost"
+    ],
+    "note": "AMD-V enables hardware-assisted virtualization."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is the primary benefit of virtualization?",
+    "answer": "Running multiple operating systems on one physical computer",
+    "options": [
+      "Running multiple operating systems on one physical computer",
+      "Increasing monitor resolution",
+      "Replacing DNS",
+      "Improving Wi-Fi coverage"
+    ],
+    "note": "Virtualization improves hardware utilization."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which technology allows multiple virtual machines to share a single physical host?",
+    "answer": "Hypervisor",
+    "options": [
+      "Hypervisor",
+      "Switch",
+      "Router",
+      "Firewall"
+    ],
+    "note": "The hypervisor manages virtual machines."
+  },
+  {
+    "category": "virtualization",
+    "question": "A company wants users to access Windows desktops remotely from a centralized server. What solution should be used?",
+    "answer": "VDI",
+    "options": [
+      "VDI",
+      "RAID",
+      "VPN",
+      "NAT"
+    ],
+    "note": "VDI centrally hosts desktop environments."
+  },
+  {
+    "category": "virtualization",
+    "question": "A technician installs VirtualBox on Windows 11 and creates a Linux VM. What type of hypervisor is VirtualBox?",
+    "answer": "Type 2",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Emulator"
+    ],
+    "note": "VirtualBox relies on the host operating system."
+  },
+  {
+    "category": "virtualization",
+    "question": "A technician installs Proxmox directly onto a server. What type of hypervisor is being used?",
+    "answer": "Type 1",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Desktop as a Service"
+    ],
+    "note": "Proxmox runs directly on hardware."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which technology is lighter weight because it shares the host operating system kernel?",
+    "answer": "Container",
+    "options": [
+      "Container",
+      "Virtual machine",
+      "RAID",
+      "VDI"
+    ],
+    "note": "Containers share the host OS kernel."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which consumes more resources?",
+    "answer": "Virtual machine",
+    "options": [
+      "Virtual machine",
+      "Container",
+      "Both are equal",
+      "Neither"
+    ],
+    "note": "Each VM runs its own operating system."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 1?",
+    "answer": "802.11b",
+    "options": [
+      "802.11a",
+      "802.11b",
+      "802.11g",
+      "802.11n"
+    ],
+    "note": "802.11b operates at 2.4 GHz."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 2?",
+    "answer": "802.11a",
+    "options": [
+      "802.11a",
+      "802.11b",
+      "802.11g",
+      "802.11n"
+    ],
+    "note": "802.11a operates at 5 GHz."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard is Wi-Fi 3?",
+    "answer": "802.11g",
+    "options": [
+      "802.11a",
+      "802.11b",
+      "802.11g",
+      "802.11n"
+    ],
+    "note": "802.11g operates at 2.4 GHz."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard first supported both 2.4 GHz and 5 GHz?",
+    "answer": "802.11n",
+    "options": [
+      "802.11a",
+      "802.11g",
+      "802.11n",
+      "802.11ac"
+    ],
+    "note": "802.11n supports both frequency bands."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard operates only on 5 GHz and introduced MU-MIMO?",
+    "answer": "802.11ac",
+    "options": [
+      "802.11n",
+      "802.11ac",
+      "802.11ax",
+      "802.11be"
+    ],
+    "note": "Wi-Fi 5 introduced MU-MIMO."
+  },
+  {
+    "category": "wifi",
+    "question": "What does OFDMA stand for?",
+    "answer": "Orthogonal Frequency Division Multiple Access",
+    "options": [
+      "Orthogonal Frequency Division Multiple Access",
+      "Optical Fiber Division Multiple Access",
+      "Open Frequency Distribution Multiple Access",
+      "Orthogonal Fiber Data Management Access"
+    ],
+    "note": "OFDMA is a key Wi-Fi 6 technology."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi band generally provides the highest speeds?",
+    "answer": "6 GHz",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "6 GHz",
+      "900 MHz"
+    ],
+    "note": "6 GHz provides the most spectrum and least interference."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi band typically provides the greatest range?",
+    "answer": "2.4 GHz",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "6 GHz",
+      "60 GHz"
+    ],
+    "note": "Lower frequencies generally travel farther."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi band is typically the most crowded?",
+    "answer": "2.4 GHz",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "6 GHz",
+      "60 GHz"
+    ],
+    "note": "Many household devices use 2.4 GHz."
+  },
+  {
+    "category": "wifi",
+    "question": "Which security protocol should be used when available?",
+    "answer": "WPA3",
+    "options": [
+      "WEP",
+      "WPA",
+      "WPA2",
+      "WPA3"
+    ],
+    "note": "WPA3 is currently the most secure wireless option."
+  },
+  {
+    "category": "wifi",
+    "question": "Which wireless security protocol is considered insecure and deprecated?",
+    "answer": "WEP",
+    "options": [
+      "WEP",
+      "WPA2",
+      "WPA3",
+      "AES"
+    ],
+    "note": "WEP can be cracked easily."
+  },
+  {
+    "category": "wifi",
+    "question": "What does SSID stand for?",
+    "answer": "Service Set Identifier",
+    "options": [
+      "Service Set Identifier",
+      "Secure System Identifier",
+      "Service Security Identifier",
+      "System Set Identification"
+    ],
+    "note": "SSID is the name of a wireless network."
+  },
+  {
+    "category": "wifi",
+    "question": "What does WPA stand for?",
+    "answer": "Wi-Fi Protected Access",
+    "options": [
+      "Wi-Fi Protected Access",
+      "Wireless Protection Access",
+      "Wi-Fi Private Access",
+      "Wireless Protected Authentication"
+    ],
+    "note": "WPA replaced WEP."
+  },
+  {
+    "category": "wifi",
+    "question": "What encryption algorithm is commonly associated with WPA2?",
+    "answer": "AES",
+    "options": [
+      "AES",
+      "DES",
+      "MD5",
+      "SHA1"
+    ],
+    "note": "WPA2 commonly uses AES encryption."
+  },
+  {
+    "category": "wifi",
+    "question": "A user reports weak signal strength throughout the building. What should be checked first?",
+    "answer": "Access point placement",
+    "options": [
+      "Access point placement",
+      "Printer driver",
+      "DNS server",
+      "SMTP settings"
+    ],
+    "note": "Poor AP placement is a common cause of coverage issues."
+  },
+  {
+    "category": "wifi",
+    "question": "A user has excellent signal strength but poor wireless performance. What is the MOST likely cause?",
+    "answer": "Interference",
+    "options": [
+      "Interference",
+      "Weak signal",
+      "Bad monitor",
+      "Low toner"
+    ],
+    "note": "Strong signal does not always mean low interference."
+  },
+  {
+    "category": "wifi",
+    "question": "A technician discovers overlapping 2.4 GHz channels causing interference. Which channels should be configured?",
+    "answer": "1, 6, and 11",
+    "options": [
+      "1, 6, and 11",
+      "2, 7, and 12",
+      "3, 8, and 13",
+      "4, 8, and 12"
+    ],
+    "note": "Use non-overlapping channels in the US."
+  },
+  {
+    "category": "wifi",
+    "question": "What technology allows multiple antennas to transmit and receive simultaneously?",
+    "answer": "MIMO",
+    "options": [
+      "MIMO",
+      "NAT",
+      "ARP",
+      "VLAN"
+    ],
+    "note": "MIMO improves throughput and reliability."
+  },
+  {
+    "category": "wifi",
+    "question": "What does MU-MIMO stand for?",
+    "answer": "Multi-User Multiple Input Multiple Output",
+    "options": [
+      "Multi-User Multiple Input Multiple Output",
+      "Multiple User Managed Internet Mode Operation",
+      "Multi-Utility Multiple Input Multiple Output",
+      "Managed User Multiple Interface Management Operation"
+    ],
+    "note": "MU-MIMO allows communication with multiple clients simultaneously."
+  },
+  {
+    "category": "wifi",
+    "question": "Which Wi-Fi standard introduced the 6 GHz band?",
+    "answer": "802.11ax",
+    "options": [
+      "802.11ac",
+      "802.11ax",
+      "802.11be",
+      "802.11n"
+    ],
+    "note": "Wi-Fi 6E extends Wi-Fi 6 into the 6 GHz spectrum."
+  },
+  {
+    "category": "copper",
+    "question": "Which category cable is rated for Gigabit Ethernet?",
+    "answer": "Cat5e",
+    "options": [
+      "Cat3",
+      "Cat5",
+      "Cat5e",
+      "Cat4"
+    ],
+    "note": "Cat5e is the minimum commonly used cable for Gigabit Ethernet."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable category was commonly used for telephone systems and 10 Mbps Ethernet?",
+    "answer": "Cat3",
+    "options": [
+      "Cat3",
+      "Cat5e",
+      "Cat6",
+      "Cat6a"
+    ],
+    "note": "Cat3 supported older telephone and Ethernet installations."
+  },
+  {
+    "category": "copper",
+    "question": "What does UTP stand for?",
+    "answer": "Unshielded Twisted Pair",
+    "options": [
+      "Unshielded Twisted Pair",
+      "Universal Twisted Pair",
+      "Unprotected Transmission Pair",
+      "Unified Twisted Protocol"
+    ],
+    "note": "UTP is the most common Ethernet cable type."
+  },
+  {
+    "category": "copper",
+    "question": "What does STP stand for?",
+    "answer": "Shielded Twisted Pair",
+    "options": [
+      "Shielded Twisted Pair",
+      "Standard Twisted Pair",
+      "Secure Transmission Pair",
+      "Shielded Transfer Protocol"
+    ],
+    "note": "STP provides protection from electromagnetic interference."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable type provides the best protection against electromagnetic interference?",
+    "answer": "STP",
+    "options": [
+      "UTP",
+      "STP",
+      "RJ45",
+      "Cat3"
+    ],
+    "note": "The shielding helps reduce interference."
+  },
+  {
+    "category": "copper",
+    "question": "What is the maximum Ethernet cable length for twisted pair cabling?",
+    "answer": "100 meters",
+    "options": [
+      "55 meters",
+      "100 meters",
+      "185 meters",
+      "500 meters"
+    ],
+    "note": "100 meters is the standard maximum run length."
+  },
+  {
+    "category": "copper",
+    "question": "Which connector is commonly used with coaxial cable for cable television?",
+    "answer": "F-type",
+    "options": [
+      "RJ45",
+      "RJ11",
+      "F-type",
+      "LC"
+    ],
+    "note": "F-type connectors are common for cable TV and Internet."
+  },
+  {
+    "category": "copper",
+    "question": "Which connector is commonly used with older coaxial Ethernet networks?",
+    "answer": "BNC",
+    "options": [
+      "RJ45",
+      "BNC",
+      "RJ11",
+      "LC"
+    ],
+    "note": "BNC connectors were used with older coaxial Ethernet."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable category is most commonly recommended for new Gigabit installations?",
+    "answer": "Cat6",
+    "options": [
+      "Cat3",
+      "Cat5",
+      "Cat5e",
+      "Cat6"
+    ],
+    "note": "Cat6 provides additional headroom beyond Cat5e."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable type is commonly used for telephone lines?",
+    "answer": "Cat3",
+    "options": [
+      "Cat3",
+      "Cat6a",
+      "Coaxial",
+      "Twinax"
+    ],
+    "note": "Cat3 was widely used in telephone systems."
+  },
+  {
+    "category": "copper",
+    "question": "What is the primary purpose of twisting the wire pairs in Ethernet cable?",
+    "answer": "Reduce interference",
+    "options": [
+      "Increase voltage",
+      "Reduce interference",
+      "Increase speed",
+      "Provide power"
+    ],
+    "note": "Twisting reduces crosstalk and EMI."
+  },
+  {
+    "category": "copper",
+    "question": "Which wiring standard uses orange on pins 1 and 2?",
+    "answer": "T568B",
+    "options": [
+      "T568A",
+      "T568B",
+      "Rollover",
+      "Loopback"
+    ],
+    "note": "Orange pair first usually means T568B."
+  },
+  {
+    "category": "copper",
+    "question": "Which wiring standard uses green on pins 1 and 2?",
+    "answer": "T568A",
+    "options": [
+      "T568A",
+      "T568B",
+      "Straight-through",
+      "Crossover"
+    ],
+    "note": "Green pair first usually means T568A."
+  },
+  {
+    "category": "copper",
+    "question": "What cable type is created when both ends use T568B?",
+    "answer": "Straight-through",
+    "options": [
+      "Straight-through",
+      "Crossover",
+      "Rollover",
+      "Loopback"
+    ],
+    "note": "Same standard on both ends creates a straight-through cable."
+  },
+  {
+    "category": "copper",
+    "question": "What cable type is created when one end uses T568A and the other uses T568B?",
+    "answer": "Crossover",
+    "options": [
+      "Straight-through",
+      "Crossover",
+      "Rollover",
+      "Fiber"
+    ],
+    "note": "Different standards on each end create a crossover cable."
+  },
+  {
+    "category": "copper",
+    "question": "A technician needs 10 Gbps over a 90-meter run. Which cable is the BEST choice?",
+    "answer": "Cat6a",
+    "options": [
+      "Cat5",
+      "Cat5e",
+      "Cat6",
+      "Cat6a"
+    ],
+    "note": "Cat6a is rated for 10 Gbps up to 100 meters."
+  },
+  {
+    "category": "copper",
+    "question": "A user reports intermittent network issues near industrial equipment. Which cable type should be considered?",
+    "answer": "STP",
+    "options": [
+      "UTP",
+      "STP",
+      "RJ11",
+      "Cat3"
+    ],
+    "note": "Shielding can help reduce interference from machinery."
+  },
+  {
+    "category": "copper",
+    "question": "Which cable type is MOST commonly used in modern Ethernet networks?",
+    "answer": "UTP",
+    "options": [
+      "UTP",
+      "STP",
+      "Coaxial",
+      "Twinax"
+    ],
+    "note": "UTP is inexpensive and widely deployed."
+  },
+  {
+    "category": "ethernet",
+    "question": "What speed is 10BASE-T?",
+    "answer": "10 Mbps",
+    "options": [
+      "10 Mbps",
+      "100 Mbps",
+      "1 Gbps",
+      "10 Gbps"
+    ],
+    "note": "10BASE-T operates at 10 Mbps."
+  },
+  {
+    "category": "ethernet",
+    "question": "What speed is 100BASE-TX?",
+    "answer": "100 Mbps",
+    "options": [
+      "10 Mbps",
+      "100 Mbps",
+      "1 Gbps",
+      "10 Gbps"
+    ],
+    "note": "100BASE-TX is Fast Ethernet."
+  },
+  {
+    "category": "ethernet",
+    "question": "What speed is 10GBASE-T?",
+    "answer": "10 Gbps",
+    "options": [
+      "100 Mbps",
+      "1 Gbps",
+      "10 Gbps",
+      "40 Gbps"
+    ],
+    "note": "10GBASE-T provides 10 Gigabit Ethernet over copper."
+  },
+  {
+    "category": "ethernet",
+    "question": "What speed is 100GBASE?",
+    "answer": "100 Gbps",
+    "options": [
+      "10 Gbps",
+      "40 Gbps",
+      "100 Gbps",
+      "400 Gbps"
+    ],
+    "note": "100GBASE provides 100 Gigabit Ethernet."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which IEEE standard defines Ethernet?",
+    "answer": "802.3",
+    "options": [
+      "802.3",
+      "802.11",
+      "802.1X",
+      "802.15"
+    ],
+    "note": "802.3 is the Ethernet standard."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which IEEE standard defines Wi-Fi?",
+    "answer": "802.11",
+    "options": [
+      "802.3",
+      "802.11",
+      "802.1Q",
+      "802.15"
+    ],
+    "note": "802.11 covers wireless LANs."
+  },
+  {
+    "category": "ethernet",
+    "question": "What does the 'T' in 1000BASE-T indicate?",
+    "answer": "Twisted Pair",
+    "options": [
+      "Twisted Pair",
+      "Token Ring",
+      "Transceiver",
+      "Transmission"
+    ],
+    "note": "BASE-T uses twisted pair cabling."
+  },
+  {
+    "category": "ethernet",
+    "question": "What does the 'F' in 1000BASE-F indicate?",
+    "answer": "Fiber",
+    "options": [
+      "Fiber",
+      "Fast",
+      "Full Duplex",
+      "Flexible"
+    ],
+    "note": "BASE-F indicates fiber optic cabling."
+  },
+  {
+    "category": "ethernet",
+    "question": "What does auto-negotiation do?",
+    "answer": "Automatically selects speed and duplex settings",
+    "options": [
+      "Automatically selects speed and duplex settings",
+      "Assigns IP addresses",
+      "Encrypts traffic",
+      "Provides PoE"
+    ],
+    "note": "Auto-negotiation allows devices to agree on link settings."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which duplex mode allows simultaneous sending and receiving?",
+    "answer": "Full Duplex",
+    "options": [
+      "Half Duplex",
+      "Full Duplex",
+      "Simplex",
+      "Auto Duplex"
+    ],
+    "note": "Full duplex eliminates collisions."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which duplex mode allows communication in only one direction at a time?",
+    "answer": "Half Duplex",
+    "options": [
+      "Simplex",
+      "Half Duplex",
+      "Full Duplex",
+      "Auto Duplex"
+    ],
+    "note": "Half duplex allows sending or receiving, not both simultaneously."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which communication mode allows traffic in only one direction?",
+    "answer": "Simplex",
+    "options": [
+      "Simplex",
+      "Half Duplex",
+      "Full Duplex",
+      "Bidirectional"
+    ],
+    "note": "Simplex communication is one-way only."
+  },
+  {
+    "category": "ethernet",
+    "question": "A NIC is configured for 100 Mbps Full Duplex while the switch is set to Auto. What is the MOST likely issue?",
+    "answer": "Duplex mismatch",
+    "options": [
+      "DNS failure",
+      "Duplex mismatch",
+      "IP conflict",
+      "Bad gateway"
+    ],
+    "note": "Duplex mismatches often cause poor performance."
+  },
+  {
+    "category": "ethernet",
+    "question": "What is the most common Ethernet speed today for desktop computers?",
+    "answer": "1 Gbps",
+    "options": [
+      "10 Mbps",
+      "100 Mbps",
+      "1 Gbps",
+      "10 Gbps"
+    ],
+    "note": "Gigabit Ethernet is the standard for most desktops."
+  },
+  {
+    "category": "ethernet",
+    "question": "A technician needs a copper Ethernet link operating at 10 Gbps over 100 meters. Which standard should be used?",
+    "answer": "10GBASE-T",
+    "options": [
+      "100BASE-TX",
+      "1000BASE-T",
+      "10GBASE-T",
+      "10BASE-T"
+    ],
+    "note": "10GBASE-T is the 10 Gigabit copper standard."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which Ethernet standard is commonly associated with Gigabit Ethernet over copper?",
+    "answer": "1000BASE-T",
+    "options": [
+      "100BASE-TX",
+      "1000BASE-T",
+      "10GBASE-T",
+      "10BASE-T"
+    ],
+    "note": "1000BASE-T provides 1 Gbps over twisted pair."
+  },
+  {
+    "category": "ethernet",
+    "question": "Which Ethernet standard is commonly known as Fast Ethernet?",
+    "answer": "100BASE-TX",
+    "options": [
+      "10BASE-T",
+      "100BASE-TX",
+      "1000BASE-T",
+      "10GBASE-T"
+    ],
+    "note": "Fast Ethernet operates at 100 Mbps."
+  },
+  {
+    "category": "ethernet",
+    "question": "A network link shows 100 Mbps instead of 1 Gbps. What should be checked first?",
+    "answer": "Cable quality and link negotiation",
+    "options": [
+      "Cable quality and link negotiation",
+      "Printer drivers",
+      "DNS settings",
+      "SMTP configuration"
+    ],
+    "note": "Bad cables frequently cause Gigabit links to fall back to 100 Mbps."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber type has the smallest core diameter?",
+    "answer": "Single-mode fiber",
+    "options": [
+      "Single-mode fiber",
+      "Multimode fiber",
+      "Coaxial",
+      "Cat6a"
+    ],
+    "note": "Single-mode uses a very small core for long-distance transmission."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber type generally supports the longest distances?",
+    "answer": "Single-mode fiber",
+    "options": [
+      "Single-mode fiber",
+      "Multimode fiber",
+      "Cat6a",
+      "Coaxial"
+    ],
+    "note": "Single-mode is used for long-haul fiber links."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber type is typically less expensive for short-distance installations?",
+    "answer": "Multimode fiber",
+    "options": [
+      "Single-mode fiber",
+      "Multimode fiber",
+      "Twinax",
+      "Coaxial"
+    ],
+    "note": "Multimode is common inside buildings and campuses."
+  },
+  {
+    "category": "fiber",
+    "question": "What does the 'M' in MMF stand for?",
+    "answer": "Multimode",
+    "options": [
+      "Multimode",
+      "Multiplex",
+      "Medium",
+      "Managed"
+    ],
+    "note": "MMF stands for Multimode Fiber."
+  },
+  {
+    "category": "fiber",
+    "question": "What does the 'S' in SMF stand for?",
+    "answer": "Single",
+    "options": [
+      "Single",
+      "Secure",
+      "Short",
+      "Small"
+    ],
+    "note": "SMF stands for Single-Mode Fiber."
+  },
+  {
+    "category": "fiber",
+    "question": "Which connector is the smallest and most common in modern fiber transceivers?",
+    "answer": "LC",
+    "options": [
+      "LC",
+      "SC",
+      "ST",
+      "RJ45"
+    ],
+    "note": "LC connectors are widely used with SFP modules."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber connector is commonly described as square?",
+    "answer": "SC",
+    "options": [
+      "LC",
+      "SC",
+      "ST",
+      "BNC"
+    ],
+    "note": "SC connectors have a square push-pull design."
+  },
+  {
+    "category": "fiber",
+    "question": "Which fiber connector uses a bayonet-style twist lock?",
+    "answer": "ST",
+    "options": [
+      "LC",
+      "SC",
+      "ST",
+      "RJ11"
+    ],
+    "note": "ST connectors twist and lock into place."
+  },
+  {
+    "category": "fiber",
+    "question": "Which connector is used with copper Ethernet cabling rather than fiber?",
+    "answer": "RJ45",
+    "options": [
+      "LC",
+      "SC",
+      "ST",
+      "RJ45"
+    ],
+    "note": "RJ45 is used for twisted-pair Ethernet."
+  },
+  {
+    "category": "fiber",
+    "question": "What does SFP stand for?",
+    "answer": "Small Form-factor Pluggable",
+    "options": [
+      "Small Form-factor Pluggable",
+      "Single Fiber Protocol",
+      "Secure Fiber Port",
+      "Small Fiber Plug"
+    ],
+    "note": "SFP modules are common in switches and routers."
+  },
+  {
+    "category": "fiber",
+    "question": "What is the primary advantage of fiber over copper?",
+    "answer": "Longer distance and immunity to EMI",
+    "options": [
+      "Longer distance and immunity to EMI",
+      "Lower cost",
+      "PoE support",
+      "Easier termination"
+    ],
+    "note": "Fiber is immune to electromagnetic interference."
+  },
+  {
+    "category": "fiber",
+    "question": "Which cabling type is immune to electromagnetic interference?",
+    "answer": "Fiber optic",
+    "options": [
+      "Fiber optic",
+      "UTP",
+      "STP",
+      "Coaxial"
+    ],
+    "note": "Fiber uses light rather than electrical signals."
+  },
+  {
+    "category": "fiber",
+    "question": "A technician needs to connect two buildings 5 kilometers apart. Which medium is BEST?",
+    "answer": "Single-mode fiber",
+    "options": [
+      "Cat6",
+      "Cat6a",
+      "Multimode fiber",
+      "Single-mode fiber"
+    ],
+    "note": "Single-mode fiber is designed for long-distance communication."
+  },
+  {
+    "category": "fiber",
+    "question": "A technician needs to connect switches in the same building over a short distance. Which medium is BEST?",
+    "answer": "Multimode fiber",
+    "options": [
+      "Single-mode fiber",
+      "Multimode fiber",
+      "Coaxial",
+      "Cat3"
+    ],
+    "note": "Multimode is commonly used for shorter backbone links."
+  },
+  {
+    "category": "fiber",
+    "question": "What does SX commonly indicate?",
+    "answer": "Short-range multimode fiber",
+    "options": [
+      "Short-range multimode fiber",
+      "Single-mode fiber",
+      "Copper Ethernet",
+      "Long-range fiber"
+    ],
+    "note": "SX is associated with shorter-distance multimode links."
+  },
+  {
+    "category": "fiber",
+    "question": "What does LX commonly indicate?",
+    "answer": "Long-range fiber",
+    "options": [
+      "Long-range fiber",
+      "Short-range multimode fiber",
+      "Copper Ethernet",
+      "Coaxial cable"
+    ],
+    "note": "LX is commonly associated with longer fiber runs."
+  },
+  {
+    "category": "fiber",
+    "question": "What device converts electrical Ethernet signals into optical signals?",
+    "answer": "Transceiver",
+    "options": [
+      "Transceiver",
+      "Patch panel",
+      "Repeater",
+      "UPS"
+    ],
+    "note": "Fiber transceivers perform electrical-to-optical conversion."
+  },
+  {
+    "category": "fiber",
+    "question": "A fiber link suddenly stops working after a cable was sharply bent. What is the MOST likely cause?",
+    "answer": "Fiber damage from excessive bend radius",
+    "options": [
+      "Fiber damage from excessive bend radius",
+      "DHCP failure",
+      "DNS issue",
+      "IP conflict"
+    ],
+    "note": "Fiber is sensitive to excessive bending."
+  },
+  {
+    "category": "poe",
+    "question": "What does PoE stand for?",
+    "answer": "Power over Ethernet",
+    "options": [
+      "Power over Ethernet",
+      "Protocol over Ethernet",
+      "Power on Ethernet",
+      "Packet over Ethernet"
+    ],
+    "note": "PoE delivers power and data over the same cable."
+  },
+  {
+    "category": "poe",
+    "question": "Which IEEE standard defines PoE?",
+    "answer": "802.3af",
+    "options": [
+      "802.3af",
+      "802.11ax",
+      "802.1Q",
+      "802.3ab"
+    ],
+    "note": "802.3af is the original PoE standard."
+  },
+  {
+    "category": "poe",
+    "question": "Which PoE standard is commonly called PoE+?",
+    "answer": "802.3at",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.11ax"
+    ],
+    "note": "802.3at is known as PoE+."
+  },
+  {
+    "category": "poe",
+    "question": "Which PoE standard provides the most power?",
+    "answer": "802.3bt",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.3ab"
+    ],
+    "note": "802.3bt (PoE++) provides the highest power output."
+  },
+  {
+    "category": "poe",
+    "question": "Which PoE standard is most commonly used for wireless access points?",
+    "answer": "802.3at",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "None of the above"
+    ],
+    "note": "Many modern APs require PoE+."
+  },
+  {
+    "category": "poe",
+    "question": "Which cable type is most commonly used for PoE devices?",
+    "answer": "Twisted pair Ethernet",
+    "options": [
+      "Twisted pair Ethernet",
+      "Fiber optic",
+      "Coaxial",
+      "Serial"
+    ],
+    "note": "PoE is delivered over Ethernet cabling."
+  },
+  {
+    "category": "poe",
+    "question": "What is the main advantage of PoE?",
+    "answer": "Power and data over one cable",
+    "options": [
+      "Power and data over one cable",
+      "Higher network speeds",
+      "Better encryption",
+      "Longer cable distances"
+    ],
+    "note": "PoE eliminates the need for separate power adapters."
+  },
+  {
+    "category": "poe",
+    "question": "Which device is commonly powered using PoE?",
+    "answer": "IP camera",
+    "options": [
+      "IP camera",
+      "Laser printer",
+      "Monitor",
+      "Desktop PC"
+    ],
+    "note": "IP cameras are one of the most common PoE devices."
+  },
+  {
+    "category": "poe",
+    "question": "Which device is commonly powered using PoE?",
+    "answer": "Wireless access point",
+    "options": [
+      "Wireless access point",
+      "GPU",
+      "Hard drive",
+      "UPS"
+    ],
+    "note": "Many APs receive both power and data through Ethernet."
+  },
+  {
+    "category": "poe",
+    "question": "Which device is commonly powered using PoE?",
+    "answer": "VoIP phone",
+    "options": [
+      "VoIP phone",
+      "Monitor",
+      "Printer",
+      "Laptop"
+    ],
+    "note": "PoE simplifies phone deployments."
+  },
+  {
+    "category": "poe",
+    "question": "A technician installs an IP camera but does not want to run a separate power cable. Which technology should be used?",
+    "answer": "PoE",
+    "options": [
+      "PoE",
+      "NAT",
+      "DNS",
+      "VPN"
+    ],
+    "note": "PoE provides power and data through one Ethernet cable."
+  },
+  {
+    "category": "poe",
+    "question": "A new access point requires 25W. Which PoE standard is the minimum requirement?",
+    "answer": "802.3at",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.11ax"
+    ],
+    "note": "802.3af cannot provide enough power for a 25W device."
+  },
+  {
+    "category": "poe",
+    "question": "A device requires 60W of power over Ethernet. Which standard should be used?",
+    "answer": "802.3bt",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.3ab"
+    ],
+    "note": "PoE++ supports significantly higher power levels."
+  },
+  {
+    "category": "poe",
+    "question": "Which standard provides approximately 15.4 watts?",
+    "answer": "802.3af",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.11ax"
+    ],
+    "note": "802.3af is the original PoE specification."
+  },
+  {
+    "category": "poe",
+    "question": "Which standard provides approximately 30 watts?",
+    "answer": "802.3at",
+    "options": [
+      "802.3af",
+      "802.3at",
+      "802.3bt",
+      "802.3ab"
+    ],
+    "note": "PoE+ provides roughly 30W."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SMTP use?",
+    "answer": "25",
+    "options": [
+      "25",
+      "53",
+      "110",
+      "143"
+    ],
+    "note": "SMTP uses TCP 25."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does POP3 use?",
+    "answer": "110",
+    "options": [
+      "25",
+      "110",
+      "143",
+      "443"
+    ],
+    "note": "POP3 uses TCP 110."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does IMAP use?",
+    "answer": "143",
+    "options": [
+      "110",
+      "143",
+      "993",
+      "995"
+    ],
+    "note": "IMAP uses TCP 143."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure port does IMAPS use?",
+    "answer": "993",
+    "options": [
+      "143",
+      "993",
+      "995",
+      "636"
+    ],
+    "note": "IMAPS uses TCP 993."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure port does POP3S use?",
+    "answer": "995",
+    "options": [
+      "993",
+      "995",
+      "110",
+      "25"
+    ],
+    "note": "POP3S uses TCP 995."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does LDAP use?",
+    "answer": "389",
+    "options": [
+      "389",
+      "636",
+      "445",
+      "1433"
+    ],
+    "note": "LDAP uses TCP/UDP 389."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure port does LDAPS use?",
+    "answer": "636",
+    "options": [
+      "389",
+      "636",
+      "443",
+      "993"
+    ],
+    "note": "LDAPS uses TCP 636."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SMB use?",
+    "answer": "445",
+    "options": [
+      "445",
+      "389",
+      "3389",
+      "22"
+    ],
+    "note": "Windows file sharing commonly uses TCP 445."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DHCP use on the server?",
+    "answer": "67",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "69"
+    ],
+    "note": "DHCP servers listen on UDP 67."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DHCP use on the client?",
+    "answer": "68",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "69"
+    ],
+    "note": "DHCP clients receive responses on UDP 68."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does TFTP use?",
+    "answer": "69",
+    "options": [
+      "21",
+      "22",
+      "69",
+      "161"
+    ],
+    "note": "TFTP uses UDP 69."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SNMP use?",
+    "answer": "161",
+    "options": [
+      "69",
+      "161",
+      "162",
+      "389"
+    ],
+    "note": "SNMP uses UDP 161."
+  },
+  {
+    "category": "ports",
+    "question": "Which port is used for SNMP traps?",
+    "answer": "162",
+    "options": [
+      "161",
+      "162",
+      "389",
+      "445"
+    ],
+    "note": "SNMP traps use UDP 162."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does FTP use for the control connection?",
+    "answer": "21",
+    "options": [
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "note": "FTP control traffic uses TCP 21."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does FTP use for data transfer?",
+    "answer": "20",
+    "options": [
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "note": "FTP data transfers traditionally use TCP 20."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does Telnet use?",
+    "answer": "23",
+    "options": [
+      "21",
+      "22",
+      "23",
+      "25"
+    ],
+    "note": "Telnet uses TCP 23 and is not encrypted."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SQL Server commonly use?",
+    "answer": "1433",
+    "options": [
+      "143",
+      "389",
+      "1433",
+      "3306"
+    ],
+    "note": "Microsoft SQL Server commonly uses TCP 1433."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does MySQL commonly use?",
+    "answer": "3306",
+    "options": [
+      "1433",
+      "3306",
+      "3389",
+      "5432"
+    ],
+    "note": "MySQL commonly uses TCP 3306."
+  },
+  {
+    "category": "ports",
+    "question": "A user can connect to a web server securely in a browser. Which port is MOST likely being used?",
+    "answer": "443",
+    "options": [
+      "80",
+      "443",
+      "22",
+      "3389"
+    ],
+    "note": "HTTPS uses TCP 443."
+  },
+  {
+    "category": "ports",
+    "question": "A technician is remotely controlling a Windows workstation. Which port is MOST likely being used?",
+    "answer": "3389",
+    "options": [
+      "22",
+      "80",
+      "389",
+      "3389"
+    ],
+    "note": "Remote Desktop Protocol uses TCP 3389."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC powers on but nothing appears on the screen. What should be checked first?",
+    "answer": "Monitor connection",
+    "options": [
+      "Monitor connection",
+      "Printer cable",
+      "DNS server",
+      "Speaker volume"
+    ],
+    "note": "Always verify physical connections first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer receives a 169.254.x.x address. What is the MOST likely problem?",
+    "answer": "DHCP failure",
+    "options": [
+      "DHCP failure",
+      "DNS failure",
+      "Gateway failure",
+      "Printer failure"
+    ],
+    "note": "APIPA addresses indicate DHCP was unavailable."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can ping 8.8.8.8 but cannot browse to google.com. What is the MOST likely issue?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "Switch",
+      "Router"
+    ],
+    "note": "IP connectivity works but name resolution fails."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can access local resources but not the Internet. What should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Default gateway",
+      "Monitor cable",
+      "Printer queue",
+      "Bluetooth"
+    ],
+    "note": "Traffic leaving the subnet requires a gateway."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer prints pages with toner that wipes off easily. Which component is likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Drum",
+      "Paper tray"
+    ],
+    "note": "The fuser bonds toner to paper."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A printer pulls multiple sheets at once. Which component is most likely worn?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Drum",
+      "Toner"
+    ],
+    "note": "Worn rollers often cause misfeeds."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports poor wireless speeds despite excellent signal strength. What is the MOST likely cause?",
+    "answer": "Interference",
+    "options": [
+      "Interference",
+      "Weak signal",
+      "Bad monitor",
+      "Low battery"
+    ],
+    "note": "Strong signal does not eliminate interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop battery drains very quickly. What should be checked first?",
+    "answer": "Power settings",
+    "options": [
+      "Power settings",
+      "Printer settings",
+      "DNS",
+      "VPN"
+    ],
+    "note": "Power plans can dramatically affect battery life."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports that the screen is very dim but still visible. What is the likely issue?",
+    "answer": "Backlight failure",
+    "options": [
+      "Backlight failure",
+      "Bad NIC",
+      "DNS issue",
+      "Bad RAM"
+    ],
+    "note": "A failed backlight often leaves a faint image."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A system suddenly shuts down during heavy workloads. What is the MOST likely cause?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "DHCP",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal protection can trigger shutdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A network link is only negotiating 100 Mbps instead of 1 Gbps. What should be checked first?",
+    "answer": "Cable quality",
+    "options": [
+      "Cable quality",
+      "Printer driver",
+      "Monitor resolution",
+      "DNS"
+    ],
+    "note": "Bad cable pairs often cause speed fallback."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot connect to Wi-Fi but can connect with Ethernet. What should be checked first?",
+    "answer": "Wireless adapter",
+    "options": [
+      "Wireless adapter",
+      "Printer queue",
+      "Monitor brightness",
+      "RAM"
+    ],
+    "note": "Verify the wireless adapter is enabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A phone cannot make calls but has Wi-Fi access. What should be checked first?",
+    "answer": "Cellular signal",
+    "options": [
+      "Cellular signal",
+      "DNS",
+      "Printer driver",
+      "GPU"
+    ],
+    "note": "Calling requires cellular service."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a single colored dot that never changes on the display. What is it?",
+    "answer": "Stuck pixel",
+    "options": [
+      "Stuck pixel",
+      "Burn-in",
+      "Backlight issue",
+      "Screen tearing"
+    ],
+    "note": "A stuck pixel remains fixed."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC repeatedly reboots during startup. What should be checked first?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "Printer",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal issues can cause reboot loops."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A hard drive is making clicking noises. What is the MOST likely issue?",
+    "answer": "Drive failure",
+    "options": [
+      "Drive failure",
+      "DNS failure",
+      "Printer jam",
+      "Wi-Fi interference"
+    ],
+    "note": "Clicking drives are often failing mechanically."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot access a shared folder but can browse the Internet. What should be checked first?",
+    "answer": "Permissions",
+    "options": [
+      "Permissions",
+      "Monitor brightness",
+      "Bluetooth",
+      "Battery"
+    ],
+    "note": "Access problems often involve permissions."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer produces blank pages. What should be checked first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Toner cartridge",
+      "Paper tray",
+      "Duplexer",
+      "Print queue"
+    ],
+    "note": "Empty or defective toner can produce blank pages."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports no audio from speakers. What should be checked first?",
+    "answer": "Volume and mute settings",
+    "options": [
+      "Volume and mute settings",
+      "DNS",
+      "Printer queue",
+      "IP address"
+    ],
+    "note": "Always check the simple things first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop does not charge even when plugged in. What should be checked first?",
+    "answer": "Power adapter",
+    "options": [
+      "Power adapter",
+      "Wi-Fi",
+      "DNS",
+      "Display resolution"
+    ],
+    "note": "Verify power delivery before replacing components."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "IMAP",
+      "POP3",
+      "DNS"
+    ],
+    "note": "SMTP handles outgoing email."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports slow Internet access on a 2.4 GHz network in an apartment complex. What is the BEST recommendation?",
+    "answer": "Move to 5 GHz",
+    "options": [
+      "Move to 5 GHz",
+      "Replace the monitor",
+      "Disable DNS",
+      "Use a printer cable"
+    ],
+    "note": "5 GHz often experiences less interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A workstation cannot obtain an IP address. Which service should be checked first?",
+    "answer": "DHCP",
+    "options": [
+      "DHCP",
+      "DNS",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "DHCP assigns IP addresses."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports frequent paper jams. Which component is commonly responsible?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Drum",
+      "Toner",
+      "Fuser"
+    ],
+    "note": "Paper handling problems often involve rollers."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer shows the wrong date and time after every reboot. What component is likely failing?",
+    "answer": "CMOS battery",
+    "options": [
+      "CMOS battery",
+      "RAM",
+      "CPU",
+      "GPU"
+    ],
+    "note": "The CMOS battery maintains BIOS settings."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A monitor displays 'No Signal'. What should be checked first?",
+    "answer": "Video cable connection",
+    "options": [
+      "Video cable connection",
+      "DNS",
+      "Printer driver",
+      "Speaker volume"
+    ],
+    "note": "Verify the monitor is receiving a signal."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot find nearby Bluetooth devices. What should be checked first?",
+    "answer": "Bluetooth is enabled",
+    "options": [
+      "Bluetooth is enabled",
+      "DNS",
+      "SMTP",
+      "DHCP"
+    ],
+    "note": "Bluetooth may simply be disabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC boots directly into BIOS every time. What should be checked first?",
+    "answer": "Boot drive detection",
+    "options": [
+      "Boot drive detection",
+      "Printer queue",
+      "DNS",
+      "Wi-Fi password"
+    ],
+    "note": "The system may not see a bootable drive."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a very slow computer after opening many applications. Which resource is MOST likely exhausted?",
+    "answer": "RAM",
+    "options": [
+      "RAM",
+      "DNS",
+      "SMTP",
+      "Bluetooth"
+    ],
+    "note": "Insufficient memory often causes slowdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What is the FIRST step of the CompTIA troubleshooting process?",
+    "answer": "Identify the problem",
+    "options": [
+      "Identify the problem",
+      "Establish a theory",
+      "Implement a solution",
+      "Document findings"
+    ],
+    "note": "Always start by identifying the problem and gathering information."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC powers on but nothing appears on the screen. What should be checked first?",
+    "answer": "Monitor connection",
+    "options": [
+      "Monitor connection",
+      "Printer cable",
+      "DNS server",
+      "Speaker volume"
+    ],
+    "note": "Always verify physical connections first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer receives a 169.254.x.x address. What is the MOST likely problem?",
+    "answer": "DHCP failure",
+    "options": [
+      "DHCP failure",
+      "DNS failure",
+      "Gateway failure",
+      "Printer failure"
+    ],
+    "note": "APIPA addresses indicate DHCP was unavailable."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can ping 8.8.8.8 but cannot browse to google.com. What is the MOST likely issue?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "Switch",
+      "Router"
+    ],
+    "note": "IP connectivity works but name resolution fails."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can access local resources but not the Internet. What should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Default gateway",
+      "Monitor cable",
+      "Printer queue",
+      "Bluetooth"
+    ],
+    "note": "Traffic leaving the subnet requires a gateway."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer prints pages with toner that wipes off easily. Which component is likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Drum",
+      "Paper tray"
+    ],
+    "note": "The fuser bonds toner to paper."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A printer pulls multiple sheets at once. Which component is most likely worn?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Drum",
+      "Toner"
+    ],
+    "note": "Worn rollers often cause misfeeds."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports poor wireless speeds despite excellent signal strength. What is the MOST likely cause?",
+    "answer": "Interference",
+    "options": [
+      "Interference",
+      "Weak signal",
+      "Bad monitor",
+      "Low battery"
+    ],
+    "note": "Strong signal does not eliminate interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop battery drains very quickly. What should be checked first?",
+    "answer": "Power settings",
+    "options": [
+      "Power settings",
+      "Printer settings",
+      "DNS",
+      "VPN"
+    ],
+    "note": "Power plans can dramatically affect battery life."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports that the screen is very dim but still visible. What is the likely issue?",
+    "answer": "Backlight failure",
+    "options": [
+      "Backlight failure",
+      "Bad NIC",
+      "DNS issue",
+      "Bad RAM"
+    ],
+    "note": "A failed backlight often leaves a faint image."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A system suddenly shuts down during heavy workloads. What is the MOST likely cause?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "DHCP",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal protection can trigger shutdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A network link is only negotiating 100 Mbps instead of 1 Gbps. What should be checked first?",
+    "answer": "Cable quality",
+    "options": [
+      "Cable quality",
+      "Printer driver",
+      "Monitor resolution",
+      "DNS"
+    ],
+    "note": "Bad cable pairs often cause speed fallback."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot connect to Wi-Fi but can connect with Ethernet. What should be checked first?",
+    "answer": "Wireless adapter",
+    "options": [
+      "Wireless adapter",
+      "Printer queue",
+      "Monitor brightness",
+      "RAM"
+    ],
+    "note": "Verify the wireless adapter is enabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A phone cannot make calls but has Wi-Fi access. What should be checked first?",
+    "answer": "Cellular signal",
+    "options": [
+      "Cellular signal",
+      "DNS",
+      "Printer driver",
+      "GPU"
+    ],
+    "note": "Calling requires cellular service."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a single colored dot that never changes on the display. What is it?",
+    "answer": "Stuck pixel",
+    "options": [
+      "Stuck pixel",
+      "Burn-in",
+      "Backlight issue",
+      "Screen tearing"
+    ],
+    "note": "A stuck pixel remains fixed."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC repeatedly reboots during startup. What should be checked first?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "Printer",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal issues can cause reboot loops."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A hard drive is making clicking noises. What is the MOST likely issue?",
+    "answer": "Drive failure",
+    "options": [
+      "Drive failure",
+      "DNS failure",
+      "Printer jam",
+      "Wi-Fi interference"
+    ],
+    "note": "Clicking drives are often failing mechanically."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot access a shared folder but can browse the Internet. What should be checked first?",
+    "answer": "Permissions",
+    "options": [
+      "Permissions",
+      "Monitor brightness",
+      "Bluetooth",
+      "Battery"
+    ],
+    "note": "Access problems often involve permissions."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer produces blank pages. What should be checked first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Toner cartridge",
+      "Paper tray",
+      "Duplexer",
+      "Print queue"
+    ],
+    "note": "Empty or defective toner can produce blank pages."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports no audio from speakers. What should be checked first?",
+    "answer": "Volume and mute settings",
+    "options": [
+      "Volume and mute settings",
+      "DNS",
+      "Printer queue",
+      "IP address"
+    ],
+    "note": "Always check the simple things first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop does not charge even when plugged in. What should be checked first?",
+    "answer": "Power adapter",
+    "options": [
+      "Power adapter",
+      "Wi-Fi",
+      "DNS",
+      "Display resolution"
+    ],
+    "note": "Verify power delivery before replacing components."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "IMAP",
+      "POP3",
+      "DNS"
+    ],
+    "note": "SMTP handles outgoing email."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports slow Internet access on a 2.4 GHz network in an apartment complex. What is the BEST recommendation?",
+    "answer": "Move to 5 GHz",
+    "options": [
+      "Move to 5 GHz",
+      "Replace the monitor",
+      "Disable DNS",
+      "Use a printer cable"
+    ],
+    "note": "5 GHz often experiences less interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A workstation cannot obtain an IP address. Which service should be checked first?",
+    "answer": "DHCP",
+    "options": [
+      "DHCP",
+      "DNS",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "DHCP assigns IP addresses."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports frequent paper jams. Which component is commonly responsible?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Drum",
+      "Toner",
+      "Fuser"
+    ],
+    "note": "Paper handling problems often involve rollers."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer shows the wrong date and time after every reboot. What component is likely failing?",
+    "answer": "CMOS battery",
+    "options": [
+      "CMOS battery",
+      "RAM",
+      "CPU",
+      "GPU"
+    ],
+    "note": "The CMOS battery maintains BIOS settings."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A monitor displays 'No Signal'. What should be checked first?",
+    "answer": "Video cable connection",
+    "options": [
+      "Video cable connection",
+      "DNS",
+      "Printer driver",
+      "Speaker volume"
+    ],
+    "note": "Verify the monitor is receiving a signal."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot find nearby Bluetooth devices. What should be checked first?",
+    "answer": "Bluetooth is enabled",
+    "options": [
+      "Bluetooth is enabled",
+      "DNS",
+      "SMTP",
+      "DHCP"
+    ],
+    "note": "Bluetooth may simply be disabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC boots directly into BIOS every time. What should be checked first?",
+    "answer": "Boot drive detection",
+    "options": [
+      "Boot drive detection",
+      "Printer queue",
+      "DNS",
+      "Wi-Fi password"
+    ],
+    "note": "The system may not see a bootable drive."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a very slow computer after opening many applications. Which resource is MOST likely exhausted?",
+    "answer": "RAM",
+    "options": [
+      "RAM",
+      "DNS",
+      "SMTP",
+      "Bluetooth"
+    ],
+    "note": "Insufficient memory often causes slowdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What is the FIRST step of the CompTIA troubleshooting process?",
+    "answer": "Identify the problem",
+    "options": [
+      "Identify the problem",
+      "Establish a theory",
+      "Implement a solution",
+      "Document findings"
+    ],
+    "note": "Always start by identifying the problem and gathering information."
+  },
+  {
+    "category": "commands",
+    "question": "Which Windows command displays IP configuration information?",
+    "answer": "ipconfig",
+    "options": [
+      "ipconfig",
+      "ping",
+      "tracert",
+      "nslookup"
+    ],
+    "note": "ipconfig displays network configuration information."
+  },
+  {
+    "category": "commands",
+    "question": "Which command tests basic network connectivity?",
+    "answer": "ping",
+    "options": [
+      "ping",
+      "ipconfig",
+      "netstat",
+      "nslookup"
+    ],
+    "note": "ping uses ICMP to test connectivity."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the route packets take across a network?",
+    "answer": "tracert",
+    "options": [
+      "tracert",
+      "ping",
+      "ipconfig",
+      "net use"
+    ],
+    "note": "tracert shows each hop along a route."
+  },
+  {
+    "category": "commands",
+    "question": "Which command queries DNS servers?",
+    "answer": "nslookup",
+    "options": [
+      "nslookup",
+      "netstat",
+      "hostname",
+      "ping"
+    ],
+    "note": "nslookup is commonly used for DNS troubleshooting."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays active network connections?",
+    "answer": "netstat",
+    "options": [
+      "netstat",
+      "ping",
+      "nslookup",
+      "tracert"
+    ],
+    "note": "netstat displays listening ports and active connections."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the computer's hostname?",
+    "answer": "hostname",
+    "options": [
+      "hostname",
+      "netstat",
+      "ping",
+      "arp"
+    ],
+    "note": "hostname displays the local computer name."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the local ARP table?",
+    "answer": "arp",
+    "options": [
+      "arp",
+      "route",
+      "ping",
+      "hostname"
+    ],
+    "note": "ARP entries map IP addresses to MAC addresses."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the local routing table?",
+    "answer": "route",
+    "options": [
+      "route",
+      "arp",
+      "ping",
+      "hostname"
+    ],
+    "note": "route displays network routes."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays a computer's MAC address information?",
+    "answer": "ipconfig /all",
+    "options": [
+      "ipconfig /all",
+      "ping",
+      "tracert",
+      "hostname"
+    ],
+    "note": "ipconfig /all shows physical addresses and more."
+  },
+  {
+    "category": "commands",
+    "question": "Which command releases a DHCP lease?",
+    "answer": "ipconfig /release",
+    "options": [
+      "ipconfig /release",
+      "ipconfig /renew",
+      "ping",
+      "arp -a"
+    ],
+    "note": "Release gives up the current DHCP address."
+  },
+  {
+    "category": "commands",
+    "question": "Which command requests a new DHCP lease?",
+    "answer": "ipconfig /renew",
+    "options": [
+      "ipconfig /renew",
+      "ipconfig /release",
+      "tracert",
+      "hostname"
+    ],
+    "note": "Renew requests a new DHCP configuration."
+  },
+  {
+    "category": "commands",
+    "question": "Which command flushes the DNS resolver cache?",
+    "answer": "ipconfig /flushdns",
+    "options": [
+      "ipconfig /flushdns",
+      "ipconfig /renew",
+      "arp -d",
+      "netstat"
+    ],
+    "note": "Useful when troubleshooting DNS issues."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays currently running processes in Windows?",
+    "answer": "tasklist",
+    "options": [
+      "tasklist",
+      "services.msc",
+      "msconfig",
+      "taskkill"
+    ],
+    "note": "tasklist displays running processes."
+  },
+  {
+    "category": "commands",
+    "question": "Which command terminates a running process?",
+    "answer": "taskkill",
+    "options": [
+      "taskkill",
+      "tasklist",
+      "hostname",
+      "net use"
+    ],
+    "note": "taskkill ends processes from the command line."
+  },
+  {
+    "category": "commands",
+    "question": "Which command checks system file integrity in Windows?",
+    "answer": "sfc /scannow",
+    "options": [
+      "sfc /scannow",
+      "chkdsk",
+      "diskpart",
+      "gpupdate"
+    ],
+    "note": "SFC repairs protected Windows files."
+  },
+  {
+    "category": "commands",
+    "question": "Which command checks a disk for file system errors?",
+    "answer": "chkdsk",
+    "options": [
+      "chkdsk",
+      "diskpart",
+      "sfc",
+      "gpupdate"
+    ],
+    "note": "CHKDSK verifies file system integrity."
+  },
+  {
+    "category": "commands",
+    "question": "Which command is used to manage disks and partitions?",
+    "answer": "diskpart",
+    "options": [
+      "diskpart",
+      "chkdsk",
+      "sfc",
+      "netstat"
+    ],
+    "note": "DiskPart is a powerful disk management tool."
+  },
+  {
+    "category": "commands",
+    "question": "Which command forces Group Policy to update immediately?",
+    "answer": "gpupdate /force",
+    "options": [
+      "gpupdate /force",
+      "ipconfig /renew",
+      "sfc /scannow",
+      "arp -a"
+    ],
+    "note": "Useful in Active Directory environments."
+  },
+  {
+    "category": "commands",
+    "question": "A technician suspects a DNS issue. Which command should be used first?",
+    "answer": "nslookup",
+    "options": [
+      "nslookup",
+      "diskpart",
+      "taskkill",
+      "gpupdate"
+    ],
+    "note": "nslookup directly tests DNS resolution."
+  },
+  {
+    "category": "commands",
+    "question": "A technician wants to verify basic connectivity to a server. Which command should be used?",
+    "answer": "ping",
+    "options": [
+      "ping",
+      "hostname",
+      "diskpart",
+      "tasklist"
+    ],
+    "note": "Ping is usually the first network test."
+  },
+  {
+    "category": "commands",
+    "question": "A technician needs to determine where network traffic is failing between two sites. Which command should be used?",
+    "answer": "tracert",
+    "options": [
+      "tracert",
+      "ping",
+      "hostname",
+      "arp"
+    ],
+    "note": "Tracert shows every hop along the route."
+  },
+  {
+    "category": "commands",
+    "question": "Which Linux command commonly displays network interface information?",
+    "answer": "ifconfig",
+    "options": [
+      "ifconfig",
+      "dir",
+      "tasklist",
+      "gpupdate"
+    ],
+    "note": "Older Linux systems commonly use ifconfig."
+  },
+  {
+    "category": "commands",
+    "question": "Which Linux command is the modern replacement for many ifconfig functions?",
+    "answer": "ip",
+    "options": [
+      "ip",
+      "hostname",
+      "ping",
+      "chkdsk"
+    ],
+    "note": "The ip command is the modern Linux networking tool."
+  },
+  {
+    "category": "commands",
+    "question": "Which Linux command performs DNS lookups similar to nslookup?",
+    "answer": "dig",
+    "options": [
+      "dig",
+      "dir",
+      "tasklist",
+      "gpupdate"
+    ],
+    "note": "dig provides detailed DNS query information."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is most commonly used for Ethernet networking?",
+    "answer": "RJ45",
+    "options": [
+      "RJ45",
+      "RJ11",
+      "USB-C",
+      "LC"
+    ],
+    "note": "RJ45 is the standard Ethernet connector."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used for telephone lines?",
+    "answer": "RJ11",
+    "options": [
+      "RJ11",
+      "RJ45",
+      "LC",
+      "USB-A"
+    ],
+    "note": "RJ11 is typically used for analog phone connections."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used for modern fiber transceivers?",
+    "answer": "LC",
+    "options": [
+      "LC",
+      "SC",
+      "ST",
+      "RJ45"
+    ],
+    "note": "LC connectors are small and common on SFP modules."
+  },
+  {
+    "category": "connectors",
+    "question": "Which fiber connector uses a square push-pull design?",
+    "answer": "SC",
+    "options": [
+      "SC",
+      "LC",
+      "ST",
+      "BNC"
+    ],
+    "note": "SC connectors are square and easy to identify."
+  },
+  {
+    "category": "connectors",
+    "question": "Which fiber connector uses a twist-lock mechanism?",
+    "answer": "ST",
+    "options": [
+      "ST",
+      "SC",
+      "LC",
+      "RJ11"
+    ],
+    "note": "ST connectors use a bayonet-style lock."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used for cable television and cable Internet?",
+    "answer": "F-type",
+    "options": [
+      "F-type",
+      "BNC",
+      "RJ45",
+      "RJ11"
+    ],
+    "note": "F-type connectors are used with coaxial cable."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector was commonly used with older coaxial Ethernet networks?",
+    "answer": "BNC",
+    "options": [
+      "BNC",
+      "F-type",
+      "LC",
+      "RJ45"
+    ],
+    "note": "BNC connectors were used on legacy coax Ethernet."
+  },
+  {
+    "category": "connectors",
+    "question": "Which display connector is analog?",
+    "answer": "VGA",
+    "options": [
+      "VGA",
+      "HDMI",
+      "DisplayPort",
+      "DVI-D"
+    ],
+    "note": "VGA is an analog video standard."
+  },
+  {
+    "category": "connectors",
+    "question": "Which display connector commonly carries digital video and audio?",
+    "answer": "HDMI",
+    "options": [
+      "HDMI",
+      "VGA",
+      "RJ45",
+      "RJ11"
+    ],
+    "note": "HDMI carries both video and audio."
+  },
+  {
+    "category": "connectors",
+    "question": "Which display connector is commonly used on gaming monitors and supports high refresh rates?",
+    "answer": "DisplayPort",
+    "options": [
+      "DisplayPort",
+      "VGA",
+      "RJ11",
+      "F-type"
+    ],
+    "note": "DisplayPort is very common on PCs."
+  },
+  {
+    "category": "connectors",
+    "question": "Which DVI connector supports both analog and digital signals?",
+    "answer": "DVI-I",
+    "options": [
+      "DVI-I",
+      "DVI-D",
+      "HDMI",
+      "VGA"
+    ],
+    "note": "DVI-I supports integrated analog and digital."
+  },
+  {
+    "category": "connectors",
+    "question": "Which USB connector is reversible and common on modern devices?",
+    "answer": "USB-C",
+    "options": [
+      "USB-C",
+      "USB-A",
+      "USB-B",
+      "Mini-USB"
+    ],
+    "note": "USB-C can be inserted either direction."
+  },
+  {
+    "category": "connectors",
+    "question": "Which USB connector is the traditional rectangular USB connector?",
+    "answer": "USB-A",
+    "options": [
+      "USB-A",
+      "USB-C",
+      "Lightning",
+      "Micro-USB"
+    ],
+    "note": "USB-A is still very common on PCs."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used on printers?",
+    "answer": "USB-B",
+    "options": [
+      "USB-B",
+      "USB-A",
+      "USB-C",
+      "Lightning"
+    ],
+    "note": "USB-B is often called the printer connector."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector was commonly used on Android phones before USB-C?",
+    "answer": "Micro-USB",
+    "options": [
+      "Micro-USB",
+      "Lightning",
+      "USB-B",
+      "RJ11"
+    ],
+    "note": "Micro-USB was the standard before USB-C."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is primarily associated with Apple iPhones prior to USB-C adoption?",
+    "answer": "Lightning",
+    "options": [
+      "Lightning",
+      "USB-C",
+      "Micro-USB",
+      "USB-B"
+    ],
+    "note": "Lightning was Apple's proprietary connector."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector combines PCIe, DisplayPort, video, data, and power into one port?",
+    "answer": "Thunderbolt",
+    "options": [
+      "Thunderbolt",
+      "RJ45",
+      "HDMI",
+      "BNC"
+    ],
+    "note": "Thunderbolt uses the USB-C connector shape."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used to attach external monitors to laptops?",
+    "answer": "HDMI",
+    "options": [
+      "HDMI",
+      "RJ11",
+      "LC",
+      "USB-B"
+    ],
+    "note": "HDMI is extremely common on laptops and monitors."
+  },
+  {
+    "category": "connectors",
+    "question": "A technician needs to connect a network cable to a switch. Which connector is required?",
+    "answer": "RJ45",
+    "options": [
+      "RJ45",
+      "RJ11",
+      "LC",
+      "F-type"
+    ],
+    "note": "Ethernet switches use RJ45 ports."
+  },
+  {
+    "category": "connectors",
+    "question": "A technician needs to connect a fiber patch cable to an SFP transceiver. Which connector is MOST likely used?",
+    "answer": "LC",
+    "options": [
+      "LC",
+      "ST",
+      "SC",
+      "RJ45"
+    ],
+    "note": "LC is the most common connector on modern SFP modules."
+  },
+  {
+    "category": "scenario",
+    "question": "A workstation receives an IP address of 169.254.12.100. What is the MOST likely issue?",
+    "answer": "DHCP failure",
+    "options": [
+      "DHCP failure",
+      "DNS failure",
+      "Gateway failure",
+      "Printer failure"
+    ],
+    "note": "APIPA addresses indicate the client could not contact DHCP."
+  },
+  {
+    "category": "scenario",
+    "question": "A user can access resources on the local network but cannot reach websites on the Internet. What should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Default gateway",
+      "Monitor cable",
+      "Printer queue",
+      "Bluetooth"
+    ],
+    "note": "Traffic leaving the subnet requires a gateway."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants cloud-hosted desktops that employees can access from anywhere. Which service should be implemented?",
+    "answer": "DaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "Desktop as a Service provides cloud-hosted desktops."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports a very dim laptop display, but an external monitor works normally. What is the MOST likely cause?",
+    "answer": "Backlight failure",
+    "options": [
+      "Backlight failure",
+      "DNS issue",
+      "Bad NIC",
+      "RAM failure"
+    ],
+    "note": "A failed backlight often leaves a faint image."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician installs a new access point in a warehouse. No power outlet is available nearby. What is the BEST solution?",
+    "answer": "PoE",
+    "options": [
+      "PoE",
+      "VPN",
+      "NAT",
+      "VLAN"
+    ],
+    "note": "PoE provides power and data through the Ethernet cable."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants the fastest storage possible for a database server. Which storage technology is BEST?",
+    "answer": "NVMe SSD",
+    "options": [
+      "HDD",
+      "DVD",
+      "SATA SSD",
+      "NVMe SSD"
+    ],
+    "note": "NVMe SSDs provide the highest performance."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs to connect two switches in different buildings with heavy electrical equipment between them. Which medium is BEST?",
+    "answer": "Fiber optic cable",
+    "options": [
+      "Cat5e",
+      "Cat6",
+      "Coaxial",
+      "Fiber optic cable"
+    ],
+    "note": "Fiber is immune to EMI."
+  },
+  {
+    "category": "scenario",
+    "question": "A user can send email but cannot receive email. Which protocols should be investigated first?",
+    "answer": "IMAP or POP3",
+    "options": [
+      "SMTP",
+      "IMAP or POP3",
+      "DNS",
+      "HTTPS"
+    ],
+    "note": "Receiving email relies on IMAP or POP3."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs remote command-line access to a Linux server across the network. Which protocol should be used?",
+    "answer": "SSH",
+    "options": [
+      "Telnet",
+      "SSH",
+      "RDP",
+      "FTP"
+    ],
+    "note": "SSH provides secure remote shell access."
+  },
+  {
+    "category": "scenario",
+    "question": "A network administrator wants secure web traffic between users and a website. Which port should be allowed through the firewall?",
+    "answer": "443",
+    "options": [
+      "80",
+      "22",
+      "443",
+      "3389"
+    ],
+    "note": "HTTPS uses TCP 443."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports that a computer loses the correct date and time whenever it is unplugged. Which component should be replaced?",
+    "answer": "CMOS battery",
+    "options": [
+      "CMOS battery",
+      "RAM",
+      "CPU",
+      "Power supply"
+    ],
+    "note": "The CMOS battery maintains firmware settings."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician wants to run multiple operating systems on a single physical server. Which technology should be used?",
+    "answer": "Virtualization",
+    "options": [
+      "RAID",
+      "Virtualization",
+      "PoE",
+      "DNS"
+    ],
+    "note": "Virtualization allows multiple VMs on one host."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician installs a new GPU. Which motherboard slot is MOST likely required?",
+    "answer": "PCIe x16",
+    "options": [
+      "PCIe x1",
+      "PCIe x4",
+      "PCIe x16",
+      "DIMM"
+    ],
+    "note": "Graphics cards typically use PCIe x16 slots."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs to connect a laptop to a projector using a modern reversible connector. Which connector is MOST likely used?",
+    "answer": "USB-C",
+    "options": [
+      "RJ11",
+      "USB-C",
+      "BNC",
+      "SC"
+    ],
+    "note": "USB-C commonly supports video output."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports that webpages load very slowly, but file downloads are fast once they start. What service is MOST likely causing the issue?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "DNS delays often affect the start of connections."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician must install a wireless network in a densely populated apartment building. Which band should be preferred when possible?",
+    "answer": "5 GHz",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "900 MHz",
+      "Bluetooth"
+    ],
+    "note": "5 GHz generally experiences less interference."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants a cloud solution where developers only upload code and the provider manages the operating system. Which model should be used?",
+    "answer": "PaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Private Cloud"
+    ],
+    "note": "PaaS provides a managed application platform."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports a laser printer frequently feeds multiple sheets at once. Which component should be inspected first?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Toner cartridge",
+      "Print queue"
+    ],
+    "note": "Worn rollers commonly cause paper feed issues."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs a network cable for a 10 Gbps connection over 90 meters. Which cable should be installed?",
+    "answer": "Cat6a",
+    "options": [
+      "Cat5",
+      "Cat5e",
+      "Cat6",
+      "Cat6a"
+    ],
+    "note": "Cat6a is rated for 10 Gbps up to 100 meters."
+  },
+  {
+    "category": "scenario",
+    "question": "A company needs redundancy and performance for a storage array and has four drives available. Which RAID level is BEST?",
+    "answer": "RAID 10",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 10 provides both performance and fault tolerance."
   }
 ]
