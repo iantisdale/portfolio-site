@@ -52,10 +52,25 @@
             width: min(100%, 28rem)
         }
 
+        .trainer-select {
+            border-radius: .75rem;
+            border: 1px solid rgba(255, 255, 255, .14);
+            background: rgba(15, 23, 42, .95);
+            color: #fff;
+        }
+
+        .trainer-select option {
+            background: #0f172a;
+            color: #fff;
+        }
+
+        .trainer-input::placeholder {
+            color: rgba(255, 255, 255, .55);
+        }
+
         .question {
             font-size: clamp(1.35rem, 3vw, 2.1rem);
-            line-height: 1.15;
-            margin: .75rem 0
+            min-height: 120px;
         }
 
         .subtitle {
@@ -177,7 +192,8 @@
     <nav class="nav">
         <div class="container nav-inner"><a class="brand" href="/">Ian Tisdale</a>
             <div class="nav-links"><a href="/projects/">Projects</a><a href="/case-studies/">Case Studies</a>
-                <a href="/#contact">Contact</a></div>
+                <a href="/#contact">Contact</a>
+            </div>
         </div>
     </nav>
     <main class="container project-hero">
