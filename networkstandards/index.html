@@ -187,6 +187,22 @@
                 grid-template-columns: 1fr
             }
         }
+
+        .reference-panel {
+            margin-top: 2rem;
+        }
+
+        .reference-panel summary {
+            cursor: pointer;
+            font-size: 1.55rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .reference-panel summary:hover {
+            color: #bfdbfe;
+        }
     </style>
 </head>
 
@@ -245,23 +261,27 @@
                     </div>
                     <div class="weak-list" id="weakList"></div>
                 </div>
-                <h2>Reference Table</h2>
-                <div class="trainer-controls"><input id="searchBox" class="trainer-input" type="search"
-                        placeholder="Search standard, speed, cable, port, category..." /><button id="showAllBtn"
-                        class="trainer-button">Show All</button></div>
-                <div class="table-wrap">
-                    <table class="standards-table">
-                        <thead>
-                            <tr>
-                                <th>Topic</th>
-                                <th>Answer / Value</th>
-                                <th>Category</th>
-                                <th>Exam Note</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody"></tbody>
-                    </table>
-                </div>
+
+                <details class="reference-panel">
+                    <summary>Reference Table</summary>
+                    <div class="trainer-controls"><input id="searchBox" class="trainer-input" type="search"
+                            placeholder="Search standard, speed, cable, port, category..." /><button id="showAllBtn"
+                            class="trainer-button">Show All</button></div>
+                    <div class="table-wrap">
+                        <table class="standards-table">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Answer / Value</th>
+                                    <th>Category</th>
+                                    <th>Exam Note</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                </details>
+
             </section><a class="back-link" href="/">← Back to Home</a>
         </article>
     </main>
