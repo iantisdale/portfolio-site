@@ -212,6 +212,10 @@
                         <option value="all">All Categories</option>
                         <option value="weak">Weak Areas Only</option>
                     </select>
+                    <select id="questionMode" class="trainer-select">
+                        <option value="normal">Normal Mode</option>
+                        <option value="hard">Hard Mode</option>
+                    </select>
                     <select id="difficulty" class="trainer-select">
                         <option value="multiple">Multiple Choice</option>
                         <option value="typed">Typed Answer</option>
@@ -267,7 +271,24 @@
     </footer>
     <script>
         let bank = [];
-        const categoryNames = { ethernet: "Ethernet", copper: "Copper Cabling", fiber: "Fiber", poe: "PoE", wifi: "Wi-Fi", cellular: "Cellular", connectors: "Connectors", cloud: "Cloud", virtualization: "Virtualization", ports: "Ports", email: "Email", dns: "DNS", storage: "Storage", printers: "Printers" };
+        const categoryNames = {
+            ethernet: "Ethernet",
+            copper: "Copper Cabling",
+            fiber: "Fiber",
+            poe: "PoE",
+            wifi: "Wi-Fi",
+            cellular: "Cellular",
+            mobile: "Mobile Devices",
+            connectors: "Connectors",
+            cloud: "Cloud",
+            virtualization: "Virtualization",
+            ports: "Ports",
+            email: "Email",
+            dns: "DNS",
+            storage: "Storage",
+            printers: "Printers",
+            scenario: "Scenario Questions"
+        };
         const statsKey = "ianStandardsTrainerStatsV2";
         const stats = JSON.parse(localStorage.getItem(statsKey)) || { correct: 0, wrong: 0, streak: 0, xp: 0, misses: {} };
         let current = null, answered = false;
@@ -279,7 +300,67 @@
         function populateCategories() { [...new Set(bank.map(i => i.category))].sort().forEach(c => { const o = document.createElement("option"); o.value = c; o.textContent = categoryLabel(c); categoryFilter.appendChild(o); }); }
         function filteredBank() { const c = categoryFilter.value; if (c === "all") return bank; if (c === "weak") { const w = Object.keys(stats.misses).filter(x => stats.misses[x] > 0); const q = bank.filter(i => w.includes(i.category)); return q.length ? q : bank; } return bank.filter(i => i.category === c); }
         function updateStats() { const t = stats.correct + stats.wrong, a = t ? Math.round(stats.correct / t * 100) : 0; correctStat.textContent = stats.correct; wrongStat.textContent = stats.wrong; accuracyStat.textContent = a + "%"; streakStat.textContent = stats.streak; xpStat.textContent = stats.xp; weakList.innerHTML = ""; const w = Object.entries(stats.misses).filter(e => e[1] > 0).sort((a, b) => b[1] - a[1]); if (!w.length) { const s = document.createElement("span"); s.className = "tag"; s.textContent = "No weak areas yet"; weakList.appendChild(s); return; } w.forEach(([c, n]) => { const s = document.createElement("span"); s.className = "tag"; s.textContent = categoryLabel(c) + ": " + n + " misses"; weakList.appendChild(s); }); }
-        function newQuestion() { if (!bank.length) return; answered = false; feedback.className = "feedback"; feedback.textContent = ""; typedAnswer.value = ""; const p = filteredBank(); current = p[Math.floor(Math.random() * p.length)]; subtitle.textContent = categoryLabel(current.category) + " Practice"; question.textContent = current.question; if (difficulty.value === "typed") { answerGrid.style.display = "none"; typedArea.style.display = "flex"; typedAnswer.focus(); return; } typedArea.style.display = "none"; answerGrid.style.display = "grid"; answerGrid.innerHTML = ""; shuffle(current.options).forEach(opt => { const b = document.createElement("button"); b.className = "trainer-button answer-button"; b.textContent = opt; b.addEventListener("click", () => check(opt)); answerGrid.appendChild(b); }); }
+        function newQuestion() {
+            if (!bank.length) return;
+
+            answered = false;
+            feedback.className = "feedback";
+            feedback.textContent = "";
+            typedAnswer.value = "";
+
+            const pool = filteredBank();
+            const mode = document.getElementById("questionMode")?.value || "normal";
+
+            let weightedPool = [];
+
+            pool.forEach(q => {
+                let weight = 1;
+
+                if (mode === "hard") {
+
+                    if (q.category === "scenario") {
+                        weight = 5;
+                    }
+
+                    const misses = stats.misses[q.category] || 0;
+
+                    if (misses > 0) {
+                        weight += misses;
+                    }
+                }
+
+                for (let i = 0; i < weight; i++) {
+                    weightedPool.push(q);
+                }
+            });
+
+            current =
+                weightedPool[Math.floor(Math.random() * weightedPool.length)];
+
+            subtitle.textContent =
+                categoryLabel(current.category) + " Practice";
+
+            question.textContent = current.question;
+
+            if (difficulty.value === "typed") {
+                answerGrid.style.display = "none";
+                typedArea.style.display = "flex";
+                typedAnswer.focus();
+                return;
+            }
+
+            typedArea.style.display = "none";
+            answerGrid.style.display = "grid";
+            answerGrid.innerHTML = "";
+
+            shuffle(current.options).forEach(opt => {
+                const b = document.createElement("button");
+                b.className = "trainer-button answer-button";
+                b.textContent = opt;
+                b.addEventListener("click", () => check(opt));
+                answerGrid.appendChild(b);
+            });
+        }
         function check(ans) { if (answered || !current) return; answered = true; const ok = norm(ans) === norm(current.answer); if (ok) { stats.correct++; stats.streak++; stats.xp += difficulty.value === "typed" ? 20 : 10; if (stats.misses[current.category]) stats.misses[current.category] = Math.max(0, stats.misses[current.category] - 1); feedback.className = "feedback correct"; feedback.innerHTML = "<strong>Correct.</strong> " + current.note; } else { stats.wrong++; stats.streak = 0; stats.misses[current.category] = (stats.misses[current.category] || 0) + 1; feedback.className = "feedback wrong"; feedback.innerHTML = "<strong>Not quite.</strong> Correct answer: <strong>" + current.answer + "</strong>. " + current.note; } save(); updateStats(); Array.from(answerGrid.children).forEach(b => { if (norm(b.textContent) === norm(current.answer)) b.classList.add("primary"); }); }
         function renderTable() { const q = searchBox.value.trim().toLowerCase(), c = categoryFilter.value; const rows = bank.filter(i => { const cm = c === "all" || c === "weak" || i.category === c; const tx = (i.question + " " + i.answer + " " + i.note + " " + categoryLabel(i.category)).toLowerCase(); return cm && (!q || tx.includes(q)); }); tableBody.innerHTML = ""; rows.forEach(i => { const tr = document.createElement("tr"); tr.innerHTML = "<td><strong>" + i.question + "</strong></td><td>" + i.answer + "</td><td><span class='tag'>" + categoryLabel(i.category) + "</span></td><td>" + i.note + "</td>"; tableBody.appendChild(tr); }); }
         async function loadQuestions() { try { const r = await fetch("./questions.json", { cache: "no-store" }); if (!r.ok) throw new Error("Could not load questions.json"); bank = await r.json(); populateCategories(); loadStatus.textContent = "Loaded " + bank.length + " questions from questions.json."; updateStats(); renderTable(); newQuestion(); } catch (e) { loadStatus.textContent = "Could not load questions.json. Make sure it is in the same folder as this index.html file."; question.textContent = "Question bank failed to load."; console.error(e); } }
