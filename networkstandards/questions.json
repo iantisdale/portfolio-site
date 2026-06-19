@@ -7081,5 +7081,149 @@
       "Infrared"
     ],
     "note": "Bluetooth is commonly used for hands-free communication and audio."
+  },
+  {
+    "category": "mobile",
+    "question": "What does MDM stand for?",
+    "answer": "Mobile Device Management",
+    "options": [
+      "Mobile Data Management",
+      "Mobile Device Management",
+      "Managed Device Monitoring",
+      "Mobile Directory Management"
+    ],
+    "note": "MDM allows organizations to manage and secure mobile devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What does MAM stand for?",
+    "answer": "Mobile Application Management",
+    "options": [
+      "Mobile Access Management",
+      "Managed Application Monitoring",
+      "Mobile Application Management",
+      "Mobile Asset Management"
+    ],
+    "note": "MAM focuses on managing and securing applications rather than entire devices."
+  },
+  {
+    "category": "mobile",
+    "question": "Which technology manages an entire smartphone or tablet?",
+    "answer": "MDM",
+    "options": [
+      "VPN",
+      "MAM",
+      "MDM",
+      "NFC"
+    ],
+    "note": "MDM provides management of the entire device."
+  },
+  {
+    "category": "mobile",
+    "question": "Which technology focuses on securing company applications without controlling the entire device?",
+    "answer": "MAM",
+    "options": [
+      "MDM",
+      "MAM",
+      "VPN",
+      "GPS"
+    ],
+    "note": "MAM manages applications and their data rather than the whole device."
+  },
+  {
+    "category": "mobile",
+    "question": "A company wants to remotely wipe a lost corporate smartphone. Which solution should be used?",
+    "answer": "MDM",
+    "options": [
+      "GPS",
+      "MAM",
+      "MDM",
+      "NFC"
+    ],
+    "note": "MDM solutions commonly support remote device wipe."
+  },
+  {
+    "category": "mobile",
+    "question": "A company wants to remove only corporate email and applications from an employee-owned phone. Which solution is best?",
+    "answer": "MAM",
+    "options": [
+      "MDM",
+      "MAM",
+      "Bluetooth",
+      "Remote desktop"
+    ],
+    "note": "MAM can remove corporate apps and data without wiping personal information."
+  },
+  {
+    "category": "mobile",
+    "question": "What can MDM commonly push to mobile devices automatically?",
+    "answer": "Wi-Fi profiles",
+    "options": [
+      "Screen protectors",
+      "Wi-Fi profiles",
+      "Battery upgrades",
+      "SIM cards"
+    ],
+    "note": "MDM solutions can deploy Wi-Fi, VPN, and security configurations."
+  },
+  {
+    "category": "mobile",
+    "question": "What can MDM commonly deploy to allow secure remote access to company resources?",
+    "answer": "VPN profiles",
+    "options": [
+      "Wallpaper images",
+      "Bluetooth pairings",
+      "VPN profiles",
+      "GPS routes"
+    ],
+    "note": "VPN configurations are frequently deployed through MDM."
+  },
+  {
+    "category": "mobile",
+    "question": "Which solution is commonly used to enforce passcode requirements on company-owned devices?",
+    "answer": "MDM",
+    "options": [
+      "MAM",
+      "MDM",
+      "NFC",
+      "GPS"
+    ],
+    "note": "MDM can enforce security policies such as passcodes and encryption."
+  },
+  {
+    "category": "mobile",
+    "question": "A company uses BYOD and wants employees to keep personal photos and apps private while securing work applications. Which solution is best?",
+    "answer": "MAM",
+    "options": [
+      "MDM",
+      "MAM",
+      "VPN",
+      "Airplane mode"
+    ],
+    "note": "MAM is commonly used in BYOD environments to separate personal and corporate data."
+  },
+  {
+    "category": "mobile",
+    "question": "What mobile management solution is most commonly associated with Microsoft Intune device management?",
+    "answer": "MDM",
+    "options": [
+      "MAM",
+      "MDM",
+      "NFC",
+      "GPS"
+    ],
+    "note": "Intune provides MDM capabilities for managing devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What mobile management solution is most commonly associated with protecting corporate applications and data?",
+    "answer": "MAM",
+    "options": [
+      "MAM",
+      "MDM",
+      "Bluetooth",
+      "NFC"
+    ],
+    "note": "MAM policies protect company applications and data."
   }
 ]
