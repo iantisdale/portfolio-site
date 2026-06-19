@@ -242,6 +242,9 @@
                 <div class="trainer-card">
                     <div class="subtitle" id="subtitle">Choose the best answer.</div>
                     <div class="question" id="question">Loading question...</div>
+                    <div id="imageContainer" style="display:none;text-align:center;">
+                        <img id="questionImage" style="max-width:500px;max-height:300px;width:100%;object-fit:contain;">
+                    </div>
                     <div id="answerGrid" class="answer-grid"></div>
                     <div id="typedArea" class="trainer-controls" style="display:none;"><input id="typedAnswer"
                             class="trainer-input" type="text" placeholder="Type your answer..." /><button
@@ -313,7 +316,8 @@
             troubleshooting: "Troubleshooting",
             hardware: "Hardware",
             commands: "Commands",
-            connectors: "Connectors"
+            connectors: "Connectors",
+            connector_images: "Connector Identification"
         };
         const statsKey = "ianStandardsTrainerStatsV2";
         const stats = JSON.parse(localStorage.getItem(statsKey)) || { correct: 0, wrong: 0, streak: 0, xp: 0, misses: {} };
@@ -367,6 +371,20 @@
                 categoryLabel(current.category) + " Practice";
 
             question.textContent = current.question;
+
+            const imageContainer =
+                document.getElementById("imageContainer");
+
+            const questionImage =
+                document.getElementById("questionImage");
+
+            if (current.image) {
+                questionImage.src = current.image;
+                imageContainer.style.display = "block";
+            } else {
+                questionImage.src = "";
+                imageContainer.style.display = "none";
+            }
 
             if (difficulty.value === "typed") {
                 answerGrid.style.display = "none";
